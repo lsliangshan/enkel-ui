@@ -7,9 +7,9 @@
     >
         <Icon class="enkel-load-loop" type="ios-loading" v-if="loading"></Icon>
         <Icon :type="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading"></Icon>
-        <span>
+        <!--<span>-->
           <slot></slot>
-        </span>
+        <!--</span>-->
         <component v-for="(v, k) in ripples" :key="k" v-if="ripple" :id="k" :rect="v.rect" :is="v.component"
                    :data-id="k" @end="removeRipple"></component>
     </button>

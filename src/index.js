@@ -1,3 +1,5 @@
+import Button from './components/button';
+import Icon from './components/icon';
 import Affix from './components/affix';
 import Alert from './components/alert';
 import Anchor from './components/anchor';
@@ -7,7 +9,6 @@ import Avatar from './components/avatar';
 import BackTop from './components/back-top';
 import Badge from './components/badge';
 import Breadcrumb from './components/breadcrumb';
-import Button from './components/button';
 import Card from './components/card';
 import Carousel from './components/carousel';
 import Cascader from './components/cascader';
@@ -23,7 +24,6 @@ import Dropdown from './components/dropdown';
 import Footer from './components/footer';
 import Form from './components/form';
 import Header from './components/header';
-import Icon from './components/icon';
 import Input from './components/input';
 import InputNumber from './components/input-number';
 import Scroll from './components/scroll';
@@ -59,6 +59,8 @@ import {Select, Option, OptionGroup} from './components/select';
 import locale from './locale/index';
 
 const components = {
+    Button,
+    Icon,
     Affix,
     Alert,
     Anchor,
@@ -69,7 +71,6 @@ const components = {
     Badge,
     Breadcrumb,
     BreadcrumbItem: Breadcrumb.Item,
-    Button,
     ButtonGroup: Button.Group,
     Card,
     Carousel,
@@ -92,7 +93,6 @@ const components = {
     Form,
     FormItem: Form.Item,
     Header: Header,
-    Icon,
     Input,
     InputNumber,
     Scroll,

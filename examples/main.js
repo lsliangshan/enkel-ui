@@ -23,6 +23,14 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
+            path: '/button',
+            component: (resolve) => require(['./routers/button.vue'], resolve)
+        },
+        {
+            path: '/icon',
+            component: (resolve) => require(['./routers/icon.vue'], resolve)
+        },
+        {
             path: '/split',
             component: (resolve) => require(['./routers/split.vue'], resolve)
         },
@@ -41,14 +49,6 @@ const router = new VueRouter({
         {
             path: '/grid',
             component: (resolve) => require(['./routers/grid.vue'], resolve)
-        },
-        {
-            path: '/button',
-            component: (resolve) => require(['./routers/button.vue'], resolve)
-        },
-        {
-            path: '/icon',
-            component: (resolve) => require(['./routers/icon.vue'], resolve)
         },
         {
             path: '/input',

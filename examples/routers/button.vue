@@ -2,7 +2,10 @@
     <div>
         <Button type="default">Default</Button>
         <Button type="primary" :loading="true">Primary</Button>
-        <Button type="dashed">Dashed</Button>
+        <Button type="dashed" style="display: inline-flex; align-items: center;">
+            <Icon type="logo-github" style="margin-right: 8px;"></Icon>
+            Dashed
+        </Button>
         <Button type="info">Info</Button>
         <Button type="success">Success</Button>
         <Button type="warning">Warning</Button>
@@ -12,7 +15,7 @@
         <Button style="background-color: whitesmoke; color: red; padding: 50px 200px;" ghost>自定义</Button>
 
 
-        <Button icon="logo-github" size="20" shape="circle"></Button>
+        <Button icon="logo-github" shape="circle"></Button>
         <Button icon="logo-github" size="large" style="border-radius: 0;">github</Button>
         <Button icon="logo-github" shape="circle">github</Button>
         <Button icon="logo-github" size="small"></Button>
