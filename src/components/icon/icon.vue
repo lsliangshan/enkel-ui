@@ -2,7 +2,7 @@
     <i :class="classes" :style="styles" @click="handleClick"></i>
 </template>
 <script>
-    const prefixCls = 'zeex-icon';
+    const prefixCls = 'enkel-icon';
 
     export default {
         name: 'Icon',

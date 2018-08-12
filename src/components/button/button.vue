@@ -5,7 +5,7 @@
         :disabled="disabled"
         @click="btnClickHandler"
     >
-        <Icon class="zeex-load-loop" type="ios-loading" v-if="loading"></Icon>
+        <Icon class="enkel-load-loop" type="ios-loading" v-if="loading"></Icon>
         <Icon :type="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading"></Icon>
         <span>
           <slot></slot>
@@ -15,16 +15,16 @@
     </button>
 </template>
 <style scoped>
-    .zeex-btn {
+    .enkel-btn {
         position: relative;
         overflow: hidden;
     }
 
-    .zeex-btn.custom-active:active {
+    .enkel-btn.custom-active:active {
         opacity: 0.7;
     }
 
-    .zeex-btn * {
+    .enkel-btn * {
         pointer-events: none;
     }
 </style>
@@ -35,7 +35,7 @@
     import mixinsLink from '../../mixins/link';
     import tinycolor from 'tinycolor2';
 
-    const prefixCls = 'zeex-btn';
+    const prefixCls = 'enkel-btn';
 
     export default {
         name: 'Button',
@@ -61,7 +61,7 @@
                     return oneOf(value, ['small', 'large', 'default']);
                 },
                 default() {
-                    return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
+                    return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
                 }
             },
             loading: Boolean,

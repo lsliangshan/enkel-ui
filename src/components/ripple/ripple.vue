@@ -1,5 +1,5 @@
 <template>
-    <div class="zeex-ripple" :class="classes" :style="[styles, {'background-color': realBgColor}]"></div>
+    <div class="enkel-ripple" :class="classes" :style="[styles, {'background-color': realBgColor}]"></div>
 </template>
 <style scoped>
     @keyframes ripple-enter {
@@ -30,7 +30,7 @@
         }
     }
 
-    .zeex-ripple {
+    .enkel-ripple {
         position: absolute;
         width: 50px;
         height: 50px;
@@ -40,14 +40,14 @@
         border-radius: 50%;
     }
 
-    .zeex-ripple-visible {
+    .enkel-ripple-visible {
         -webkit-animation: ripple-enter 550ms ease-in-out;
         -o-animation: ripple-enter 550ms ease-in-out;
         animation: ripple-enter 550ms ease-in-out;
         animation-fill-mode: forwards;
     }
 
-    .zeex-ripple-exit {
+    .enkel-ripple-exit {
         /*opacity: 0.3;*/
         /*-webkit-transition: opacity .5s ease-in-out;*/
         /*-moz-transition: opacity .5s ease-in-out;*/
@@ -121,7 +121,7 @@
                     left: rippleX + 'px',
                     top: rippleY + 'px'
                 };
-                this.classes.push('zeex-ripple-visible')
+                this.classes.push('enkel-ripple-visible')
                 setTimeout(() => {
                     this.stop(() => {
                         this.$emit('end', {
@@ -131,7 +131,7 @@
                 }, 500);
             },
             stop(cb) {
-                this.classes.push('zeex-ripple-exit')
+                this.classes.push('enkel-ripple-exit')
                 setTimeout(() => {
                     cb();
                 }, 300);

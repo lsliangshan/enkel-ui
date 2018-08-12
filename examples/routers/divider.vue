@@ -4,49 +4,49 @@
             <Card title="horizontal divider">
                 <div>
                     <p>
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
                     </p>
 
                     <Divider/>
 
                     <p>
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider>iView </Divider>
+                    <Divider>enkel </Divider>
 
                     <p>
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
                     </p>
 
                     <Divider dashed/>
 
                     <p>
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider orientation="left">iView</Divider>
+                    <Divider orientation="left">enkel</Divider>
 
                     <p>
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
                     </p>
 
-                    <Divider orientation="right">iView</Divider>
+                    <Divider orientation="right">enkel</Divider>
 
                     <p>
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
-                        iView is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
+                        enkel is a set of UI components and widgets built on Vue.js.
                     </p>
 
                 </div>
@@ -55,7 +55,7 @@
         <i-col span="12">
             <Card title="vertical divider">
                 <div>
-                    iView
+                    enkel
                     <Divider type="vertical" />
                     <a href="#">Components</a>
                     <Divider type="vertical" />

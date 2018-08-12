@@ -14,8 +14,8 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'zeex.js',
-        library: 'zeex',
+        filename: 'enkel.js',
+        library: 'enkel',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

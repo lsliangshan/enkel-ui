@@ -63,7 +63,7 @@
     </div>
 </template>
 <script>
-    import { Alert, Icon } from 'zeex';
+    import { Alert, Icon } from 'enkel';
     export default {
         components: { Alert, Icon }
     }

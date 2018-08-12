@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import iView from '../../src/index';
+import enkel from '../../src/index';
 
-Vue.use(iView);
+Vue.use(enkel);
 
 let id = 0;
 

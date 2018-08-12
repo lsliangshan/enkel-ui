@@ -87,7 +87,7 @@
         <br><br><br>
         <Button to="/menu" @click="hc">Open Menu</Button>
         <Button to="/menu" replace>Open Menu Replace</Button>
-        <Button to="//iviewui.com" target="_blank">Open iView</Button>
+        <Button to="//enkelui.com" target="_blank">Open enkel</Button>
         <hr>
         <Icon custom="i-icon i-icon-search" />
         <Icon custom="i-icon i-icon-video" size="24" color="#ff6600" />

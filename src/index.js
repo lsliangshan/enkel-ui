@@ -136,7 +136,7 @@ const components = {
     Upload
 };
 
-const zeex = {
+const enkel = {
     ...components,
     iButton: Button,
     iCircle: Circle,
@@ -160,11 +160,11 @@ const install = function(Vue, opts = {}) {
     locale.use(opts.locale);
     locale.i18n(opts.i18n);
 
-    Object.keys(zeex).forEach(key => {
-        Vue.component(key, zeex[key]);
+    Object.keys(enkel).forEach(key => {
+        Vue.component(key, enkel[key]);
     });
 
-    Vue.prototype.$IVIEW = {
+    Vue.prototype.$enkel = {
         size: opts.size || '',
         transfer: 'transfer' in opts ? opts.transfer : ''
     };
@@ -192,7 +192,7 @@ const API = {
 };
 
 API.lang = (code) => {
-    const langObject = window['zeex/locale'].default;
+    const langObject = window['enkel/locale'].default;
     if (code === langObject.i.locale) locale.use(langObject);
     else console.log(`The ${code} language pack is not loaded.`); // eslint-disable-line no-console
 };

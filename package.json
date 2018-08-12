@@ -1,11 +1,11 @@
 {
-    "name": "iview",
+    "name": "enkel",
     "version": "3.0.0",
-    "title": "iView",
+    "title": "enkel",
     "description": "A high quality UI components Library with Vue.js",
-    "homepage": "http://www.iviewui.com",
+    "homepage": "http://www.enkelui.com",
     "keywords": [
-        "iview",
+        "enkel",
         "vue",
         "vue.js",
         "component",
@@ -13,7 +13,7 @@
         "ui",
         "framework"
     ],
-    "main": "dist/iview.js",
+    "main": "dist/enkel.js",
     "files": [
         "dist",
         "src"
@@ -33,12 +33,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/iview/iview"
+        "url": "https://github.com/enkel/enkel"
     },
     "author": "Aresn",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/iview/iview/issues"
+        "url": "https://github.com/enkel/enkel/issues"
     },
     "dependencies": {
         "async-validator": "^1.8.2",

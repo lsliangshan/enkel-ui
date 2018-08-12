@@ -24,7 +24,7 @@
                     return oneOf(value, ['small', 'large', 'default']);
                 },
                 default () {
-                    return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
+                    return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
                 }
             }
         },

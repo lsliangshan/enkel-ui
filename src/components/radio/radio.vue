@@ -48,7 +48,7 @@
                     return oneOf(value, ['small', 'large', 'default']);
                 },
                 default () {
-                    return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
+                    return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
                 }
             },
             name: {
@@ -105,11 +105,11 @@
                 if (this.name && this.name !== this.parent.name) {
                     /* eslint-disable no-console */
                     if (console.warn) {
-                        console.warn('[iview] Name does not match Radio Group name.');
+                        console.warn('[enkel] Name does not match Radio Group name.');
                     }
                     /* eslint-enable no-console */
                 } else {
-                    this.groupName = this.parent.name; 
+                    this.groupName = this.parent.name;
                 }
             }
 

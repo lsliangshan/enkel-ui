@@ -24,7 +24,7 @@ module.exports = {
         path: path.resolve(__dirname, '../dist/locale'),
         publicPath: '/dist/locale/',
         filename: '[name].js',
-        library: 'zeex/locale',
+        library: 'enkel/locale',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

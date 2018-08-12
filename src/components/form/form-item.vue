@@ -28,7 +28,7 @@
             if (key in tempObj) {
                 tempObj = tempObj[key];
             } else {
-                throw new Error('[iView warn]: please transfer a valid prop path to form item!');
+                throw new Error('[enkel warn]: please transfer a valid prop path to form item!');
             }
         }
         return {

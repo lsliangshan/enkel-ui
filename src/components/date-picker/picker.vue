@@ -173,7 +173,7 @@
                     return oneOf(value, ['small', 'large', 'default']);
                 },
                 default () {
-                    return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
+                    return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
                 }
             },
             placeholder: {
@@ -189,7 +189,7 @@
             transfer: {
                 type: Boolean,
                 default () {
-                    return !this.$IVIEW || this.$IVIEW.transfer === '' ? false : this.$IVIEW.transfer;
+                    return !this.$enkel || this.$enkel.transfer === '' ? false : this.$enkel.transfer;
                 }
             },
             name: {
