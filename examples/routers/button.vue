@@ -1,231 +1,233 @@
 <template>
     <div>
-        <!--<Button type="default">Default</Button>-->
-        <Button type="primary">Primary</Button>
-        <!--<Button type="dashed">Dashed</Button>-->
-        <!--<Button type="info">Info</Button>-->
-        <!--<Button type="success">Success</Button>-->
-        <!--<Button type="warning">Warning</Button>-->
-        <!--<Button type="error">Error</Button>-->
-        <!--<Button type="text">Text</Button>-->
-    </div>
-    <!--<div>-->
-        <!--<Button icon="logo-github" size="small" shape="circle"></Button>-->
-        <!--<Button icon="logo-github" size="large" shape="circle"></Button>-->
-        <!--<Button icon="logo-github" shape="circle"></Button>-->
-        <!--<Button icon="logo-github" size="small"></Button>-->
-        <!--<Button size="small">EN</Button>-->
-        <!--<Button icon="logo-github"></Button>-->
-        <!--<Button>EN</Button>-->
-        <!--<Button icon="logo-github" size="large"></Button>-->
-        <!--<Button size="large">EN</Button>-->
-        <!--<ButtonGroup size="small">-->
-            <!--<Button icon="logo-github"></Button>-->
-            <!--<Button icon="logo-twitter"></Button>-->
-            <!--<Button>-->
-                <!--EN-->
-            <!--</Button>-->
-        <!--</ButtonGroup>-->
-        <!--<ButtonGroup>-->
-            <!--<Button icon="logo-github"></Button>-->
-            <!--<Button icon="logo-twitter"></Button>-->
-            <!--<Button>-->
-                <!--EN-->
-            <!--</Button>-->
-        <!--</ButtonGroup>-->
-        <!--<ButtonGroup size="large">-->
-            <!--<Button icon="logo-github"></Button>-->
-            <!--<Button icon="logo-twitter"></Button>-->
-            <!--<Button >-->
-                <!--EN-->
-            <!--</Button>-->
-        <!--</ButtonGroup>-->
-        <!--<br><br><br>-->
-        <!--<Button type="default">Default</Button>-->
-        <!--<Button type="primary">Primary</Button>-->
-        <!--<Button type="dashed">Dashed</Button>-->
-        <!--<Button type="info">Info</Button>-->
-        <!--<Button type="success">Success</Button>-->
-        <!--<Button type="warning">Warning</Button>-->
-        <!--<Button type="error">Error</Button>-->
-        <!--<Button type="text">Text</Button>-->
-        <!--<br><br><br>-->
-        <!--<Button type="default" disabled>Default</Button>-->
-        <!--<Button type="primary" disabled>Primary</Button>-->
-        <!--<Button type="dashed" disabled>Dashed</Button>-->
-        <!--<Button type="info" disabled>Info</Button>-->
-        <!--<Button type="success" disabled>Success</Button>-->
-        <!--<Button type="warning" disabled>Warning</Button>-->
-        <!--<Button type="error" disabled>Error</Button>-->
-        <!--<Button type="text" disabled>Text</Button>-->
-        <!--<br><br><br>-->
-        <!--<div style="padding: 20px;background: rgb(190, 200, 200)">-->
-            <!--<Button type="default" ghost>Default</Button>-->
-            <!--<Button type="primary" ghost>Primary</Button>-->
-            <!--<Button type="dashed" ghost>Dashed</Button>-->
-            <!--<Button type="info" ghost>Info</Button>-->
-            <!--<Button type="success" ghost>Success</Button>-->
-            <!--<Button type="warning" ghost>Warning</Button>-->
-            <!--<Button type="error" ghost>Error</Button>-->
-            <!--<Button type="text" ghost>Text</Button>-->
-            <!--<br><br><br>-->
-            <!--<Button type="default" ghost disabled>Default</Button>-->
-            <!--<Button type="primary" ghost disabled>Primary</Button>-->
-            <!--<Button type="dashed" ghost disabled>Dashed</Button>-->
-            <!--<Button type="info" ghost disabled>Info</Button>-->
-            <!--<Button type="success" ghost disabled>Success</Button>-->
-            <!--<Button type="warning" ghost disabled>Warning</Button>-->
-            <!--<Button type="error" ghost disabled>Error</Button>-->
-            <!--<Button type="text" ghost disabled>Text</Button>-->
-        <!--</div>-->
-        <!--<br><br><br>-->
-        <!--<Button type="primary" icon="ios-information-circle" size="small">Search</Button>-->
-        <!--<Button type="primary" icon="ios-information-circle" size="default">Search</Button>-->
-        <!--<Button type="primary" icon="ios-information-circle" size="large">Search</Button>-->
-        <!--<br><br><br>-->
-        <!--<Button to="/menu" @click="hc">Open Menu</Button>-->
-        <!--<Button to="/menu" replace>Open Menu Replace</Button>-->
-        <!--<Button to="//iviewui.com" target="_blank">Open iView</Button>-->
-        <!--<hr>-->
-        <!--<Icon custom="i-icon i-icon-search" />-->
-        <!--<Icon custom="i-icon i-icon-video" size="24" color="#ff6600" />-->
-        <!--<Icon custom="i-icon i-icon-time" />-->
-        <!--<Icon type="ionic" />-->
-        <!--<Button icon="ionic">Default</Button>-->
-        <!--<Button custom-icon="i-icon i-icon-search">Default</Button>-->
-        <!--<Button icon="ionic" shape="circle"></Button>-->
-        <!--<Button custom-icon="i-icon i-icon-video" shape="circle"></Button>-->
-        <!--<hr>-->
-        <!--<Button>Default</Button>-->
-        <!--<Button type="primary">Primary</Button>-->
-        <!--<Button type="default">Ghost</Button>-->
-        <!--<Button type="dashed">Dashed</Button>-->
-        <!--<Button type="text">Text</Button>-->
-        <!--<br><br>-->
-        <!--<Button type="info">Info</Button>-->
-        <!--<Button type="success">Success</Button>-->
-        <!--<Button type="warning">Warning</Button>-->
-        <!--<Button type="error">Error</Button>-->
-        <!--<br><br>-->
-        <!--<Button type="primary" shape="circle" icon="ios-search"></Button>-->
-        <!--<Button type="primary" icon="ios-search">Search</Button>-->
-        <!--<Button type="primary" shape="circle" icon="ios-search">Search</Button>-->
-        <!--<Button type="primary" shape="circle">Circle</Button>-->
-        <!--<br><br>-->
-        <!--<Button type="default" shape="circle" icon="ios-search"></Button>-->
-        <!--<Button type="default" icon="ios-search">Search</Button>-->
-        <!--<Button type="default" shape="circle" icon="ios-search">Search</Button>-->
-        <!--<Button type="default" shape="circle">Circle</Button>-->
-        <!--<br><br>-->
-        <!--<Button>Default</Button>-->
-        <!--<Button disabled>Default(Disabled)</Button>-->
-        <!--<br>-->
-        <!--<Button type="primary">Primary</Button>-->
-        <!--<Button type="primary" disabled>Primary(Disabled)</Button>-->
-        <!--<br>-->
-        <!--<Button type="default">Ghost</Button>-->
-        <!--<Button type="default" disabled>Ghost(Disabled)</Button>-->
-        <!--<br>-->
-        <!--<Button type="dashed">Dashed</Button>-->
-        <!--<Button type="dashed" disabled>Dashed(Disabled)</Button>-->
-        <!--<br>-->
-        <!--<Button type="text">Text</Button>-->
-        <!--<Button type="text" disabled>Text(Disabled)</Button>-->
-        <!--<br><br>-->
+        <Button type="default">Default</Button>
+        <Button type="primary" :loading="true">Primary</Button>
+        <Button type="dashed">Dashed</Button>
+        <Button type="info">Info</Button>
+        <Button type="success">Success</Button>
+        <Button type="warning">Warning</Button>
+        <Button type="error">Error</Button>
+        <Button type="warning" ghost>Text</Button>
+        <Button type="info" ghost :ripple="false">Text</Button>
+        <Button style="background-color: whitesmoke; color: red; padding: 50px 200px;" ghost>自定义</Button>
 
-        <!--<br><br>-->
-        <!--<h4>基本</h4>-->
-        <!--<br><br>-->
-        <!--<Button-group>-->
-            <!--<Button>取消</Button>-->
-            <!--<Button type="primary">确定</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group>-->
-            <!--<Button disabled>昨日</Button>-->
-            <!--<Button disabled>今日</Button>-->
-            <!--<Button disabled>明日</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group>-->
-            <!--<Button type="primary">L</Button>-->
-            <!--<Button>M</Button>-->
-            <!--<Button type="default">M</Button>-->
-            <!--<Button type="dashed">R</Button>-->
-        <!--</Button-group>-->
-        <!--<br><br>-->
-        <!--<h4>配合图标</h4>-->
-        <!--<br><br>-->
-        <!--<Button-group>-->
-            <!--<Button type="primary">-->
-                <!--<Icon type="chevron-left"></Icon>-->
-                <!--前进-->
-            <!--</Button>-->
-            <!--<Button type="primary">-->
-                <!--后退-->
-                <!--<Icon type="chevron-right"></Icon>-->
-            <!--</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group>-->
-            <!--<Button type="primary" icon="ios-skipbackward"></Button>-->
-            <!--<Button type="primary" icon="ios-skipforward"></Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group>-->
-            <!--<Button type="default" icon="ios-color-wand-outline"></Button>-->
-            <!--<Button type="default" icon="ios-sunny-outline"></Button>-->
-            <!--<Button type="default" icon="ios-crop"></Button>-->
-            <!--<Button type="default" icon="ios-color-filter-outline"></Button>-->
-        <!--</Button-group>-->
-        <!--<br><br>-->
-        <!--<h4>圆角</h4>-->
-        <!--<br><br>-->
-        <!--<Button-group shape="circle">-->
-            <!--<Button type="primary">-->
-                <!--<Icon type="chevron-left"></Icon>-->
-                <!--前进-->
-            <!--</Button>-->
-            <!--<Button type="primary">-->
-                <!--后退-->
-                <!--<Icon type="chevron-right"></Icon>-->
-            <!--</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group shape="circle">-->
-            <!--<Button type="primary" icon="ios-skipbackward"></Button>-->
-            <!--<Button type="primary" icon="ios-skipforward"></Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group shape="circle">-->
-            <!--<Button type="default" icon="ios-color-wand-outline"></Button>-->
-            <!--<Button type="default" icon="ios-sunny-outline"></Button>-->
-            <!--<Button type="default" icon="ios-crop"></Button>-->
-            <!--<Button type="default" icon="ios-color-filter-outline"></Button>-->
-        <!--</Button-group>-->
-        <!--<br><br>-->
-        <!--<h4>尺寸</h4>-->
-        <!--<br><br>-->
-        <!--<Button-group size="large">-->
-            <!--<Button type="default">Large</Button>-->
-            <!--<Button type="default">Large</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group>-->
-            <!--<Button type="default">Default</Button>-->
-            <!--<Button type="default">Default</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group size="small">-->
-            <!--<Button type="default">Small</Button>-->
-            <!--<Button type="default">Small</Button>-->
-        <!--</Button-group>-->
-        <!--<br><br>-->
-        <!--<Button-group size="large" shape="circle">-->
-            <!--<Button type="default">Large</Button>-->
-            <!--<Button type="default">Large</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group shape="circle">-->
-            <!--<Button type="default">Default</Button>-->
-            <!--<Button type="default">Default</Button>-->
-        <!--</Button-group>-->
-        <!--<Button-group size="small" shape="circle">-->
-            <!--<Button type="default">Small</Button>-->
-            <!--<Button type="default">Small</Button>-->
-        <!--</Button-group>-->
-    <!--</div>-->
+
+        <Button icon="logo-github" size="20" shape="circle"></Button>
+        <Button icon="logo-github" size="large" style="border-radius: 0;">github</Button>
+        <Button icon="logo-github" shape="circle">github</Button>
+        <Button icon="logo-github" size="small"></Button>
+        <Button size="small">EN</Button>
+        <Button icon="logo-github"></Button>
+        <Button>EN</Button>
+        <Button icon="logo-github" size="large"></Button>
+        <Button size="large">EN</Button>
+        <ButtonGroup size="small">
+            <Button icon="logo-github"></Button>
+            <Button icon="logo-twitter"></Button>
+            <Button>
+                EN
+            </Button>
+        </ButtonGroup>
+        <ButtonGroup>
+            <Button icon="logo-github"></Button>
+            <Button icon="logo-twitter"></Button>
+            <Button>
+                EN
+            </Button>
+        </ButtonGroup>
+        <ButtonGroup size="large">
+            <Button icon="logo-github"></Button>
+            <Button icon="logo-twitter"></Button>
+            <Button >
+                EN
+            </Button>
+        </ButtonGroup>
+        <br><br><br>
+        <Button type="default">Default</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="dashed">Dashed</Button>
+        <Button type="info">Info</Button>
+        <Button type="success">Success</Button>
+        <Button type="warning">Warning</Button>
+        <Button type="error">Error</Button>
+        <Button type="text" style="color: red; border-radius: 0;">Text2</Button>
+        <br><br><br>
+        <Button type="default" disabled>Default</Button>
+        <Button type="primary" disabled>Primary</Button>
+        <Button type="dashed" disabled>Dashed</Button>
+        <Button type="info" disabled>Info</Button>
+        <Button type="success" disabled>Success</Button>
+        <Button type="warning" disabled>Warning</Button>
+        <Button type="error" disabled>Error</Button>
+        <Button type="text" disabled>Text</Button>
+        <br><br><br>
+        <div style="padding: 20px;background: rgb(190, 200, 200)">
+            <Button type="default" ghost>Default</Button>
+            <Button type="primary" ghost>Primary</Button>
+            <Button type="dashed" ghost>Dashed</Button>
+            <Button type="info" ghost>Info</Button>
+            <Button type="success" ghost>Success</Button>
+            <Button type="warning" ghost>Warning</Button>
+            <Button type="error" ghost>Error</Button>
+            <Button type="text" ghost>Text</Button>
+            <br><br><br>
+            <Button type="default" ghost disabled>Default</Button>
+            <Button type="primary" ghost disabled>Primary</Button>
+            <Button type="dashed" ghost disabled>Dashed</Button>
+            <Button type="info" ghost disabled>Info</Button>
+            <Button type="success" ghost disabled>Success</Button>
+            <Button type="warning" ghost disabled>Warning</Button>
+            <Button type="error" ghost disabled>Error</Button>
+            <Button type="text" ghost disabled>Text</Button>
+        </div>
+        <br><br><br>
+        <Button type="primary" icon="ios-information-circle" size="small">Search</Button>
+        <Button type="primary" icon="ios-information-circle" size="default">Search</Button>
+        <Button type="primary" icon="ios-information-circle" size="large">Search</Button>
+        <br><br><br>
+        <Button to="/menu" @click="hc">Open Menu</Button>
+        <Button to="/menu" replace>Open Menu Replace</Button>
+        <Button to="//iviewui.com" target="_blank">Open iView</Button>
+        <hr>
+        <Icon custom="i-icon i-icon-search" />
+        <Icon custom="i-icon i-icon-video" size="24" color="#ff6600" />
+        <Icon custom="i-icon i-icon-time" />
+        <Icon type="ionic" />
+        <Button icon="ionic">Default</Button>
+        <Button custom-icon="i-icon i-icon-search">Default</Button>
+        <Button icon="ionic" shape="circle"></Button>
+        <Button custom-icon="i-icon i-icon-video" shape="circle"></Button>
+        <hr>
+        <Button>Default</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="default">Ghost</Button>
+        <Button type="dashed">Dashed</Button>
+        <Button type="text">Text</Button>
+        <br><br>
+        <Button type="info">Info</Button>
+        <Button type="success">Success</Button>
+        <Button type="warning">Warning</Button>
+        <Button type="error">Error</Button>
+        <br><br>
+        <Button type="primary" shape="circle" icon="ios-search"></Button>
+        <Button type="primary" icon="ios-search">Search</Button>
+        <Button type="primary" shape="circle" icon="ios-search">Search</Button>
+        <Button type="primary" shape="circle">Circle</Button>
+        <br><br>
+        <Button type="default" shape="circle" icon="ios-search"></Button>
+        <Button type="default" icon="ios-search">Search</Button>
+        <Button type="default" shape="circle" icon="ios-search">Search</Button>
+        <Button type="default" shape="circle">Circle</Button>
+        <br><br>
+        <Button>Default</Button>
+        <Button disabled>Default(Disabled)</Button>
+        <br>
+        <Button type="primary">Primary</Button>
+        <Button type="primary" disabled>Primary(Disabled)</Button>
+        <br>
+        <Button type="default">Ghost</Button>
+        <Button type="default" disabled>Ghost(Disabled)</Button>
+        <br>
+        <Button type="dashed">Dashed</Button>
+        <Button type="dashed" disabled>Dashed(Disabled)</Button>
+        <br>
+        <Button type="text">Text</Button>
+        <Button type="text" disabled>Text(Disabled)</Button>
+        <br><br>
+
+        <br><br>
+        <h4>基本</h4>
+        <br><br>
+        <Button-group>
+            <Button>取消</Button>
+            <Button type="primary">确定</Button>
+        </Button-group>
+        <Button-group>
+            <Button disabled>昨日</Button>
+            <Button disabled>今日</Button>
+            <Button disabled>明日</Button>
+        </Button-group>
+        <Button-group>
+            <Button type="primary">L</Button>
+            <Button>M</Button>
+            <Button type="default">M</Button>
+            <Button type="dashed">R</Button>
+        </Button-group>
+        <br><br>
+        <h4>配合图标</h4>
+        <br><br>
+        <Button-group>
+            <Button type="primary">
+                <Icon type="chevron-left"></Icon>
+                前进
+            </Button>
+            <Button type="primary">
+                后退
+                <Icon type="chevron-right"></Icon>
+            </Button>
+        </Button-group>
+        <Button-group>
+            <Button type="primary" icon="ios-skipbackward"></Button>
+            <Button type="primary" icon="ios-skipforward"></Button>
+        </Button-group>
+        <Button-group>
+            <Button type="default" icon="ios-color-wand-outline"></Button>
+            <Button type="default" icon="ios-sunny-outline"></Button>
+            <Button type="default" icon="ios-crop"></Button>
+            <Button type="default" icon="ios-color-filter-outline"></Button>
+        </Button-group>
+        <br><br>
+        <h4>圆角</h4>
+        <br><br>
+        <Button-group shape="circle">
+            <Button type="primary">
+                <Icon type="chevron-left"></Icon>
+                前进
+            </Button>
+            <Button type="primary">
+                后退
+                <Icon type="chevron-right"></Icon>
+            </Button>
+        </Button-group>
+        <Button-group shape="circle">
+            <Button type="primary" icon="ios-skipbackward"></Button>
+            <Button type="primary" icon="ios-skipforward"></Button>
+        </Button-group>
+        <Button-group shape="circle">
+            <Button type="default" icon="ios-color-wand-outline"></Button>
+            <Button type="default" icon="ios-sunny-outline"></Button>
+            <Button type="default" icon="ios-crop"></Button>
+            <Button type="default" icon="ios-color-filter-outline"></Button>
+        </Button-group>
+        <br><br>
+        <h4>尺寸</h4>
+        <br><br>
+        <Button-group size="large">
+            <Button type="default">Large</Button>
+            <Button type="default">Large</Button>
+        </Button-group>
+        <Button-group>
+            <Button type="default">Default</Button>
+            <Button type="default">Default</Button>
+        </Button-group>
+        <Button-group size="small">
+            <Button type="default">Small</Button>
+            <Button type="default">Small</Button>
+        </Button-group>
+        <br><br>
+        <Button-group size="large" shape="circle">
+            <Button type="default">Large</Button>
+            <Button type="default">Large</Button>
+        </Button-group>
+        <Button-group shape="circle">
+            <Button type="default">Default</Button>
+            <Button type="default">Default</Button>
+        </Button-group>
+        <Button-group size="small" shape="circle">
+            <Button type="default">Small</Button>
+            <Button type="default">Small</Button>
+        </Button-group>
+    </div>
 </template>
 <script>
     export default {
