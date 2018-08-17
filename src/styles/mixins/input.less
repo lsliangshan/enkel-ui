@@ -277,12 +277,12 @@
 
 .input_wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-start;
 }
 
 .input_container .input_label {
-    font-size: 13px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.54);
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1;
@@ -386,11 +386,9 @@
     opacity: 0.42;
 }
 
-.input_container:before {
+.input_wrapper:before {
     position: absolute;
     left: 0;
-    top: 0;
-    bottom: 0;
     content: '';
     width: 100%;
     border-bottom: 2px solid transparent;
@@ -402,11 +400,9 @@
     transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input_container:after {
+.input_wrapper:after {
     position: absolute;
     left: 0;
-    top: 0;
-    bottom: 0;
     content: '';
     width: 100%;
     -webkit-transform: scaleX(0);
@@ -421,54 +417,74 @@
     -o-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);
     transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);
 }
-.input_container.default:after {
+.input_container.default .input_wrapper:after {
     border-bottom: 2px solid @primary-color;
 }
-.input_container.primary:after {
+.input_container.primary .input_wrapper:after {
     border-bottom: 2px solid @primary-color;
 }
-.input_container.warning:after {
+.input_container.warning .input_wrapper:after {
     border-bottom: 2px solid @warning-color;
 }
-.input_container.info:after {
+.input_container.info .input_wrapper:after {
     border-bottom: 2px solid @info-color;
 }
-.input_container.error:after {
+.input_container.error .input_wrapper:after {
     border-bottom: 2px solid @error-color;
 }
 
-.input_container.default.hover:before {
+.input_container.default.hover .input_wrapper:before {
     border-bottom: 2px solid #000000;
 }
 
-.input_container.focus:after {
+.input_container.focus .input_wrapper:after {
     -webkit-transform: scaleX(1);
     -moz-transform: scaleX(1);
     -ms-transform: scaleX(1);
     -o-transform: scaleX(1);
     transform: scaleX(1);
 }
-.input_container.default.focus:after {
+.input_container.default.focus .input_wrapper:after {
     border-bottom: 2px solid @primary-color;
 }
-.input_container.primary.focus:after {
+.input_container.primary.focus .input_wrapper:after {
     border-bottom: 2px solid @primary-color;
 }
-.input_container.info.focus:after {
+.input_container.info.focus .input_wrapper:after {
     border-bottom: 2px solid @info-color;
 }
-.input_container.warning.focus:after {
+.input_container.warning.focus .input_wrapper:after {
     border-bottom: 2px solid @warning-color;
 }
-.input_container.error.focus:after {
+.input_container.error.focus .input_wrapper:after {
     border-bottom: 2px solid @error-color;
 }
 
 .input_container .input_tips {
     position: absolute;
-    top: 100%;
     left: 0;
+    bottom: 0;
     width: 100%;
     height: 24px;
     line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    -webkit-transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    -ms-transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input_container.primary .input_tips {
+    color: @primary-color;
+}
+.input_container.warning .input_tips {
+    color: @warning-color;
+}
+.input_container.info .input_tips {
+    color: @info-color;
+}
+.input_container.error .input_tips {
+    color: @error-color;
 }

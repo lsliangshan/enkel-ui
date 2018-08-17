@@ -1,20 +1,21 @@
 <template>
-  <div class="input_container" :class="inputContainerClasses" :style="computedInputContainerStyles">
+  <div class="input_container" ref="inputContainerRef" :class="inputContainerClasses" :style="computedInputContainerStyles">
     <div class="input_wrapper" ref="inputWrapperRef" :style="computedInputWrapStyles">
       <label class="input_label" :style="computedLabelStyles">{{label}}</label>
       <input :type="type" ref="inputRef"
              :placeholder="placeholder"
              :style="computedInputStyles"
              :uuid="uuid"
-             v-border
              v-placeholder="placeholderStyle"
              @input="input"
              @focus="inputFocus"
              @blur="inputBlur"
+             @mouseenter="mouseenter"
+             @mouseleave="mouseleave"
              :value="realValue"
       >
       <div class="input_tips" ref="inputTipRef" :style="computedTipStyles">
-        <span>用户名不能为空</span>
+        <span>{{tip}}</span>
       </div>
     </div>
   </div>
@@ -143,11 +144,11 @@
     /*transform: scaleX(1);*/
     /*border-bottom: 2px solid #1976d2;*/
   /*}*/
+
 </style>
 <script>
   import {oneOf, findComponentUpward} from '../../utils/assist';
   import calcTextareaHeight from '../../utils/calcTextareaHeight';
-  import border from '../../directives/border';
   import placeholder from '../../directives/placeholder';
   import Emitter from '../../mixins/emitter';
 
@@ -161,7 +162,7 @@
   export default {
     name: 'Input',
     mixins: [Emitter],
-    directives: { border, placeholder },
+    directives: { placeholder },
     model: {
       prop: 'value',
       event: 'input'
@@ -192,6 +193,10 @@
       label: { // c
         type: String,
         default: 'Label'
+      },
+      tip: {
+        type: String,
+        default: ''
       },
       shrink: { // 是否展开
         type: Boolean,
@@ -314,7 +319,9 @@
         uuid: getUUID(),
         realTheme: '',
         realShrink: false,
-        realValue: ''
+        realValue: '',
+        inputFocused: false,
+        inputHovered: false
       };
     },
     computed: {
@@ -323,7 +330,9 @@
           this.uuid,
           this.realTheme,
           {
-            'shrink': this.realShrink
+            'shrink': this.realShrink,
+            'focus': this.inputFocused,
+            'hover': this.inputHovered
           }
         ]
       },
@@ -334,8 +343,9 @@
       },
       computedInputWrapStyles () {
         return {
-          marginTop: this.inputHeight / 2 + 'px',
-          marginBottom: this.inputTipHeight + 'px'
+          paddingTop: this.inputHeight / 2 + 'px',
+          paddingBottom: this.inputTipHeight + 'px',
+          boxSizing: 'content-box'
         };
       },
       computedInputStyles () {
@@ -346,12 +356,12 @@
       computedLabelStyles () {
         return Object.assign({}, {
           height: this.inputHeight / 2 + 'px',
-          marginTop: (this.inputHeight / 4) + 'px'
+          marginTop: (this.inputHeight / 4) + 'px',
+          top: this.inputHeight / 2 + 'px'
         }, this.labelStyle)
       },
       computedTipStyles () {
         return Object.assign({}, {
-
         }, this.tipStyle)
       },
       wrapClasses () {
@@ -488,11 +498,19 @@
       },
       inputFocus () {
         this.realShrink = true
+        this.inputFocused = true
       },
       inputBlur () {
+        this.inputFocused = false
         if (!this.realValue) {
           this.realShrink = false
         }
+      },
+      mouseenter () {
+        this.inputHovered = true
+      },
+      mouseleave () {
+        this.inputHovered = false
       }
     },
     watch: {

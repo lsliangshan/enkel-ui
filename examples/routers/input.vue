@@ -140,13 +140,21 @@
   <!--<Input v-model="value" search enter-button="Search" style="width: 300px" @on-search="hs" />-->
   <!--</div>-->
   <div>
-    <div>
-      <Input v-model="value7" type="text" :shrink="false" placeholder="请输入您的用户名" label="用户名"
-             style="width: 200px;"/>
+    <div style="margin-top: 15px; width: 400px;">
+      <Input v-model="value7" type="text" :shrink="false" placeholder="请输入您的用户名" label="用户名"/>
     </div>
-    <div style="margin-top: 30px;">
-      <Input type="text" theme="error" placeholder="请输入密码" :shrink="true" style="width: 200px;" label="密码" :value="pwd" v-model="password"/>
+    <div style="margin-top: 15px; width: 400px;">
+      <Input type="text" theme="primary" placeholder="请输入密码" :shrink="true" label="密码" :value="pwd" v-model="password"/>
              <!--:label-style="labelStyles" :input-style="inputStyles" :placeholder-style="placeholderStyles"/>-->
+    </div>
+    <div style="margin-top: 15px; width: 400px;">
+      <Input type="text" theme="warning" placeholder="请输入" label="警告"/>
+    </div>
+    <div style="margin-top: 15px; width: 400px;">
+      <Input type="text" theme="info" placeholder="请输入" label="提示"/>
+    </div>
+    <div style="margin-top: 15px; width: 400px;">
+      <Input type="text" theme="error" placeholder="请输入" label="错误" :label-style="labelStyles" :tip="tip" :tip-style="tipStyles"/>
     </div>
   </div>
 </template>
@@ -176,13 +184,23 @@
         placeholderStyles: {
           fontSize: '16px',
           color: '#888888AA'
-        }
+        },
+        tipStyles: {
+        },
+        tip: '测试tip'
       };
     },
     methods: {
       hs (val) {
         console.log(val);
       }
+    },
+    created () {
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.tip = '测试：' + Math.floor(Math.random() * 10000)
+        }, 3000)
+      })
     }
   };
 </script>
