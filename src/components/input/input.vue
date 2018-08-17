@@ -1,323 +1,514 @@
 <template>
-    <div :class="wrapClasses">
-        <template v-if="type !== 'textarea'">
-            <div :class="[prefixCls + '-group-prepend']" v-if="prepend" v-show="slotReady"><slot name="prepend"></slot></div>
-            <i class="ivu-icon" :class="['ivu-icon-ios-close-circle', prefixCls + '-icon', prefixCls + '-icon-clear' , prefixCls + '-icon-normal']" v-if="clearable && currentValue" @click="handleClear"></i>
-            <i class="ivu-icon" :class="['ivu-icon-' + icon, prefixCls + '-icon', prefixCls + '-icon-normal']" v-else-if="icon" @click="handleIconClick"></i>
-            <i class="ivu-icon ivu-icon-ios-search" :class="[prefixCls + '-icon', prefixCls + '-icon-normal', prefixCls + '-search-icon']" v-else-if="search && enterButton === false" @click="handleSearch"></i>
-            <span class="ivu-input-suffix" v-else-if="showSuffix"><slot name="suffix"><i class="ivu-icon" :class="['ivu-icon-' + suffix]" v-if="suffix"></i></slot></span>
-            <transition name="fade">
-                <i class="ivu-icon ivu-icon-ios-loading ivu-load-loop" :class="[prefixCls + '-icon', prefixCls + '-icon-validate']" v-if="!icon"></i>
-            </transition>
-            <input
-                :id="elementId"
-                :autocomplete="autocomplete"
-                :spellcheck="spellcheck"
-                ref="input"
-                :type="type"
-                :class="inputClasses"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :maxlength="maxlength"
-                :readonly="readonly"
-                :name="name"
-                :value="currentValue"
-                :number="number"
-                :autofocus="autofocus"
-                @keyup.enter="handleEnter"
-                @keyup="handleKeyup"
-                @keypress="handleKeypress"
-                @keydown="handleKeydown"
-                @focus="handleFocus"
-                @blur="handleBlur"
-                @input="handleInput"
-                @change="handleChange">
-            <div :class="[prefixCls + '-group-append']" v-if="append" v-show="slotReady"><slot name="append"></slot></div>
-            <div :class="[prefixCls + '-group-append', prefixCls + '-search']" v-else-if="search && enterButton" @click="handleSearch">
-                <i class="ivu-icon ivu-icon-ios-search" v-if="enterButton === true"></i>
-                <template v-else>{{ enterButton }}</template>
-            </div>
-            <span class="ivu-input-prefix" v-else-if="showPrefix"><slot name="prefix"><i class="ivu-icon" :class="['ivu-icon-' + prefix]" v-if="prefix"></i></slot></span>
-        </template>
-        <textarea
-            v-else
-            :id="elementId"
-            :wrap="wrap"
-            :autocomplete="autocomplete"
-            :spellcheck="spellcheck"
-            ref="textarea"
-            :class="textareaClasses"
-            :style="textareaStyles"
-            :placeholder="placeholder"
-            :disabled="disabled"
-            :rows="rows"
-            :maxlength="maxlength"
-            :readonly="readonly"
-            :name="name"
-            :value="currentValue"
-            :autofocus="autofocus"
-            @keyup.enter="handleEnter"
-            @keyup="handleKeyup"
-            @keypress="handleKeypress"
-            @keydown="handleKeydown"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @input="handleInput">
-        </textarea>
+  <div class="input_container" :class="inputContainerClasses" :style="computedInputContainerStyles">
+    <div class="input_wrapper" ref="inputWrapperRef" :style="computedInputWrapStyles">
+      <label class="input_label" :style="computedLabelStyles">{{label}}</label>
+      <input :type="type" ref="inputRef"
+             :placeholder="placeholder"
+             :style="computedInputStyles"
+             :uuid="uuid"
+             v-border
+             v-placeholder="placeholderStyle"
+             @input="input"
+             @focus="inputFocus"
+             @blur="inputBlur"
+             :value="realValue"
+      >
+      <div class="input_tips" ref="inputTipRef" :style="computedTipStyles">
+        <span>用户名不能为空</span>
+      </div>
     </div>
+  </div>
 </template>
+<style scoped>
+  /*.input_container {*/
+    /*position: relative;*/
+    /*cursor: text;*/
+  /*}*/
+
+  /*.input_wrapper {*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: flex-start;*/
+  /*}*/
+
+  /*.input_container .input_label {*/
+    /*font-size: 13px;*/
+    /*color: rgba(0, 0, 0, 0.54);*/
+    /*font-family: "Roboto", "Helvetica", "Arial", sans-serif;*/
+    /*line-height: 1;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*align-items: center;*/
+    /*justify-content: flex-start;*/
+    /*pointer-events: none;*/
+    /*-webkit-transform: translate(0, 0) scale(1);*/
+    /*-moz-transform: translate(0, 0) scale(1);*/
+    /*-ms-transform: translate(0, 0) scale(1);*/
+    /*-o-transform: translate(0, 0) scale(1);*/
+    /*transform: translate(0, 0) scale(1);*/
+    /*-webkit-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
+    /*-moz-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
+    /*-ms-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
+    /*-o-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
+    /*transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
+    /*transform-origin: top left;*/
+  /*}*/
+
+  /*.input_container.shrink .input_label {*/
+    /*-webkit-transform: translate(0, -125%) scale(0.75);*/
+    /*-moz-transform: translate(0, -125%) scale(0.75);*/
+    /*-ms-transform: translate(0, -125%) scale(0.75);*/
+    /*-o-transform: translate(0, -125%) scale(0.75);*/
+    /*transform: translate(0, -125%) scale(0.75);*/
+  /*}*/
+
+  /*.input_container.focus.shrink .input_label {*/
+    /*color: #2b85e4;*/
+  /*}*/
+
+  /*.input_container input {*/
+    /*width: 100%;*/
+    /*outline: none;*/
+    /*border: none;*/
+    /*font-size: 16px;*/
+    /*line-height: 2;*/
+    /*border-bottom: 1px solid #DDDDDD;*/
+  /*}*/
+
+  /*.input_container input::placeholder {*/
+    /*opacity: 0;*/
+    /*font-size: 16px;*/
+    /*-webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
+    /*-moz-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
+    /*-ms-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
+    /*-o-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
+    /*transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
+  /*}*/
+
+  /*.input_container.shrink input::placeholder {*/
+    /*opacity: 0.42;*/
+  /*}*/
+
+  /*.input_container:before {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*content: '';*/
+    /*width: 100%;*/
+    /*border-bottom: 2px solid transparent;*/
+    /*pointer-events: none;*/
+    /*-webkit-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
+    /*-moz-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
+    /*-ms-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
+    /*-o-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
+    /*transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
+  /*}*/
+
+  /*.input_container:after {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*content: '';*/
+    /*width: 100%;*/
+    /*-webkit-transform: scaleX(0);*/
+    /*-moz-transform: scaleX(0);*/
+    /*-ms-transform: scaleX(0);*/
+    /*-o-transform: scaleX(0);*/
+    /*transform: scaleX(0);*/
+    /*border-bottom: 2px solid #1976d2;*/
+    /*pointer-events: none;*/
+    /*-webkit-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
+    /*-moz-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
+    /*-ms-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
+    /*-o-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
+    /*transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
+  /*}*/
+
+  /*.input_container.hover:before {*/
+    /*border-bottom: 2px solid #000000;*/
+  /*}*/
+
+  /*.input_container.focus:after {*/
+    /*-webkit-transform: scaleX(1);*/
+    /*-moz-transform: scaleX(1);*/
+    /*-ms-transform: scaleX(1);*/
+    /*-o-transform: scaleX(1);*/
+    /*transform: scaleX(1);*/
+    /*border-bottom: 2px solid #1976d2;*/
+  /*}*/
+</style>
 <script>
-    import { oneOf, findComponentUpward } from '../../utils/assist';
-    import calcTextareaHeight from '../../utils/calcTextareaHeight';
-    import Emitter from '../../mixins/emitter';
+  import {oneOf, findComponentUpward} from '../../utils/assist';
+  import calcTextareaHeight from '../../utils/calcTextareaHeight';
+  import border from '../../directives/border';
+  import placeholder from '../../directives/placeholder';
+  import Emitter from '../../mixins/emitter';
 
-    const prefixCls = 'ivu-input';
-
-    export default {
-        name: 'Input',
-        mixins: [ Emitter ],
-        props: {
-            type: {
-                validator (value) {
-                    return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date']);
-                },
-                default: 'text'
-            },
-            value: {
-                type: [String, Number],
-                default: ''
-            },
-            size: {
-                validator (value) {
-                    return oneOf(value, ['small', 'large', 'default']);
-                },
-                default () {
-                    return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
-                }
-            },
-            placeholder: {
-                type: String,
-                default: ''
-            },
-            maxlength: {
-                type: Number
-            },
-            disabled: {
-                type: Boolean,
-                default: false
-            },
-            icon: String,
-            autosize: {
-                type: [Boolean, Object],
-                default: false
-            },
-            rows: {
-                type: Number,
-                default: 2
-            },
-            readonly: {
-                type: Boolean,
-                default: false
-            },
-            name: {
-                type: String
-            },
-            number: {
-                type: Boolean,
-                default: false
-            },
-            autofocus: {
-                type: Boolean,
-                default: false
-            },
-            spellcheck: {
-                type: Boolean,
-                default: false
-            },
-            autocomplete: {
-                validator (value) {
-                    return oneOf(value, ['on', 'off']);
-                },
-                default: 'off'
-            },
-            clearable: {
-                type: Boolean,
-                default: false
-            },
-            elementId: {
-                type: String
-            },
-            wrap: {
-                validator (value) {
-                    return oneOf(value, ['hard', 'soft']);
-                },
-                default: 'soft'
-            },
-            prefix: {
-                type: String,
-                default: ''
-            },
-            suffix: {
-                type: String,
-                default: ''
-            },
-            search: {
-                type: Boolean,
-                default: false
-            },
-            enterButton: {
-                type: [Boolean, String],
-                default: false
-            }
+  const prefixCls = 'ivu-input';
+  function S4 () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+  }
+  function getUUID () {
+    return (S4() + S4() + '-' + S4() + '-' + S4() + S4())
+  }
+  export default {
+    name: 'Input',
+    mixins: [Emitter],
+    directives: { border, placeholder },
+    model: {
+      prop: 'value',
+      event: 'input'
+    },
+    props: {
+      type: {
+        validator (value) {
+          return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date']);
         },
-        data () {
-            return {
-                currentValue: this.value,
-                prefixCls: prefixCls,
-                prepend: true,
-                append: true,
-                slotReady: false,
-                textareaStyles: {},
-                showPrefix: false,
-                showSuffix: false
-            };
+        default: 'text'
+      },
+      value: {
+        type: [String, Number],
+        default: ''
+      },
+      size: {
+        validator (value) {
+          return oneOf(value, ['small', 'large', 'default']);
         },
-        computed: {
-            wrapClasses () {
-                return [
-                    `${prefixCls}-wrapper`,
-                    {
-                        [`${prefixCls}-wrapper-${this.size}`]: !!this.size,
-                        [`${prefixCls}-type`]: this.type,
-                        [`${prefixCls}-group`]: this.prepend || this.append || (this.search && this.enterButton),
-                        [`${prefixCls}-group-${this.size}`]: (this.prepend || this.append || (this.search && this.enterButton)) && !!this.size,
-                        [`${prefixCls}-group-with-prepend`]: this.prepend,
-                        [`${prefixCls}-group-with-append`]: this.append || (this.search && this.enterButton),
-                        [`${prefixCls}-hide-icon`]: this.append,  // #554
-                        [`${prefixCls}-with-search`]: (this.search && this.enterButton)
-                    }
-                ];
-            },
-            inputClasses () {
-                return [
-                    `${prefixCls}`,
-                    {
-                        [`${prefixCls}-${this.size}`]: !!this.size,
-                        [`${prefixCls}-disabled`]: this.disabled,
-                        [`${prefixCls}-with-prefix`]: this.showPrefix,
-                        [`${prefixCls}-with-suffix`]: this.showSuffix || (this.search && this.enterButton === false)
-                    }
-                ];
-            },
-            textareaClasses () {
-                return [
-                    `${prefixCls}`,
-                    {
-                        [`${prefixCls}-disabled`]: this.disabled
-                    }
-                ];
-            }
-        },
-        methods: {
-            handleEnter (event) {
-                this.$emit('on-enter', event);
-                if (this.search) this.$emit('on-search', this.currentValue);
-            },
-            handleKeydown (event) {
-                this.$emit('on-keydown', event);
-            },
-            handleKeypress(event) {
-                this.$emit('on-keypress', event);
-            },
-            handleKeyup (event) {
-                this.$emit('on-keyup', event);
-            },
-            handleIconClick (event) {
-                this.$emit('on-click', event);
-            },
-            handleFocus (event) {
-                this.$emit('on-focus', event);
-            },
-            handleBlur (event) {
-                this.$emit('on-blur', event);
-                if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
-                    this.dispatch('FormItem', 'on-form-blur', this.currentValue);
-                }
-            },
-            handleInput (event) {
-                let value = event.target.value;
-                if (this.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value);
-                this.$emit('input', value);
-                this.setCurrentValue(value);
-                this.$emit('on-change', event);
-            },
-            handleChange (event) {
-                this.$emit('on-input-change', event);
-            },
-            setCurrentValue (value) {
-                if (value === this.currentValue) return;
-                this.$nextTick(() => {
-                    this.resizeTextarea();
-                });
-                this.currentValue = value;
-                if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
-                    this.dispatch('FormItem', 'on-form-change', value);
-                }
-            },
-            resizeTextarea () {
-                const autosize = this.autosize;
-                if (!autosize || this.type !== 'textarea') {
-                    return false;
-                }
-
-                const minRows = autosize.minRows;
-                const maxRows = autosize.maxRows;
-
-                this.textareaStyles = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
-            },
-            focus () {
-                if (this.type === 'textarea') {
-                    this.$refs.textarea.focus();
-                } else {
-                    this.$refs.input.focus();
-                }
-            },
-            blur () {
-                if (this.type === 'textarea') {
-                    this.$refs.textarea.blur();
-                } else {
-                    this.$refs.input.blur();
-                }
-            },
-            handleClear () {
-                const e = { target: { value: '' } };
-                this.$emit('input', '');
-                this.setCurrentValue('');
-                this.$emit('on-change', e);
-            },
-            handleSearch () {
-                if (this.disabled) return false;
-                this.$refs.input.focus();
-                this.$emit('on-search', this.currentValue);
-            }
-        },
-        watch: {
-            value (val) {
-                this.setCurrentValue(val);
-            }
-        },
-        mounted () {
-            if (this.type !== 'textarea') {
-                this.prepend = this.$slots.prepend !== undefined;
-                this.append = this.$slots.append !== undefined;
-                this.showPrefix = this.prefix !== '' || this.$slots.prefix !== undefined;
-                this.showSuffix = this.suffix !== '' || this.$slots.suffix !== undefined;
-            } else {
-                this.prepend = false;
-                this.append = false;
-            }
-            this.slotReady = true;
-            this.resizeTextarea();
+        default () {
+          return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
         }
-    };
+      },
+      placeholder: { // c
+        type: String,
+        default: '请输入'
+      },
+      label: { // c
+        type: String,
+        default: 'Label'
+      },
+      shrink: { // 是否展开
+        type: Boolean,
+        default: false
+      },
+      theme: {
+        validator (value) {
+          return oneOf(value, ['default', 'primary', 'info', 'warning', 'error'])
+        },
+        default: 'default'
+      },
+      labelStyle: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
+      inputStyle: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
+      placeholderStyle: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
+      tipStyle: {
+        type: Object,
+        default () {
+          return {}
+        }
+      },
+      maxlength: {
+        type: Number
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      icon: String,
+      autosize: {
+        type: [Boolean, Object],
+        default: false
+      },
+      rows: {
+        type: Number,
+        default: 2
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+      name: {
+        type: String
+      },
+      number: {
+        type: Boolean,
+        default: false
+      },
+      autofocus: {
+        type: Boolean,
+        default: false
+      },
+      spellcheck: {
+        type: Boolean,
+        default: false
+      },
+      autocomplete: {
+        validator (value) {
+          return oneOf(value, ['on', 'off']);
+        },
+        default: 'off'
+      },
+      clearable: {
+        type: Boolean,
+        default: false
+      },
+      elementId: {
+        type: String
+      },
+      wrap: {
+        validator (value) {
+          return oneOf(value, ['hard', 'soft']);
+        },
+        default: 'soft'
+      },
+      prefix: {
+        type: String,
+        default: ''
+      },
+      suffix: {
+        type: String,
+        default: ''
+      },
+      search: {
+        type: Boolean,
+        default: false
+      },
+      enterButton: {
+        type: [Boolean, String],
+        default: false
+      }
+    },
+    data () {
+      return {
+        currentValue: this.value,
+        prefixCls: prefixCls,
+        prepend: true,
+        append: true,
+        slotReady: false,
+        textareaStyles: {},
+        showPrefix: false,
+        showSuffix: false,
+        inputWrapperHeight: 0,
+        inputHeight: 0,
+        inputTipHeight: 0,
+        uuid: getUUID(),
+        realTheme: '',
+        realShrink: false,
+        realValue: ''
+      };
+    },
+    computed: {
+      inputContainerClasses () {
+        return [
+          this.uuid,
+          this.realTheme,
+          {
+            'shrink': this.realShrink
+          }
+        ]
+      },
+      computedInputContainerStyles () {
+        return {
+          // height: (this.inputWrapperHeight + this.inputHeight / 2 + this.inputTipHeight) + 'px'
+        }
+      },
+      computedInputWrapStyles () {
+        return {
+          marginTop: this.inputHeight / 2 + 'px',
+          marginBottom: this.inputTipHeight + 'px'
+        };
+      },
+      computedInputStyles () {
+        return Object.assign({}, {
+          lineHeight: '40px'
+        }, this.inputStyle)
+      },
+      computedLabelStyles () {
+        return Object.assign({}, {
+          height: this.inputHeight / 2 + 'px',
+          marginTop: (this.inputHeight / 4) + 'px'
+        }, this.labelStyle)
+      },
+      computedTipStyles () {
+        return Object.assign({}, {
+
+        }, this.tipStyle)
+      },
+      wrapClasses () {
+        return [
+          `${prefixCls}-wrapper`,
+          {
+            [`${prefixCls}-wrapper-${this.size}`]: !!this.size,
+            [`${prefixCls}-type`]: this.type,
+            [`${prefixCls}-group`]: this.prepend || this.append || (this.search && this.enterButton),
+            [`${prefixCls}-group-${this.size}`]: (this.prepend || this.append || (this.search && this.enterButton)) && !!this.size,
+            [`${prefixCls}-group-with-prepend`]: this.prepend,
+            [`${prefixCls}-group-with-append`]: this.append || (this.search && this.enterButton),
+            [`${prefixCls}-hide-icon`]: this.append,  // #554
+            [`${prefixCls}-with-search`]: (this.search && this.enterButton)
+          }
+        ];
+      },
+      inputClasses () {
+        return [
+          `${prefixCls}`,
+          {
+            [`${prefixCls}-${this.size}`]: !!this.size,
+            [`${prefixCls}-disabled`]: this.disabled,
+            [`${prefixCls}-with-prefix`]: this.showPrefix,
+            [`${prefixCls}-with-suffix`]: this.showSuffix || (this.search && this.enterButton === false)
+          }
+        ];
+      },
+      textareaClasses () {
+        return [
+          `${prefixCls}`,
+          {
+            [`${prefixCls}-disabled`]: this.disabled
+          }
+        ];
+      }
+    },
+    methods: {
+      getInputHeight () {
+        return this.$refs.inputRef.getBoundingClientRect().height;
+      },
+      getInputTipHeight () {
+        return this.$refs.inputTipRef.getBoundingClientRect().height;
+      },
+      getInputWrapperHeight () {
+        return this.$refs.inputWrapperRef.getBoundingClientRect().height;
+      },
+      handleEnter (event) {
+        this.$emit('on-enter', event);
+        if (this.search) this.$emit('on-search', this.currentValue);
+      },
+      handleKeydown (event) {
+        this.$emit('on-keydown', event);
+      },
+      handleKeypress (event) {
+        this.$emit('on-keypress', event);
+      },
+      handleKeyup (event) {
+        this.$emit('on-keyup', event);
+      },
+      handleIconClick (event) {
+        this.$emit('on-click', event);
+      },
+      handleFocus (event) {
+        this.$emit('on-focus', event);
+      },
+      handleBlur (event) {
+        this.$emit('on-blur', event);
+        if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
+          this.dispatch('FormItem', 'on-form-blur', this.currentValue);
+        }
+      },
+      handleInput (event) {
+        let value = event.target.value;
+        if (this.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value);
+        this.$emit('input', value);
+        this.setCurrentValue(value);
+        this.$emit('on-change', event);
+      },
+      handleChange (event) {
+        this.$emit('on-input-change', event);
+      },
+      setCurrentValue (value) {
+        if (value === this.currentValue) return;
+        this.$nextTick(() => {
+          this.resizeTextarea();
+        });
+        this.currentValue = value;
+        if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
+          this.dispatch('FormItem', 'on-form-change', value);
+        }
+      },
+      resizeTextarea () {
+        const autosize = this.autosize;
+        if (!autosize || this.type !== 'textarea') {
+          return false;
+        }
+
+        const minRows = autosize.minRows;
+        const maxRows = autosize.maxRows;
+
+        this.textareaStyles = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
+      },
+      focus () {
+        if (this.type === 'textarea') {
+          this.$refs.textarea.focus();
+        } else {
+          this.$refs.input.focus();
+        }
+      },
+      blur () {
+        if (this.type === 'textarea') {
+          this.$refs.textarea.blur();
+        } else {
+          this.$refs.input.blur();
+        }
+      },
+      handleClear () {
+        const e = {target: {value: ''}};
+        this.$emit('input', '');
+        this.setCurrentValue('');
+        this.$emit('on-change', e);
+      },
+      handleSearch () {
+        if (this.disabled) return false;
+        this.$refs.input.focus();
+        this.$emit('on-search', this.currentValue);
+      },
+      input (e) {
+        // this.shrink = true
+        // this.realTheme = 'warning'
+        this.realValue = e.target.value
+        this.$emit('input', this.realValue)
+      },
+      inputFocus () {
+        this.realShrink = true
+      },
+      inputBlur () {
+        if (!this.realValue) {
+          this.realShrink = false
+        }
+      }
+    },
+    watch: {
+      value (val) {
+        this.setCurrentValue(val);
+      }
+    },
+    created () {
+      this.realTheme = this.theme
+      this.realShrink = this.shrink
+      this.realValue = this.value
+    },
+    mounted () {
+      this.inputHeight = this.getInputHeight()
+      this.inputTipHeight = this.getInputTipHeight()
+      this.inputWrapperHeight = this.getInputWrapperHeight()
+    }
+  };
 </script>

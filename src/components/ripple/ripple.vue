@@ -41,9 +41,9 @@
     }
 
     .enkel-ripple-visible {
-        -webkit-animation: ripple-enter 550ms ease-in-out;
-        -o-animation: ripple-enter 550ms ease-in-out;
-        animation: ripple-enter 550ms ease-in-out;
+        -webkit-animation: ripple-enter 550ms ease-out;
+        -o-animation: ripple-enter 550ms ease-out;
+        animation: ripple-enter 550ms ease-out;
         animation-fill-mode: forwards;
     }
 
@@ -54,9 +54,9 @@
         /*-ms-transition: opacity .5s ease-in-out;*/
         /*-o-transition: opacity .5s ease-in-out;*/
         /*transition: opacity .5s ease-in-out;*/
-        -webkit-animation: ripple-exit 300ms ease-in-out;
-        /*-o-animation: ripple-exit 100ms ease-in-out;*/
-        /*animation: ripple-exit 100ms ease-in-out;*/
+        -webkit-animation: ripple-exit 300ms ease-out;
+        -o-animation: ripple-exit 300ms ease-out;
+        animation: ripple-exit 300ms ease-out;
         /*transform-origin: center center;*/
     }
 </style>
