@@ -1,8 +1,11 @@
 <template>
   <div class="input_container" ref="inputContainerRef" :class="inputContainerClasses" :style="computedInputContainerStyles">
     <div class="input_wrapper" ref="inputWrapperRef" :style="computedInputWrapStyles">
-      <label class="input_label" :style="computedLabelStyles">{{label}}</label>
-      <input :type="type" ref="inputRef"
+      <label class="input_label" :style="computedLabelStyles">
+        {{label}}
+        <span style="margin-left: 4px; font-size: 18px;" v-if="required">*</span>
+      </label>
+      <input :type="(type === 'password') ? (showPassword ? 'text' : type) : type" ref="inputRef"
              :placeholder="placeholder"
              :style="computedInputStyles"
              :uuid="uuid"
@@ -13,9 +16,16 @@
              @mouseenter="mouseenter"
              @mouseleave="mouseleave"
              :value="realValue"
-      >
+      />
+      <div class="show_password"
+           :style="showPasswordStyles"
+           v-if="type === 'password'"
+           @click="toggleShowPassword">
+        <Icon type="ios-eye" key="show-password" size="24" v-if="!showPassword"/>
+        <Icon type="ios-eye-off" key="hide-password" size="24" v-else/>
+      </div>
       <div class="input_tips" ref="inputTipRef" :style="computedTipStyles">
-        <span>{{tip}}</span>
+        <span>{{tipMessage || tip}}</span>
       </div>
     </div>
   </div>
@@ -198,6 +208,10 @@
         type: String,
         default: ''
       },
+      required: {
+        type: Boolean,
+        default: false
+      },
       shrink: { // 是否展开
         type: Boolean,
         default: false
@@ -321,7 +335,9 @@
         realShrink: false,
         realValue: '',
         inputFocused: false,
-        inputHovered: false
+        inputHovered: false,
+        tipMessage: '',
+        showPassword: false
       };
     },
     computed: {
@@ -363,6 +379,13 @@
       computedTipStyles () {
         return Object.assign({}, {
         }, this.tipStyle)
+      },
+      showPasswordStyles () {
+        return (this.inputStyle.lineHeight ? {
+          lineHeight: this.inputStyle.lineHeight
+        } : {
+          lineHeight: '40px'
+        })
       },
       wrapClasses () {
         return [
@@ -505,12 +528,23 @@
         if (!this.realValue) {
           this.realShrink = false
         }
+        this.validate()
       },
       mouseenter () {
         this.inputHovered = true
       },
       mouseleave () {
         this.inputHovered = false
+      },
+      toggleShowPassword () {
+        this.showPassword = !this.showPassword
+      },
+      validate () {
+        if (this.required && !this.realValue) {
+          this.tipMessage = '不能为空'
+          return false
+        }
+        return true
       }
     },
     watch: {

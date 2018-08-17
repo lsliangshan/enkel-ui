@@ -144,14 +144,14 @@
       <Input v-model="value7" type="text" :shrink="false" placeholder="请输入您的用户名" label="用户名"/>
     </div>
     <div style="margin-top: 15px; width: 400px;">
-      <Input type="text" theme="primary" placeholder="请输入密码" :shrink="true" label="密码" :value="pwd" v-model="password"/>
+      <Input type="password" theme="primary" placeholder="请输入密码" :shrink="true" label="密码" :value="pwd" v-model="password"/>
              <!--:label-style="labelStyles" :input-style="inputStyles" :placeholder-style="placeholderStyles"/>-->
     </div>
     <div style="margin-top: 15px; width: 400px;">
       <Input type="text" theme="warning" placeholder="请输入" label="警告"/>
     </div>
     <div style="margin-top: 15px; width: 400px;">
-      <Input type="text" theme="info" placeholder="请输入" label="提示"/>
+      <Input type="text" theme="info" placeholder="请输入" required label="提示"/>
     </div>
     <div style="margin-top: 15px; width: 400px;">
       <Input type="text" theme="error" placeholder="请输入" label="错误" :label-style="labelStyles" :tip="tip" :tip-style="tipStyles"/>
