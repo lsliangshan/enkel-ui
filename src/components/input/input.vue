@@ -1,13 +1,28 @@
 <template>
-  <div class="input_container" ref="inputContainerRef" :class="inputContainerClasses" :style="computedInputContainerStyles">
+  <div class="input_container" ref="inputContainerRef" :class="inputContainerClasses"
+       :style="computedInputContainerStyles">
+    <div class="out_icon" v-if="iconType === 'icon' && iconPosition === 'out'" :style="computedOutIconStyles">
+      <Icon :type="icon" :size="computedIconSize" :color="computedIconColor"></Icon>
+    </div>
+    <div class="out_icon" v-if="iconType === 'svg' && iconPosition === 'out'" :style="computedOutIconStyles">
+      <Icon :svg="icon.replace(/^#/, '')" :size="computedIconSize" :color="computedIconColor"></Icon>
+    </div>
+
     <div class="input_wrapper" ref="inputWrapperRef" :style="computedInputWrapStyles">
       <label class="input_label" :style="computedLabelStyles">
         {{label}}
         <span style="margin-left: 4px; font-size: 18px;" v-if="required">*</span>
       </label>
+      <div class="in_icon" v-if="iconType === 'icon' && iconPosition === 'in'" :style="computedInIconStyles">
+        <Icon :type="icon" :size="computedIconSize" :color="computedIconColor"></Icon>
+      </div>
+      <div class="in_icon" v-if="iconType === 'svg' && iconPosition === 'in'" :style="computedInIconStyles">
+        <Icon :svg="icon.replace(/^#/, '')" :size="computedIconSize" :color="computedIconColor"></Icon>
+      </div>
       <input :type="(type === 'password') ? (showPassword ? 'text' : type) : type" ref="inputRef"
              :placeholder="placeholder"
              :style="computedInputStyles"
+
              :uuid="uuid"
              v-placeholder="placeholderStyle"
              @input="input"
@@ -30,149 +45,48 @@
     </div>
   </div>
 </template>
+
 <style scoped>
-  /*.input_container {*/
-    /*position: relative;*/
-    /*cursor: text;*/
-  /*}*/
-
-  /*.input_wrapper {*/
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: flex-start;*/
-  /*}*/
-
-  /*.input_container .input_label {*/
-    /*font-size: 13px;*/
-    /*color: rgba(0, 0, 0, 0.54);*/
-    /*font-family: "Roboto", "Helvetica", "Arial", sans-serif;*/
-    /*line-height: 1;*/
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 0;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*align-items: center;*/
-    /*justify-content: flex-start;*/
-    /*pointer-events: none;*/
-    /*-webkit-transform: translate(0, 0) scale(1);*/
-    /*-moz-transform: translate(0, 0) scale(1);*/
-    /*-ms-transform: translate(0, 0) scale(1);*/
-    /*-o-transform: translate(0, 0) scale(1);*/
-    /*transform: translate(0, 0) scale(1);*/
-    /*-webkit-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
-    /*-moz-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
-    /*-ms-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
-    /*-o-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
-    /*transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;*/
-    /*transform-origin: top left;*/
-  /*}*/
-
-  /*.input_container.shrink .input_label {*/
-    /*-webkit-transform: translate(0, -125%) scale(0.75);*/
-    /*-moz-transform: translate(0, -125%) scale(0.75);*/
-    /*-ms-transform: translate(0, -125%) scale(0.75);*/
-    /*-o-transform: translate(0, -125%) scale(0.75);*/
-    /*transform: translate(0, -125%) scale(0.75);*/
-  /*}*/
-
-  /*.input_container.focus.shrink .input_label {*/
-    /*color: #2b85e4;*/
-  /*}*/
-
-  /*.input_container input {*/
-    /*width: 100%;*/
-    /*outline: none;*/
-    /*border: none;*/
-    /*font-size: 16px;*/
-    /*line-height: 2;*/
-    /*border-bottom: 1px solid #DDDDDD;*/
-  /*}*/
-
-  /*.input_container input::placeholder {*/
-    /*opacity: 0;*/
-    /*font-size: 16px;*/
-    /*-webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
-    /*-moz-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
-    /*-ms-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
-    /*-o-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
-    /*transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;*/
-  /*}*/
-
-  /*.input_container.shrink input::placeholder {*/
-    /*opacity: 0.42;*/
-  /*}*/
-
-  /*.input_container:before {*/
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*content: '';*/
-    /*width: 100%;*/
-    /*border-bottom: 2px solid transparent;*/
-    /*pointer-events: none;*/
-    /*-webkit-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
-    /*-moz-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
-    /*-ms-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
-    /*-o-transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
-    /*transition: border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1);*/
-  /*}*/
-
-  /*.input_container:after {*/
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 0;*/
-    /*bottom: 0;*/
-    /*content: '';*/
-    /*width: 100%;*/
-    /*-webkit-transform: scaleX(0);*/
-    /*-moz-transform: scaleX(0);*/
-    /*-ms-transform: scaleX(0);*/
-    /*-o-transform: scaleX(0);*/
-    /*transform: scaleX(0);*/
-    /*border-bottom: 2px solid #1976d2;*/
-    /*pointer-events: none;*/
-    /*-webkit-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
-    /*-moz-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
-    /*-ms-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
-    /*-o-transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
-    /*transition: all 200ms cubic-bezier(0.0, 0, 0.2, 1);*/
-  /*}*/
-
-  /*.input_container.hover:before {*/
-    /*border-bottom: 2px solid #000000;*/
-  /*}*/
-
-  /*.input_container.focus:after {*/
-    /*-webkit-transform: scaleX(1);*/
-    /*-moz-transform: scaleX(1);*/
-    /*-ms-transform: scaleX(1);*/
-    /*-o-transform: scaleX(1);*/
-    /*transform: scaleX(1);*/
-    /*border-bottom: 2px solid #1976d2;*/
-  /*}*/
-
+  .out_icon {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .in_icon {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
-<script>
-  import {oneOf, findComponentUpward} from '../../utils/assist';
-  import calcTextareaHeight from '../../utils/calcTextareaHeight';
-  import placeholder from '../../directives/placeholder';
-  import Emitter from '../../mixins/emitter';
 
-  const prefixCls = 'ivu-input';
+<script>
+  import { oneOf, findComponentUpward } from '../../utils/assist'
+  import calcTextareaHeight from '../../utils/calcTextareaHeight'
+  import placeholder from '../../directives/placeholder'
+  import Emitter from '../../mixins/emitter'
+  import Icon from '../icon/icon.vue'
+
+  const prefixCls = 'ivu-input'
+
   function S4 () {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
   }
+
   function getUUID () {
     return (S4() + S4() + '-' + S4() + '-' + S4() + S4())
   }
+
   export default {
     name: 'Input',
     mixins: [Emitter],
-    directives: { placeholder },
+    directives: {placeholder},
+    components: {Icon},
     model: {
       prop: 'value',
       event: 'input'
@@ -180,7 +94,7 @@
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date']);
+          return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date'])
         },
         default: 'text'
       },
@@ -190,10 +104,10 @@
       },
       size: {
         validator (value) {
-          return oneOf(value, ['small', 'large', 'default']);
+          return oneOf(value, ['small', 'large', 'default'])
         },
         default () {
-          return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
+          return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size
         }
       },
       placeholder: { // c
@@ -221,6 +135,19 @@
           return oneOf(value, ['default', 'primary', 'info', 'warning', 'error'])
         },
         default: 'default'
+      },
+      icon: String,
+      iconPosition: {
+        validator (value) {
+          return oneOf(value, ['in', 'out'])
+        },
+        default: 'out'
+      },
+      iconStyle: {
+        type: Object,
+        default () {
+          return {}
+        }
       },
       labelStyle: {
         type: Object,
@@ -253,7 +180,6 @@
         type: Boolean,
         default: false
       },
-      icon: String,
       autosize: {
         type: [Boolean, Object],
         default: false
@@ -283,7 +209,7 @@
       },
       autocomplete: {
         validator (value) {
-          return oneOf(value, ['on', 'off']);
+          return oneOf(value, ['on', 'off'])
         },
         default: 'off'
       },
@@ -296,7 +222,7 @@
       },
       wrap: {
         validator (value) {
-          return oneOf(value, ['hard', 'soft']);
+          return oneOf(value, ['hard', 'soft'])
         },
         default: 'soft'
       },
@@ -338,15 +264,18 @@
         inputHovered: false,
         tipMessage: '',
         showPassword: false
-      };
+      }
     },
     computed: {
+      iconType () {
+        return this.icon ? (this.icon.match(/^#/) ? 'svg' : 'icon') : ''
+      },
       inputContainerClasses () {
         return [
           this.uuid,
           this.realTheme,
           {
-            'shrink': this.realShrink,
+            'shrink': this.realShrink || (this.iconType !== '' && this.iconPosition === 'in'),
             'focus': this.inputFocused,
             'hover': this.inputHovered
           }
@@ -354,6 +283,7 @@
       },
       computedInputContainerStyles () {
         return {
+          paddingLeft: ((this.iconType !== '' && this.iconPosition === 'out') ? `${this.inputHeight}px` : '0')
           // height: (this.inputWrapperHeight + this.inputHeight / 2 + this.inputTipHeight) + 'px'
         }
       },
@@ -362,11 +292,15 @@
           paddingTop: this.inputHeight / 2 + 'px',
           paddingBottom: this.inputTipHeight + 'px',
           boxSizing: 'content-box'
-        };
+          // ,
+          // width: (this.iconType !== '' ? `calc(100% - ${this.inputHeight}px)` : '100%'),
+          // marginLeft: (this.iconType !== '' ? `${this.inputHeight}px` : '0')
+        }
       },
       computedInputStyles () {
         return Object.assign({}, {
-          lineHeight: '40px'
+          lineHeight: '40px',
+          paddingLeft: ((this.iconType !== '' && this.iconPosition === 'in') ? `${this.inputHeight}px` : '0')
         }, this.inputStyle)
       },
       computedLabelStyles () {
@@ -377,9 +311,40 @@
         }, this.labelStyle)
       },
       computedTipStyles () {
-        return Object.assign({}, {
-        }, this.tipStyle)
+        return Object.assign({}, {}, this.tipStyle)
       },
+      computedOutIconStyles () {
+        return {
+          width: this.inputHeight + 'px',
+          height: this.inputHeight + 'px',
+          marginTop: this.inputHeight / 2 + 'px'
+        }
+      },
+      computedInIconStyles () {
+        return {
+          width: this.inputHeight + 'px',
+          height: this.inputHeight + 'px'
+          // ,
+          // maxWidth: this.computedIconSize * 3 / 2 + 'px'
+        }
+      },
+      computedIconSize () {
+        if (this.iconStyle.hasOwnProperty('fontSize')) {
+          return this.iconStyle.fontSize.replace(/px$/, '')
+        } else {
+          return 26
+        }
+      },
+      computedIconColor () {
+        return this.iconStyle.hasOwnProperty('color') ? this.iconStyle.color : 'rgba(0, 0, 0, 0.54)'
+      },
+      computedIconStyles () {
+        return {
+          maxWidth: this.inputHeight * 2 / 3 + 'px',
+          maxHeight: this.inputHeight * 2 / 3 + 'px'
+        }
+      },
+
       showPasswordStyles () {
         return (this.inputStyle.lineHeight ? {
           lineHeight: this.inputStyle.lineHeight
@@ -400,7 +365,7 @@
             [`${prefixCls}-hide-icon`]: this.append,  // #554
             [`${prefixCls}-with-search`]: (this.search && this.enterButton)
           }
-        ];
+        ]
       },
       inputClasses () {
         return [
@@ -411,7 +376,7 @@
             [`${prefixCls}-with-prefix`]: this.showPrefix,
             [`${prefixCls}-with-suffix`]: this.showSuffix || (this.search && this.enterButton === false)
           }
-        ];
+        ]
       },
       textareaClasses () {
         return [
@@ -419,99 +384,99 @@
           {
             [`${prefixCls}-disabled`]: this.disabled
           }
-        ];
+        ]
       }
     },
     methods: {
       getInputHeight () {
-        return this.$refs.inputRef.getBoundingClientRect().height;
+        return this.$refs.inputRef.getBoundingClientRect().height
       },
       getInputTipHeight () {
-        return this.$refs.inputTipRef.getBoundingClientRect().height;
+        return this.$refs.inputTipRef.getBoundingClientRect().height
       },
       getInputWrapperHeight () {
-        return this.$refs.inputWrapperRef.getBoundingClientRect().height;
+        return this.$refs.inputWrapperRef.getBoundingClientRect().height
       },
       handleEnter (event) {
-        this.$emit('on-enter', event);
-        if (this.search) this.$emit('on-search', this.currentValue);
+        this.$emit('on-enter', event)
+        if (this.search) this.$emit('on-search', this.currentValue)
       },
       handleKeydown (event) {
-        this.$emit('on-keydown', event);
+        this.$emit('on-keydown', event)
       },
       handleKeypress (event) {
-        this.$emit('on-keypress', event);
+        this.$emit('on-keypress', event)
       },
       handleKeyup (event) {
-        this.$emit('on-keyup', event);
+        this.$emit('on-keyup', event)
       },
       handleIconClick (event) {
-        this.$emit('on-click', event);
+        this.$emit('on-click', event)
       },
       handleFocus (event) {
-        this.$emit('on-focus', event);
+        this.$emit('on-focus', event)
       },
       handleBlur (event) {
-        this.$emit('on-blur', event);
+        this.$emit('on-blur', event)
         if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
-          this.dispatch('FormItem', 'on-form-blur', this.currentValue);
+          this.dispatch('FormItem', 'on-form-blur', this.currentValue)
         }
       },
       handleInput (event) {
-        let value = event.target.value;
-        if (this.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value);
-        this.$emit('input', value);
-        this.setCurrentValue(value);
-        this.$emit('on-change', event);
+        let value = event.target.value
+        if (this.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value)
+        this.$emit('input', value)
+        this.setCurrentValue(value)
+        this.$emit('on-change', event)
       },
       handleChange (event) {
-        this.$emit('on-input-change', event);
+        this.$emit('on-input-change', event)
       },
       setCurrentValue (value) {
-        if (value === this.currentValue) return;
+        if (value === this.currentValue) return
         this.$nextTick(() => {
-          this.resizeTextarea();
-        });
-        this.currentValue = value;
+          this.resizeTextarea()
+        })
+        this.currentValue = value
         if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
-          this.dispatch('FormItem', 'on-form-change', value);
+          this.dispatch('FormItem', 'on-form-change', value)
         }
       },
       resizeTextarea () {
-        const autosize = this.autosize;
+        const autosize = this.autosize
         if (!autosize || this.type !== 'textarea') {
-          return false;
+          return false
         }
 
-        const minRows = autosize.minRows;
-        const maxRows = autosize.maxRows;
+        const minRows = autosize.minRows
+        const maxRows = autosize.maxRows
 
-        this.textareaStyles = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
+        this.textareaStyles = calcTextareaHeight(this.$refs.textarea, minRows, maxRows)
       },
       focus () {
         if (this.type === 'textarea') {
-          this.$refs.textarea.focus();
+          this.$refs.textarea.focus()
         } else {
-          this.$refs.input.focus();
+          this.$refs.input.focus()
         }
       },
       blur () {
         if (this.type === 'textarea') {
-          this.$refs.textarea.blur();
+          this.$refs.textarea.blur()
         } else {
-          this.$refs.input.blur();
+          this.$refs.input.blur()
         }
       },
       handleClear () {
-        const e = {target: {value: ''}};
-        this.$emit('input', '');
-        this.setCurrentValue('');
-        this.$emit('on-change', e);
+        const e = {target: {value: ''}}
+        this.$emit('input', '')
+        this.setCurrentValue('')
+        this.$emit('on-change', e)
       },
       handleSearch () {
-        if (this.disabled) return false;
-        this.$refs.input.focus();
-        this.$emit('on-search', this.currentValue);
+        if (this.disabled) return false
+        this.$refs.input.focus()
+        this.$emit('on-search', this.currentValue)
       },
       input (e) {
         // this.shrink = true
@@ -549,7 +514,7 @@
     },
     watch: {
       value (val) {
-        this.setCurrentValue(val);
+        this.setCurrentValue(val)
       }
     },
     created () {
@@ -562,5 +527,5 @@
       this.inputTipHeight = this.getInputTipHeight()
       this.inputWrapperHeight = this.getInputWrapperHeight()
     }
-  };
+  }
 </script>
