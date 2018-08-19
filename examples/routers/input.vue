@@ -160,11 +160,11 @@
       <!--<Input type="text" theme="success" placeholder="请输入" label="成功"/>-->
     <!--</div>-->
     <div style="margin-top: 15px; width: 400px;">
-      <Input type="text" theme="default" icon="#github" placeholder="请输入" label="用户名" icon-position="in" :icon-style="iconStyles"/>
+      <Input type="text" theme="default" icon="#github" placeholder="请输入" label="用户名" icon-position="in" :limit-type="/[\d\.a-z]/i" :icon-style="iconStyles"/>
     </div>
-    <div style="margin-top: 15px; width: 400px;">
-      <Input type="text" theme="default"  icon="#github" placeholder="请输入" label="用户名" icon-position="out" :icon-style="iconStyles"/>
-    </div>
+    <!--<div style="margin-top: 15px; width: 400px;">-->
+      <!--<Input type="text" theme="default"  icon="#github" placeholder="请输入" label="用户名" icon-position="out" :icon-style="iconStyles"/>-->
+    <!--</div>-->
   </div>
 </template>
 <script>

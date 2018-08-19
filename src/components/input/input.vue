@@ -19,10 +19,9 @@
       <div class="in_icon" v-if="iconType === 'svg' && iconPosition === 'in'" :style="computedInIconStyles">
         <Icon :svg="icon.replace(/^#/, '')" :size="computedIconSize" :color="computedIconColor"></Icon>
       </div>
-      <input :type="(type === 'password') ? (showPassword ? 'text' : type) : type" ref="inputRef"
+      <input :type="realType" ref="inputRef"
              :placeholder="placeholder"
              :style="computedInputStyles"
-
              :uuid="uuid"
              v-placeholder="placeholderStyle"
              @input="input"
@@ -47,22 +46,6 @@
 </template>
 
 <style scoped>
-  .out_icon {
-    position: absolute;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  .in_icon {
-    position: absolute;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
 </style>
 
 <script>
@@ -94,7 +77,7 @@
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date'])
+          return oneOf(value, ['text', 'number', 'textarea', 'password', 'url', 'email', 'date'])
         },
         default: 'text'
       },
@@ -135,6 +118,10 @@
           return oneOf(value, ['default', 'primary', 'info', 'warning', 'error'])
         },
         default: 'default'
+      },
+      limitType: {
+        type: [String, RegExp],
+        default: ''
       },
       icon: String,
       iconPosition: {
@@ -263,7 +250,12 @@
         inputFocused: false,
         inputHovered: false,
         tipMessage: '',
-        showPassword: false
+        showPassword: false,
+        matcher: {
+          number: /[\d\.]/,
+          character: /[a-z]/i,
+          chinese: /[\u4e00-\u9fa5]/
+        }
       }
     },
     computed: {
@@ -344,13 +336,24 @@
           maxHeight: this.inputHeight * 2 / 3 + 'px'
         }
       },
-
       showPasswordStyles () {
         return (this.inputStyle.lineHeight ? {
           lineHeight: this.inputStyle.lineHeight
         } : {
           lineHeight: '40px'
         })
+      },
+      realType () {
+        if (this.type === 'number') {
+          return 'text'
+        }
+        return (this.type === 'password') ? (this.showPassword ? 'text' : this.type) : this.type
+      },
+      realLimitType () {
+        if (this.type === 'number') {
+          return 'number'
+        }
+        return this.limitType
       },
       wrapClasses () {
         return [
@@ -478,9 +481,18 @@
         this.$refs.input.focus()
         this.$emit('on-search', this.currentValue)
       },
+      formatInput (value) {
+        if (Object.prototype.toString.call(this.realLimitType) === '[object RegExp]') {
+          return this.realLimitType.test(value)
+        }
+        return this.matcher[this.realLimitType].test(value)
+      },
       input (e) {
-        // this.shrink = true
-        // this.realTheme = 'warning'
+        if (this.realLimitType) {
+          if (!this.formatInput(e.data)) {
+            e.target.value = e.target.value.substring(0, e.target.value.length - 1)
+          }
+        }
         this.realValue = e.target.value
         this.$emit('input', this.realValue)
       },
