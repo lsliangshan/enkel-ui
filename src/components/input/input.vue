@@ -25,6 +25,7 @@
              :uuid="uuid"
              v-placeholder="placeholderStyle"
              @input="input"
+             onpaste="return false"
              @focus="inputFocus"
              @blur="inputBlur"
              @mouseenter="mouseenter"
@@ -55,7 +56,7 @@
   import Emitter from '../../mixins/emitter'
   import Icon from '../icon/icon.vue'
 
-  const prefixCls = 'ivu-input'
+  const prefixCls = 'enkel-input'
 
   function S4 () {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
@@ -115,11 +116,11 @@
       },
       theme: {
         validator (value) {
-          return oneOf(value, ['default', 'primary', 'info', 'warning', 'error'])
+          return oneOf(value, ['default', 'primary', 'info', 'warning', 'error', 'success'])
         },
         default: 'default'
       },
-      limitType: {
+      limitInput: {
         type: [String, RegExp],
         default: ''
       },
@@ -349,11 +350,11 @@
         }
         return (this.type === 'password') ? (this.showPassword ? 'text' : this.type) : this.type
       },
-      realLimitType () {
+      realLimitInput () {
         if (this.type === 'number') {
           return 'number'
         }
-        return this.limitType
+        return this.limitInput
       },
       wrapClasses () {
         return [
@@ -482,19 +483,23 @@
         this.$emit('on-search', this.currentValue)
       },
       formatInput (value) {
-        if (Object.prototype.toString.call(this.realLimitType) === '[object RegExp]') {
-          return this.realLimitType.test(value)
+        if (Object.prototype.toString.call(this.realLimitInput) === '[object RegExp]') {
+          return this.realLimitInput.test(value)
         }
-        return this.matcher[this.realLimitType].test(value)
+        return this.matcher[this.realLimitInput].test(value)
       },
       input (e) {
-        if (this.realLimitType) {
+        if (this.realLimitInput) {
           if (!this.formatInput(e.data)) {
-            e.target.value = e.target.value.substring(0, e.target.value.length - 1)
+            e.target.value = e.target.value.substring(0, e.target.value.length - e.data.length)
           }
         }
         this.realValue = e.target.value
         this.$emit('input', this.realValue)
+      },
+      paste (e) {
+        // let addedValue = e.clipboardData.getData('Text')
+        // return false
       },
       inputFocus () {
         this.realShrink = true
