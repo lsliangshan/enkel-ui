@@ -1,6 +1,5 @@
 <template>
-    <div class="enkel_input_container"></div>
-    <!-- <label :class="wrapClasses">
+    <label :class="wrapClasses">
         <span :class="checkboxClasses">
             <span :class="innerClasses"></span>
             <input
@@ -26,21 +25,13 @@
                 @blur="onBlur">
         </span>
         <slot><span v-if="showSlot">{{ label }}</span></slot>
-    </label> -->
+    </label>
 </template>
-<style scoped>
-    .enkel_input_container {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        background-color: darkcyan;
-    }
-</style>
 <script>
     import { findComponentUpward, oneOf } from '../../utils/assist';
     import Emitter from '../../mixins/emitter';
 
-    const prefixCls = 'enkel-checkbox';
+    const prefixCls = 'ivu-checkbox';
 
     export default {
         name: 'Checkbox',
