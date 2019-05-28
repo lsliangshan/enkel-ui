@@ -11,13 +11,7 @@ import locale from '../src/locale/lang/zh-CN'
 
 Vue.use(VueRouter)
 Vue.use(enkel, {
-  locale,
-  f7params: {
-    root: '#app',
-    name: 'enkel-ui',
-    id: 'com.enkel-ui',
-    theme: 'md'
-  }
+  locale
 })
 
 // 开启debug模式

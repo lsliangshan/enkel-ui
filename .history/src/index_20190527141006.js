@@ -59,8 +59,6 @@ import { Row, Col } from './components/grid';
 import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale/index';
 
-import framework7css from 'framework7/css/framework7.css'
-
 const components = {
   Button,
   Icon,
@@ -162,9 +160,9 @@ const install = function (Vue, opts = {}) {
   if (install.installed) return;
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
-  console.log('....', opts.f7params)
+
   let app = new Framework7(opts.f7params)
-  // let mainView = app.views.create('.container')
+  // let mainView = app.views.create('.view-main')
 
   Object.keys(enkel).forEach(key => {
     Vue.component(key, enkel[key]);
@@ -172,8 +170,7 @@ const install = function (Vue, opts = {}) {
 
   Vue.prototype.$enkel = {
     size: opts.size || '',
-    transfer: 'transfer' in opts ? opts.transfer : '',
-    theme: opts.f7params.theme || 'ios'
+    transfer: 'transfer' in opts ? opts.transfer : ''
   };
 
   Vue.prototype.$Loading = LoadingBar;

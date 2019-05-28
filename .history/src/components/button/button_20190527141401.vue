@@ -119,7 +119,48 @@
       }
     },
     methods: {
+      // Ctrl or CMD and click, open in new window when use `to`
+      handleClickLink (event, new_window = false) {
+        this.$emit('click', event);
 
+        this.handleCheckClick(event, new_window);
+      },
+      btnClickHandler (evt) {
+        evt.preventDefault();
+        let _ripples = JSON.parse(JSON.stringify(this.ripples));
+        let computedTarget = getComputedStyle(evt.target);
+        let forcedRippleColor = '';
+        if (this.ripple && tinycolor(this.ripple).isValid()) {
+          forcedRippleColor = this.ripple;
+        }
+        _ripples['ripple-' + this.count] = {
+          component: 'ripple',
+          rect: {
+            clientX: evt.clientX,
+            clientY: evt.clientY,
+            touches: evt.touches || [],
+            target: {
+              width: evt.target.clientWidth,
+              height: evt.target.clientHeight,
+              left: evt.target.offsetLeft,
+              top: evt.target.offsetTop,
+              bgColor: computedTarget.backgroundColor || '#000000',
+              borderColor: computedTarget.borderColor,
+              color: computedTarget.color,
+              rippleColor: forcedRippleColor
+            }
+          }
+        };
+        this.ripples = JSON.parse(JSON.stringify(_ripples));
+        this.count += 1;
+      },
+      removeRipple (e) {
+        let _ripples = JSON.parse(JSON.stringify(this.ripples));
+        if (_ripples.hasOwnProperty(e.id)) {
+          delete _ripples[e.id];
+        }
+        this.ripples = JSON.parse(JSON.stringify(_ripples));
+      }
     },
     mounted () {
     }

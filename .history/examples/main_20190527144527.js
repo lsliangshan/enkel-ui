@@ -16,7 +16,7 @@ Vue.use(enkel, {
     root: '#app',
     name: 'enkel-ui',
     id: 'com.enkel-ui',
-    theme: 'md'
+    theme: 'ios'
   }
 })
 

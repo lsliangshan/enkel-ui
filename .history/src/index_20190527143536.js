@@ -173,7 +173,7 @@ const install = function (Vue, opts = {}) {
   Vue.prototype.$enkel = {
     size: opts.size || '',
     transfer: 'transfer' in opts ? opts.transfer : '',
-    theme: opts.f7params.theme || 'ios'
+    theme: 'ios'
   };
 
   Vue.prototype.$Loading = LoadingBar;
