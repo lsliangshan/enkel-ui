@@ -1,6 +1,7 @@
 <template>
-  <button class="button color-theme-white"
-          :class="classes">
+  <button class="button"
+          :class="classes"
+          :type="type">
     <slot></slot>
   </button>
 </template>
@@ -37,9 +38,9 @@
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
+          return oneOf(value || 'button', ['button', 'submit', 'reset']);
         },
-        default: 'primary'
+        default: 'button'
       },
       fill: {
         type: Boolean,
@@ -54,26 +55,6 @@
       raised: {
         type: [Boolean, String],
         default: false
-      },
-      outline: {
-        type: [Boolean, String],
-        default: false
-      },
-      round: {
-        type: [Boolean, String],
-        default: false
-      },
-      textColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
-      borderColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
       },
 
 
@@ -120,39 +101,14 @@
       };
     },
     computed: {
-      cType () {
-        let type = this.type
-        switch (type) {
-          case 'primary':
-            type = 'blue'
-            break
-          case 'error':
-            type = 'red'
-            break
-          case 'info':
-            type = 'lightblue'
-            break
-          case 'warning':
-            type = 'orange'
-            break
-          default:
-            break
-        }
-        return type
-      },
       classes () {
+        console.log('...>>>>>', typeof this.raised, this.raised)
         return [
-          `color-${this.cType}`,
           {
-            ['button-fill']: this.fill && !this.outline,
+            ['button-fill']: this.fill,
             ['button-round']: this.round,
-            [`button-${this.size}`]: (this.size !== 'default'),
-            ['button-raised']: this.raised,
-            ['button-outline']: this.outline,
-            ['button-round']: this.round,
-            ['text-color-black']: (this.cType === 'white'),
-            [`text-color-${this.textColor}`]: (this.textColor !== 'primary'),
-            [`border-color-${this.borderColor}`]: (this.borderColor !== 'primary')
+            [`button-${this.size}`]: this.size,
+            ['button-raised']: this.raised
           }
         ]
         if (!this.ripple) {

@@ -3,8 +3,7 @@
     <div class="line">
       <div class="line-item">
         <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
+                text-color="black">button</Button>
       </div>
       <div class="line-item">
         <Button type="primary"

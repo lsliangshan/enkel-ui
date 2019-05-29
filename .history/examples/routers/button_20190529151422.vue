@@ -2,62 +2,49 @@
   <div class="container">
     <div class="line">
       <div class="line-item">
-        <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
+        <Button type="button">button</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
-                text-color="red">submit</Button>
+        <Button type="submit">submit</Button>
       </div>
       <div class="line-item">
-        <Button type="primary">reset</Button>
+        <Button type="reset">reset</Button>
       </div>
     </div>
-    <!-- <div class="line">
+    <div class="line">
       <div class="line-item">
-        <Button type="primary">default</Button>
+        <Button type="button">default</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
+        <Button type="submit"
                 size="large">large</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
+        <Button type="reset"
                 size="small">small</Button>
       </div>
     </div>
     <div class="line">
       <div class="line-item">
-        <Button type="primary"
+        <Button type="button"
                 raised>raised</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
+        <Button type="submit"
                 outline>outline</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
+        <Button type="submit"
                 round
-                outline>round</Button>
+                outline
+                fill>round</Button>
       </div>
-    </div> -->
-    <!-- <div class="line">
-      <div class="line-item"
-           v-for="(item, index) in colors"
-           :key="index">
-        <Button :type="item">{{item}}</Button>
-      </div>
-    </div> -->
+    </div>
+  </div>
   </div>
 </template>
 <script>
   export default {
-    data () {
-      return {
-        colors: ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']
-      }
-    },
     methods: {
       hc (data) {
         console.log(data);
@@ -76,8 +63,6 @@
   .line-item {
     width: 100px;
     margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
   }
   @font-face {
     font-family: "iconfont";

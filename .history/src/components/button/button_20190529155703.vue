@@ -69,12 +69,6 @@
         },
         default: 'primary'
       },
-      borderColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
 
 
       shape: {
@@ -151,8 +145,7 @@
             ['button-outline']: this.outline,
             ['button-round']: this.round,
             ['text-color-black']: (this.cType === 'white'),
-            [`text-color-${this.textColor}`]: (this.textColor !== 'primary'),
-            [`border-color-${this.borderColor}`]: (this.borderColor !== 'primary')
+            [`text-color-${this.textColor}`]: (this.textColor !== 'primary')
           }
         ]
         if (!this.ripple) {

@@ -1,8 +1,6 @@
 <template>
-  <button class="button color-theme-white"
-          :class="classes">
-    <slot></slot>
-  </button>
+  <button class="button"
+          :type="type">Button</button>
 </template>
 <style scoped>
   .enkel-btn {
@@ -37,52 +35,24 @@
     props: {
       type: {
         validator (value) {
-          return oneOf(value, ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
+          return oneOf(value || 'button', ['button', 'submit', 'reset']);
         },
-        default: 'primary'
+        default: 'button'
       },
-      fill: {
-        type: Boolean,
-        default: true
-      },
-      size: {
-        validator (value) {
-          return oneOf(value, ['small', 'large', 'default']);
-        },
-        default: 'default'
-      },
-      raised: {
-        type: [Boolean, String],
-        default: false
-      },
-      outline: {
-        type: [Boolean, String],
-        default: false
-      },
-      round: {
-        type: [Boolean, String],
-        default: false
-      },
-      textColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
-      borderColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
-
 
       shape: {
         validator (value) {
           return oneOf(value, ['circle', 'circle-outline']);
         }
       },
-
+      size: {
+        validator (value) {
+          return oneOf(value, ['small', 'large', 'default']);
+        },
+        default () {
+          return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
+        }
+      },
       loading: Boolean,
       disabled: Boolean,
       htmlType: {
@@ -120,41 +90,7 @@
       };
     },
     computed: {
-      cType () {
-        let type = this.type
-        switch (type) {
-          case 'primary':
-            type = 'blue'
-            break
-          case 'error':
-            type = 'red'
-            break
-          case 'info':
-            type = 'lightblue'
-            break
-          case 'warning':
-            type = 'orange'
-            break
-          default:
-            break
-        }
-        return type
-      },
       classes () {
-        return [
-          `color-${this.cType}`,
-          {
-            ['button-fill']: this.fill && !this.outline,
-            ['button-round']: this.round,
-            [`button-${this.size}`]: (this.size !== 'default'),
-            ['button-raised']: this.raised,
-            ['button-outline']: this.outline,
-            ['button-round']: this.round,
-            ['text-color-black']: (this.cType === 'white'),
-            [`text-color-${this.textColor}`]: (this.textColor !== 'primary'),
-            [`border-color-${this.borderColor}`]: (this.borderColor !== 'primary')
-          }
-        ]
         if (!this.ripple) {
           return [
             'custom-active',

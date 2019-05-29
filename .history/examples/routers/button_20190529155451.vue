@@ -2,9 +2,7 @@
   <div class="container">
     <div class="line">
       <div class="line-item">
-        <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
+        <Button type="primary">button</Button>
       </div>
       <div class="line-item">
         <Button type="primary"

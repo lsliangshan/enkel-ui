@@ -1,63 +1,19 @@
 <template>
-  <div class="container">
-    <div class="line">
-      <div class="line-item">
-        <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary"
-                text-color="red">submit</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary">reset</Button>
-      </div>
+  <div class="line">
+    <div style="line-item">
+      <Button type="button">button</Button>
     </div>
-    <!-- <div class="line">
-      <div class="line-item">
-        <Button type="primary">default</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary"
-                size="large">large</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary"
-                size="small">small</Button>
-      </div>
+    <div style="line-item">
+      <Button type="submit">submit</Button>
     </div>
-    <div class="line">
-      <div class="line-item">
-        <Button type="primary"
-                raised>raised</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary"
-                outline>outline</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary"
-                round
-                outline>round</Button>
-      </div>
-    </div> -->
-    <!-- <div class="line">
-      <div class="line-item"
-           v-for="(item, index) in colors"
-           :key="index">
-        <Button :type="item">{{item}}</Button>
-      </div>
-    </div> -->
+    <div style="line-item">
+      <Button type="reset">reset</Button>
+    </div>
+
   </div>
 </template>
 <script>
   export default {
-    data () {
-      return {
-        colors: ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']
-      }
-    },
     methods: {
       hc (data) {
         console.log(data);
@@ -67,7 +23,6 @@
 </script>
 <style>
   .line {
-    margin-top: 10px;
     display: flex;
     flex-direction: row;
     align-content: flex-start;
@@ -76,8 +31,6 @@
   .line-item {
     width: 100px;
     margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
   }
   @font-face {
     font-family: "iconfont";

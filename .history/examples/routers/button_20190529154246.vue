@@ -2,16 +2,14 @@
   <div class="container">
     <div class="line">
       <div class="line-item">
-        <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
+        <Button type="primary">button</Button>
+      </div>
+      <div class="line-item">
+        <Button type="primary">submit</Button>
       </div>
       <div class="line-item">
         <Button type="primary"
-                text-color="red">submit</Button>
-      </div>
-      <div class="line-item">
-        <Button type="primary">reset</Button>
+                class="color-theme-red">reset</Button>
       </div>
     </div>
     <!-- <div class="line">

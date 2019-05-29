@@ -2,19 +2,16 @@
   <div class="container">
     <div class="line">
       <div class="line-item">
-        <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
+        <Button type="primary">button</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
-                text-color="red">submit</Button>
+        <Button type="primary">submit</Button>
       </div>
       <div class="line-item">
         <Button type="primary">reset</Button>
       </div>
     </div>
-    <!-- <div class="line">
+    <div class="line">
       <div class="line-item">
         <Button type="primary">default</Button>
       </div>
@@ -41,21 +38,21 @@
                 round
                 outline>round</Button>
       </div>
-    </div> -->
-    <!-- <div class="line">
+    </div>
+    <div class="line">
       <div class="line-item"
            v-for="(item, index) in colors"
            :key="index">
-        <Button :type="item">{{item}}</Button>
+        <button type="item"></button>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
   export default {
     data () {
       return {
-        colors: ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']
+        colors: ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']
       }
     },
     methods: {
@@ -76,8 +73,6 @@
   .line-item {
     width: 100px;
     margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
   }
   @font-face {
     font-family: "iconfont";

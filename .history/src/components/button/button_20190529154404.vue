@@ -63,18 +63,6 @@
         type: [Boolean, String],
         default: false
       },
-      textColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
-      borderColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
 
 
       shape: {
@@ -150,9 +138,7 @@
             ['button-raised']: this.raised,
             ['button-outline']: this.outline,
             ['button-round']: this.round,
-            ['text-color-black']: (this.cType === 'white'),
-            [`text-color-${this.textColor}`]: (this.textColor !== 'primary'),
-            [`border-color-${this.borderColor}`]: (this.borderColor !== 'primary')
+            ['text-color-black']: (this.cType === 'white')
           }
         ]
         if (!this.ripple) {

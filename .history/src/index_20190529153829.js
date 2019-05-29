@@ -59,7 +59,7 @@ import { Row, Col } from './components/grid';
 import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale/index';
 
-import framework7css from 'framework7/css/framework7.bundle.min.css'
+import framework7css from 'framework7/css/framework7.min.css'
 
 const components = {
   Button,

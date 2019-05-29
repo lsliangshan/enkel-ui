@@ -2,19 +2,16 @@
   <div class="container">
     <div class="line">
       <div class="line-item">
-        <Button type="primary"
-                text-color="black"
-                border-color="purple">button</Button>
+        <Button type="primary">button</Button>
       </div>
       <div class="line-item">
-        <Button type="primary"
-                text-color="red">submit</Button>
+        <Button type="primary">submit</Button>
       </div>
       <div class="line-item">
         <Button type="primary">reset</Button>
       </div>
     </div>
-    <!-- <div class="line">
+    <div class="line">
       <div class="line-item">
         <Button type="primary">default</Button>
       </div>
@@ -41,14 +38,14 @@
                 round
                 outline>round</Button>
       </div>
-    </div> -->
-    <!-- <div class="line">
+    </div>
+    <div class="line">
       <div class="line-item"
            v-for="(item, index) in colors"
            :key="index">
         <Button :type="item">{{item}}</Button>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>

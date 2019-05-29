@@ -1,5 +1,5 @@
 <template>
-  <button class="button color-theme-white"
+  <button class="button"
           :class="classes">
     <slot></slot>
   </button>
@@ -62,18 +62,6 @@
       round: {
         type: [Boolean, String],
         default: false
-      },
-      textColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
-      },
-      borderColor: {
-        validator (value) {
-          return oneOf(value, ['red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
       },
 
 
@@ -146,13 +134,11 @@
           {
             ['button-fill']: this.fill && !this.outline,
             ['button-round']: this.round,
-            [`button-${this.size}`]: (this.size !== 'default'),
+            [`button-${this.size}`]: this.size,
             ['button-raised']: this.raised,
             ['button-outline']: this.outline,
             ['button-round']: this.round,
-            ['text-color-black']: (this.cType === 'white'),
-            [`text-color-${this.textColor}`]: (this.textColor !== 'primary'),
-            [`border-color-${this.borderColor}`]: (this.borderColor !== 'primary')
+            ['text-color-black']: (this.cType == 'white')
           }
         ]
         if (!this.ripple) {
