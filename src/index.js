@@ -1,5 +1,6 @@
 import Framework7 from 'framework7';
 import Button from './components/button';
+import Preloader from './components/preloader';
 import Icon from './components/icon';
 import Affix from './components/affix';
 import Alert from './components/alert';
@@ -60,9 +61,12 @@ import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale/index';
 
 import framework7css from 'framework7/css/framework7.bundle.min.css'
+import framework7icons from 'framework7-icons'
+// import framework7materialicons from 'material-design-icons'
 
 const components = {
   Button,
+  Preloader,
   Icon,
   Affix,
   Alert,

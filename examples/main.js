@@ -33,6 +33,10 @@ const router = new VueRouter({
       component: (resolve) => require(['./routers/button.vue'], resolve)
     },
     {
+      path: '/preloader',
+      component: (resolve) => require(['./routers/preloader.vue'], resolve)
+    },
+    {
       path: '/icon',
       component: (resolve) => require(['./routers/icon.vue'], resolve)
     },

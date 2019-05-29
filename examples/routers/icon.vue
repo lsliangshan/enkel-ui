@@ -1,23 +1,29 @@
 <template>
-    <div>
-        <Icon size="40" type="logo-github"></Icon>
-        <Icon size="40" type="logo-github"></Icon>
-        <Icon svg="github" size="40" color="darkcyan" @click="test"></Icon>
-    </div>
+  <div>
+    <Icon size="40"
+          type="logo_github"
+          color="#c8c8c8"></Icon>
+    <Icon size="40"
+          type="logo_apple"></Icon>
+    <Icon type="logo_android"></Icon>
+    <Icon v-for="(item, index) in colors"
+          :key="index"
+          type="logo_android"
+          :color="item"></Icon>
+  </div>
 </template>
 
 <script>
 
-    export default {
-        name: 'icon',
-        methods: {
-            test (e) {
-                console.log('clicked', e);
-            }
-        }
-    };
+export default {
+  name: 'icon',
+  data () {
+    return {
+      colors: ['primary', 'error', 'info', 'warning']
+    }
+  }
+};
 </script>
 
 <style scoped>
-
 </style>
