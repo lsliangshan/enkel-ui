@@ -6,7 +6,8 @@
         <div class="line-item"
              v-for="(item, index) in loaders.slice(i, i + 1)"
              :key="index">
-          <Loading color="#c8c8c8"
+          <Loading color="red"
+                   size="8"
                    :type="item.name"></Loading>
         </div>
       </div>
@@ -21,7 +22,8 @@
     data () {
       return {
         colors: ['primary', 'error', 'info', 'warning'],
-        i: 1,
+        // 3 5 7 8
+        i: 0,
         loaders: [
           {
             name: 'ball-pulse',

@@ -1,7 +1,8 @@
 <template>
   <div class="loading-container">
     <div class="loader">
-      <div :class="classes">
+      <div :class="classes"
+           :style="loaderInnerStyles">
         <div v-for="(item, index) in loaders[type].count"
              :key="index"
              :style="styles"></div>
@@ -11,27 +12,27 @@
 </template>
 <style scoped>
   /* .loading-container {
-          width: 100%;
-          box-sizing: border-box;
-          display: flex;
-          flex: 0 1 auto;
-          flex-direction: row;
-          flex-wrap: wrap;
-        }
-        .loading-container .loader {
-          box-sizing: border-box;
-          display: flex;
-          flex: 0 1 auto;
-          flex-direction: column;
-          flex-grow: 1;
-          flex-shrink: 0;
-          flex-basis: 25%;
-          max-width: 25%;
-          height: 200px;
-          align-items: center;
-          justify-content: center;
-          perspective: 500px;
-        } */
+                width: 100%;
+                box-sizing: border-box;
+                display: flex;
+                flex: 0 1 auto;
+                flex-direction: row;
+                flex-wrap: wrap;
+              }
+              .loading-container .loader {
+                box-sizing: border-box;
+                display: flex;
+                flex: 0 1 auto;
+                flex-direction: column;
+                flex-grow: 1;
+                flex-shrink: 0;
+                flex-basis: 25%;
+                max-width: 25%;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                perspective: 500px;
+              } */
 </style>
 
 <script>
@@ -188,16 +189,47 @@
       styles () {
         let style = {};
 
-        if (this.color) {
-          style['background-color'] = this.color
-        }
-
         if (this.size) {
           style['width'] = this.size + 'px'
           style['height'] = this.size + 'px'
         }
 
+        switch (this.type) {
+          case 'ball-clip-rotate':
+            if (this.color) {
+              style['border-color'] = this.color
+              style['border-bottom-color'] = 'transparent'
+            }
+            break
+          case 'square-spin':
+            if (this.color) {
+              style['border-color'] = this.color
+              style['background-color'] = this.color
+            }
+            break
+          default:
+            if (this.color) {
+              style['background-color'] = this.color
+            }
+            break
+        }
+
         return style;
+      },
+      loaderInnerStyles () {
+        let style = {}
+
+        switch (this.type) {
+          case 'ball-grid-pulse':
+            if (this.size) {
+              style['width'] = (this.size * 3 + 12) + 'px'
+            }
+            break
+          default:
+            break
+        }
+
+        return style
       },
       svgStyles () {
         let style = {};

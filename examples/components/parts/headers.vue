@@ -38,12 +38,20 @@
             label: 'Icon'
           },
           {
+            path: '/popup',
+            label: 'Popup'
+          },
+          {
             path: '/preloader',
             label: 'Preloader'
           },
           {
             path: '/loading',
             label: 'Loading'
+          },
+          {
+            path: '/checkbox',
+            label: 'Checkbox'
           }
         ]
       }

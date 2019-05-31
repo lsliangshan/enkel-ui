@@ -1,43 +1,27 @@
 <template>
-  <div class="preloader-container">
-    <div class="preloader"
-         :class="classes"
-         :style="styles"
-         v-if="$enkel.theme === 'md'">
-      <span class="preloader-inner">
-        <span class="preloader-inner-gap"></span>
-        <span class="preloader-inner-left">
-          <span class="preloader-inner-half-circle"></span>
-        </span>
-        <span class="preloader-inner-right">
-          <span class="preloader-inner-half-circle"></span>
-        </span>
-      </span>
+  <div class="popup my-popup">
+    <div class="view">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Popup</div>
+            <div class="right">
+              <!-- Link to close popup -->
+              <a class="link popup-close">Close</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          ...
+        </div>
+      </div>
     </div>
-    <div class="preloader"
-         :class="classes"
-         :style="styles"
-         v-else-if="$enkel.theme === 'ios'">
-      <span class="preloader-inner">
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-        <span class="preloader-inner-line"></span>
-      </span>
-    </div>
+    ...
   </div>
 </template>
 <script>
   import { oneOf } from '../../utils/assist';
-  const prefixCls = 'enkel-preloader';
+  const prefixCls = 'enkel-popup';
 
   export default {
     name: 'Popup',

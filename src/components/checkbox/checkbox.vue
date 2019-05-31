@@ -1,216 +1,218 @@
 <template>
-  <div class="enkel_checkbox_container"
-       :class="{disabled: disabled}"
-       @click="change">
-    <slot name="checked"
-          v-if="currentValue">
-      <icon size="20"
-            type="md-checkbox"
-            color="rgb(10, 81, 15)"></icon>
-    </slot>
-    <slot name="unchecked"
-          v-else>
-      <icon size="20"
-            type="md-square-outline"
-            color="rgb(10, 81, 15)"></icon>
-    </slot>
-    <slot>
-      <span>{{label}}</span>
-    </slot>
-  </div>
-  <!-- <label :class="wrapClasses">
-        <span :class="checkboxClasses">
-            <span :class="innerClasses"></span>
-            <input
-                v-if="group"
-                type="checkbox"
-                :class="inputClasses"
-                :disabled="disabled"
-                :value="label"
-                v-model="model"
-                :name="name"
-                @change="change"
-                @focus="onFocus"
-                @blur="onBlur">
-            <input
-                v-else
-                type="checkbox"
-                :class="inputClasses"
-                :disabled="disabled"
-                :checked="currentValue"
-                :name="name"
-                @change="change"
-                @focus="onFocus"
-                @blur="onBlur">
-        </span>
-        <slot><span v-if="showSlot">{{ label }}</span></slot>
-    </label> -->
+  <label class="checkbox"
+         :class="classes">
+    <!-- checkbox input -->
+    <input type="checkbox"
+           :name="name"
+           ref="checkboxRef"
+           :checked="currentValue"
+           :value="currentValue ? trueValue : falseValue"
+           @change="change" />
+    <!-- checkbox icon -->
+    <i class="icon icon-checkbox"></i>
+    <div class="item-inner"
+         v-if="label">
+      <div class="item-title">
+        <slot>
+          {{label}}
+        </slot>
+      </div>
+    </div>
+  </label>
 </template>
 <style scoped>
-.enkel_checkbox_container {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-  /* background-color: rgb(10, 81, 15); */
-}
-.enkel_checkbox_container.disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
+  .oh {
+    overflow: hidden;
+  }
+  .center {
+    justify-content: center;
+  }
+  .enkel-checkbox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .enkel-checkbox i {
+    margin-right: 4px;
+  }
+  .enkel-checkbox.disabled i {
+    color: #ccc;
+  }
 </style>
 <script>
-import { findComponentUpward, oneOf } from '../../utils/assist';
-import Emitter from '../../mixins/emitter';
-import Icon from '../icon'
+  import { findComponentUpward, oneOf } from '../../utils/assist';
+  import Emitter from '../../mixins/emitter';
 
-const prefixCls = 'enkel-checkbox';
+  const prefixCls = 'enkel-checkbox';
 
-export default {
-  name: 'Checkbox',
-  mixins: [Emitter],
-  components: { Icon },
-  model: {
-    prop: 'value',
-    event: 'input'
-  },
-  props: {
-    disabled: {
-      type: Boolean,
-      default: false
+  export default {
+    name: 'Checkbox',
+    mixins: [Emitter],
+    model: {
+      prop: 'value',
+      event: 'input'
     },
-    value: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    trueValue: {
-      type: [String, Number, Boolean],
-      default: true
-    },
-    falseValue: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    label: {
-      type: [String, Number, Boolean]
-    },
-    indeterminate: {
-      type: Boolean,
-      default: false
-    },
-    size: {
-      validator (value) {
-        return oneOf(value, ['small', 'large', 'default']);
+    props: {
+      name: {
+        type: String,
+        default: ''
       },
-      default () {
-        return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      value: {
+        type: [String, Number, Boolean],
+        default: false
+      },
+      trueValue: {
+        type: [String, Number, Boolean],
+        default: true
+      },
+      falseValue: {
+        type: [String, Number, Boolean],
+        default: false
+      },
+      label: {
+        type: [String, Number, Boolean]
+      },
+      indeterminate: {
+        type: Boolean,
+        default: false
+      },
+      size: {
+        validator (value) {
+          return oneOf(value, ['small', 'large', 'default']);
+        },
+        default () {
+          return !this.$enkel || this.$enkel.size === '' ? 'default' : this.$enkel.size;
+        }
       }
     },
-    name: {
-      type: String
-    }
-  },
-  data () {
-    return {
-      model: [],
-      currentValue: this.value,
-      group: false,
-      showSlot: true,
-      parent: findComponentUpward(this, 'CheckboxGroup'),
-      focusInner: false
-    };
-  },
-  computed: {
-    wrapClasses () {
-      return [
-        `${prefixCls}-wrapper`,
-        {
-          [`${prefixCls}-group-item`]: this.group,
-          [`${prefixCls}-wrapper-checked`]: this.currentValue,
-          [`${prefixCls}-wrapper-disabled`]: this.disabled,
-          [`${prefixCls}-${this.size}`]: !!this.size
-        }
-      ];
+    data () {
+      return {
+        model: [],
+        currentValue: this.value,
+        group: false,
+        showSlot: true,
+        parent: findComponentUpward(this, 'CheckboxGroup'),
+        focusInner: false
+      };
     },
-    checkboxClasses () {
-      return [
-        `${prefixCls}`,
-        {
-          [`${prefixCls}-checked`]: this.currentValue,
-          [`${prefixCls}-disabled`]: this.disabled,
-          [`${prefixCls}-indeterminate`]: this.indeterminate
-        }
-      ];
-    },
-    innerClasses () {
-      return [
-        `${prefixCls}-inner`,
-        {
-          [`${prefixCls}-focus`]: this.focusInner
-        }
-      ];
-    },
-    inputClasses () {
-      return `${prefixCls}-input`;
-    }
-  },
-  mounted () {
-    // this.parent = findComponentUpward(this, 'CheckboxGroup');
-    // if (this.parent) {
-    //   this.group = true;
-    // }
-
-    // if (this.group) {
-    //   this.parent.updateModel(true);
-    // } else {
-    //   this.updateModel();
-    //   this.showSlot = this.$slots.default !== undefined;
-    // }
-  },
-  methods: {
-    // change (event) {
-    //     if (this.disabled) {
-    //         return false;
-    //     }
-
-    //     const checked = event.target.checked;
-    //     this.currentValue = checked;
-
-    //     const value = checked ? this.trueValue : this.falseValue;
-    //     this.$emit('input', value);
-
-    //     if (this.group) {
-    //         this.parent.change(this.model);
-    //     } else {
-    //         this.$emit('on-change', value);
-    //         this.dispatch('FormItem', 'on-form-change', value);
-    //     }
-    // },
-    change (event) {
-      if (this.disabled) {
-        return false
+    computed: {
+      classes () {
+        return [
+          `${prefixCls}`,
+          {
+            ['disabled']: this.disabled,
+            ['oh']: this.label,
+            ['center']: !this.label
+          }
+        ]
+      },
+      wrapClasses () {
+        return [
+          `${prefixCls}-wrapper`,
+          {
+            [`${prefixCls}-group-item`]: this.group,
+            [`${prefixCls}-wrapper-checked`]: this.currentValue,
+            [`${prefixCls}-wrapper-disabled`]: this.disabled,
+            [`${prefixCls}-${this.size}`]: !!this.size
+          }
+        ];
+      },
+      checkboxClasses () {
+        return [
+          `${prefixCls}`,
+          {
+            [`${prefixCls}-checked`]: this.currentValue,
+            [`${prefixCls}-disabled`]: this.disabled,
+            [`${prefixCls}-indeterminate`]: this.indeterminate
+          }
+        ];
+      },
+      innerClasses () {
+        return [
+          `${prefixCls}-inner`,
+          {
+            [`${prefixCls}-focus`]: this.focusInner
+          }
+        ];
+      },
+      inputClasses () {
+        return `${prefixCls}-input`;
       }
-      this.currentValue = !this.currentValue
-      this.$emit('input', (this.currentValue ? this.trueValue : this.falseValue))
     },
-    updateModel () {
-      this.currentValue = this.value === this.trueValue;
+    mounted () {
+      // this.parent = findComponentUpward(this, 'CheckboxGroup');
+      // if (this.parent) {
+      //   this.group = true;
+      // }
+
+      // if (this.group) {
+      //   this.parent.updateModel(true);
+      // } else {
+      //   this.updateModel();
+      //   this.showSlot = this.$slots.default !== undefined;
+      // }
     },
-    onBlur () {
-      this.focusInner = false;
+    methods: {
+      // change (event) {
+      //     if (this.disabled) {
+      //         return false;
+      //     }
+
+      //     const checked = event.target.checked;
+      //     this.currentValue = checked;
+
+      //     const value = checked ? this.trueValue : this.falseValue;
+      //     this.$emit('input', value);
+
+      //     if (this.group) {
+      //         this.parent.change(this.model);
+      //     } else {
+      //         this.$emit('on-change', value);
+      //         this.dispatch('FormItem', 'on-form-change', value);
+      //     }
+      // },
+      change (event) {
+        if (this.disabled) {
+          return false
+        }
+        this.currentValue = !this.currentValue
+        this.$emit('input', (this.currentValue ? this.trueValue : this.falseValue))
+      },
+      updateModel () {
+        this.currentValue = this.value === this.trueValue;
+      },
+      onBlur () {
+        this.focusInner = false;
+      },
+      onFocus () {
+        this.focusInner = true;
+      }
     },
-    onFocus () {
-      this.focusInner = true;
-    }
-  },
-  watch: {
-    value (val) {
-      if (val === this.trueValue || val === this.falseValue) {
-        this.updateModel();
-      } else {
-        throw 'Value should be trueValue or falseValue.';
+    watch: {
+      value: {
+        immediate: true,
+        handler (val) {
+          if (val === this.trueValue || val === this.falseValue) {
+            this.updateModel();
+          } else {
+            throw `Value should be ${(typeof this.trueValue === 'string' ? JSON.stringify(this.trueValue) : this.trueValue)} or ${(typeof this.falseValue === 'string' ? JSON.stringify(this.falseValue) : this.falseValue)}.`;
+          }
+        }
+      },
+      indeterminate: {
+        immediate: true,
+        handler (val) {
+          this.$nextTick(() => {
+            this.$refs.checkboxRef && (this.$refs.checkboxRef.indeterminate = !!val)
+          })
+        }
       }
     }
-  }
-};
+  };
 </script>

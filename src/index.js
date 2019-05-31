@@ -1,6 +1,7 @@
 import Framework7 from 'framework7';
 import Button from './components/button';
 import Preloader from './components/preloader';
+import Popup from './components/popup';
 import Icon from './components/icon';
 import Loading from './components/loading';
 import Affix from './components/affix';
@@ -69,6 +70,7 @@ import loaders from 'loaders.css'
 const components = {
   Button,
   Preloader,
+  Popup,
   Icon,
   Loading,
   Affix,

@@ -33,6 +33,10 @@ const router = new VueRouter({
       component: (resolve) => require(['./routers/button.vue'], resolve)
     },
     {
+      path: '/popup',
+      component: (resolve) => require(['./routers/popup.vue'], resolve)
+    },
+    {
       path: '/preloader',
       component: (resolve) => require(['./routers/preloader.vue'], resolve)
     },
@@ -43,6 +47,10 @@ const router = new VueRouter({
     {
       path: '/loading',
       component: (resolve) => require(['./routers/loading.vue'], resolve)
+    },
+    {
+      path: '/checkbox',
+      component: (resolve) => require(['./routers/checkbox.vue'], resolve)
     },
     {
       path: '/input',
@@ -71,10 +79,6 @@ const router = new VueRouter({
     {
       path: '/radio',
       component: (resolve) => require(['./routers/radio.vue'], resolve)
-    },
-    {
-      path: '/checkbox',
-      component: (resolve) => require(['./routers/checkbox.vue'], resolve)
     },
     {
       path: '/steps',
