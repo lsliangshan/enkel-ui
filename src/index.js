@@ -181,7 +181,8 @@ const install = function (Vue, opts = {}) {
   Vue.prototype.$enkel = {
     size: opts.size || '',
     transfer: 'transfer' in opts ? opts.transfer : '',
-    theme: opts.f7params.theme || 'ios'
+    theme: opts.f7params.theme || 'ios',
+    colorTheme: opts.f7params.colorTheme || 'orange'
   };
 
   Vue.prototype.$Loading = LoadingBar;

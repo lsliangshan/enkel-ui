@@ -12,34 +12,43 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 
 module.exports = merge(webpackBaseConfig, {
-    devtool: 'eval-source-map',
+  devtool: 'eval-source-map',
+
+  devServer: {
+      clientLogLevel: 'warning',
+      hot: true,
+      contentBase: false, // since we use CopyWebpackPlugin.
+      compress: true,
+      host: '0.0.0.0',
+      port: '8081'
+    },
 
     // 入口
-    entry: {
-        main: './examples/main',
-        vendors: ['vue', 'vue-router']
+  entry: {
+      main: './examples/main',
+      vendors: ['vue', 'vue-router']
     },
     // 输出
-    output: {
-        path: path.join(__dirname, '../examples/dist'),
-        publicPath: '',
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js'
+  output: {
+      path: path.join(__dirname, '../examples/dist'),
+      publicPath: '',
+      filename: '[name].js',
+      chunkFilename: '[name].chunk.js'
     },
-    resolve: {
-        alias: {
-            enkel: '../../src/index',
-            vue: 'vue/dist/vue.esm.js'
+  resolve: {
+      alias: {
+          enkel: '../../src/index',
+          vue: 'vue/dist/vue.esm.js'
             // vue: 'vue/dist/vue.runtime.js'
         }
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: 'vendors', filename: 'vendor.bundle.js' }),
-        new HtmlWebpackPlugin({
-            inject: true,
-            filename: path.join(__dirname, '../examples/dist/index.html'),
-            template: path.join(__dirname, '../examples/index.html')
+  plugins: [
+      new webpack.optimize.CommonsChunkPlugin({ name: 'vendors', filename: 'vendor.bundle.js' }),
+      new HtmlWebpackPlugin({
+          inject: true,
+          filename: path.join(__dirname, '../examples/dist/index.html'),
+          template: path.join(__dirname, '../examples/index.html')
         }),
-        new FriendlyErrorsPlugin()
+      new FriendlyErrorsPlugin()
     ]
 });
