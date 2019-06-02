@@ -17,7 +17,11 @@ Vue.use(enkel, {
     name: 'enkel-ui',
     id: 'com.enkel-ui',
     theme: 'md',
-    colorTheme: 'red'
+    colorTheme: 'deeppurple',
+    toast: {
+      closeTimeout: 3000,
+      closeButton: true,
+    }
   }
 })
 
@@ -253,6 +257,7 @@ const router = new VueRouter({
 })
 
 const app = new Vue({
-  router: router,
+  router,
   render: h => h(App)
 }).$mount('#app')
+

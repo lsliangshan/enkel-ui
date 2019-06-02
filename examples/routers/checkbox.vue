@@ -68,7 +68,7 @@
           <Button fill
                   size="small"
                   type="error"
-                  @click="fruits = []"
+                  @click="clearFruits"
                   style="width: 80px; display: inline-block;">清除</Button>
           <Button fill
                   size="small"
@@ -153,6 +153,14 @@ export default {
   methods: {
     changeAll (e) {
       this.fruits = e ? this.allFruits : []
+    },
+    clearFruits () {
+      console.log(this.$toast)
+      this.fruits = []
+      let toast = this.$toast.create({
+        text: '清除成功',
+        closeTimeout: 2000
+      }).open()
     }
   }
 };

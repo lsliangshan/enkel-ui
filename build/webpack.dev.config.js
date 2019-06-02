@@ -14,15 +14,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 module.exports = merge(webpackBaseConfig, {
   devtool: 'eval-source-map',
 
-  devServer: {
-      clientLogLevel: 'warning',
-      hot: true,
-      contentBase: false, // since we use CopyWebpackPlugin.
-      compress: true,
-      host: '0.0.0.0',
-      port: '8081'
-    },
-
     // 入口
   entry: {
       main: './examples/main',
