@@ -1,6 +1,8 @@
 import Framework7 from 'framework7';
 
-import Toast from 'framework7/components/toast/toast.js';
+import F7Toast from 'framework7/components/toast/toast.js';
+
+import Toast from './components/toast';
 
 import Button from './components/button';
 import Preloader from './components/preloader';
@@ -174,31 +176,35 @@ const install = function (Vue, opts = {}) {
   if (install.installed) return;
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
-  Framework7.use([Toast])
-  let app = new Framework7(opts.f7params)
+  Framework7.use([F7Toast])
+  let app
 
   // setTimeout(() => {
-  //   var mainView = app.views.create('.container');
-  // }, 100)
+  app = new Framework7(opts.f7params)
+  var mainView = app.views.create(opts.f7params.mainView || '.container');
 
-  Object.keys(enkel).forEach(key => {
-    Vue.component(key, enkel[key]);
-  });
-
-  Vue.prototype.$enkel = {
+  let enkelData = {
     app: app,
     size: opts.size || '',
     transfer: 'transfer' in opts ? opts.transfer : '',
     theme: opts.f7params.theme || 'ios',
     colorTheme: opts.f7params.colorTheme || 'orange'
-  };
-
+  }
+  Vue.prototype.$enkel = enkelData;
+  if (!global.ENKEL) global.ENKEL = enkelData;
   // Vue.prototype.$Loading = LoadingBar;
   // Vue.prototype.$Message = Message;
   // Vue.prototype.$Modal = Modal;
   // Vue.prototype.$Notice = Notice;
   // Vue.prototype.$Spin = Spin;
-  Vue.prototype.$toast = app.toast;
+  Vue.prototype.$toast = new Toast();
+  // }, 1);
+
+  Object.keys(enkel).forEach(key => {
+    Vue.component(key, enkel[key]);
+  });
+
+
 };
 
 // auto install

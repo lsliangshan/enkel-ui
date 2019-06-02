@@ -19,6 +19,11 @@ nav {
 html,
 body {
   height: 100%;
+  overflow: auto;
+}
+#app {
+  width: 100%;
+  height: 100%;
 }
 .container {
   width: 100%;
@@ -37,19 +42,18 @@ body {
 }
 </style>
 <template>
-  <div class="container">
-    <headers></headers>
-    <router-view class="main"></router-view>
-    <all-svg></all-svg>
+  <div id="app">
+    <div class="main-container view">
+      <headers></headers>
+      <router-view class="main"></router-view>
+      <all-svg></all-svg>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data: function () {
     return {}
-  },
-  mounted: function () {
-
   },
   beforeDestroy: function () {
 

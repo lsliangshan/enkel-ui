@@ -155,12 +155,28 @@ export default {
       this.fruits = e ? this.allFruits : []
     },
     clearFruits () {
-      console.log(this.$toast)
       this.fruits = []
-      let toast = this.$toast.create({
+      let toast = this.$toast.show({
+        closeButton: true,
         text: '清除成功',
-        closeTimeout: 2000
-      }).open()
+        closeButtonColor: 'red',
+        closeButtonText: '确定',
+        closeTimeout: 400000,
+        on: {
+          open () {
+            console.log('toast open')
+          },
+          opened () {
+            console.log('toast opened')
+          },
+          close () {
+            console.log('toast close')
+          },
+          closed () {
+            console.log('toast closed')
+          }
+        }
+      })
     }
   }
 };

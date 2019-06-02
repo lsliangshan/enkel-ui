@@ -10,20 +10,7 @@ import enkel from '../src/index'
 import locale from '../src/locale/lang/zh-CN'
 
 Vue.use(VueRouter)
-Vue.use(enkel, {
-  locale,
-  f7params: {
-    root: '#app',
-    name: 'enkel-ui',
-    id: 'com.enkel-ui',
-    theme: 'md',
-    colorTheme: 'deeppurple',
-    toast: {
-      closeTimeout: 3000,
-      closeButton: true,
-    }
-  }
-})
+
 
 // 开启debug模式
 Vue.config.debug = true
@@ -258,6 +245,24 @@ const router = new VueRouter({
 
 const app = new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  mounted () {
+    Vue.use(enkel, {
+      locale,
+      f7params: {
+        root: '#app',
+        mainView: '.main-container',
+        name: 'enkel-ui',
+        id: 'com.enkel-ui',
+        theme: 'md',
+        colorTheme: 'deeppurple',
+        toast: {
+          closeTimeout: 3000,
+          closeButton: false,
+          position: 'bottom'
+        }
+      }
+    })
+  }
 }).$mount('#app')
 
