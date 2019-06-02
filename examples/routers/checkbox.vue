@@ -21,7 +21,7 @@
           <br>
           <Button size="small"
                   outline
-                  @click="checkbox1Disabled = !checkbox1Disabled"
+                  @click="toggleDisable"
                   style="width: 80px; display: inline-block;">{{checkbox1Disabled ? '取消禁用' : '禁用'}}</Button>
           <Button fill
                   size="small"
@@ -153,6 +153,76 @@ export default {
   methods: {
     changeAll (e) {
       this.fruits = e ? this.allFruits : []
+    },
+    toggleDisable () {
+      this.checkbox1Disabled = !this.checkbox1Disabled
+      // this.$modal.show({
+      //   title: '标题',
+      //   text: 'text',
+      //   content: 'content'
+      // })
+
+      // this.$modal.show({
+      //   title: 'Vertical Buttons',
+      //   text: 'Dialog with vertical buttons',
+      //   buttons: [
+      //     {
+      //       text: 'Button 1',
+      //     },
+      //     {
+      //       text: 'Button 2',
+      //     },
+      //     {
+      //       text: 'Button 3',
+      //     },
+      //   ],
+      //   verticalButtons: true
+      // })
+
+      // this.$modal.alert({
+      //   title: 'title',
+      //   content: 'content'
+      // })
+
+      // this.$modal.confirm({
+      //   title: 'title',
+      //   content: 'content',
+      //   cancelColor: 'red',
+      //   onOk: () => {
+      //     console.log('ok')
+      //   },
+      //   onCancel: () => {
+      //     console.log('cancel')
+      //   }
+      // })
+
+      // let preloader = this.$modal.preloader({
+      //   title: '加载中'
+      // })
+      // setTimeout(() => {
+      //   preloader.close()
+      // }, 3000)
+
+      let p = 0
+      let progress = this.$modal.progress({
+        title: '正在处理',
+        progress: p
+      })
+      progress.setText('1 of 10')
+      let interval = setInterval(() => {
+        p += 10
+        progress.setProgress(p)
+        progress.setText((p / 10) + ' of 10')
+        if (p === 100) {
+          clearInterval(interval)
+          progress.close()
+        }
+      }, 500)
+
+      // let progress = this.$modal.progress()
+      // setTimeout(() => {
+      //   progress.close()
+      // }, 3000)
     },
     clearFruits () {
       this.fruits = []

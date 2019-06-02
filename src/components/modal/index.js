@@ -1,67 +1,96 @@
-import Modal from './confirm';
+export default function Modal () {
+  let UINAME = 'enkel-ui'
+  let defaultTitle = UINAME
+  let modal = global.ENKEL.app.dialog
 
-let modalInstance;
+  const noop = () => { }
 
-function getModalInstance (render = undefined) {
-    modalInstance = modalInstance || Modal.newInstance({
-        closable: false,
-        maskClosable: false,
-        footerHide: true,
-        render: render
-    });
+  const show = (opts) => {
+    modal.create(Object.assign({
+      buttons: [
+        {
+          text: '取消'
+        },
+        {
+          text: '确定'
+        }
+      ]
+    }, opts)).open()
+  }
 
-    return modalInstance;
-}
+  function alert (opts) {
+    show({
+      title: opts.title || defaultTitle,
+      text: opts.content || '',
+      buttons: [
+        {
+          text: opts.okText || '确定',
+          color: opts.okColor,
+          bold: opts.hasOwnProperty('okBold') ? opts.okBold : false,
+          onClick: (dialog) => {
+            if (opts.onOk) {
+              opts.onOk(dialog)
+            }
+          }
+        }
+      ]
+    })
+  }
 
-function confirm (options) {
-    const render = ('render' in options) ? options.render : undefined;
-    let instance  = getModalInstance(render);
+  const confirm = (opts) => {
+    show({
+      title: opts.title || defaultTitle,
+      text: opts.content || '',
+      buttons: [
+        {
+          text: opts.cancelText || '取消',
+          color: opts.cancelColor,
+          bold: opts.hasOwnProperty('btnBold') ? opts.cancelBold : false,
+          onClick: (dialog) => {
+            if (opts.onCancel) {
+              opts.onCancel(dialog)
+            }
+          }
+        },
+        {
+          text: opts.okText || '确定',
+          color: opts.okColor,
+          bold: opts.hasOwnProperty('okBold') ? opts.okBold : false,
+          onClick: (dialog) => {
+            if (opts.onOk) {
+              opts.onOk(dialog)
+            }
+          }
+        }
+      ]
+    })
+  }
 
-    options.onRemove = function () {
-        modalInstance = null;
-    };
+  const prompt = (opts) => {
+    let options = opts || {}
+    modal.prompt(options.text || '', options.title || defaultTitle, options.callbackOk || noop, options.callbackCancel || noop, options.defaultValue || '')
+  }
 
-    instance.show(options);
-}
+  const preloader = (opts) => {
+    let options = opts || {}
+    return modal.preloader(options.title || 'loading', options.color || global.ENKEL.colorTheme)
+  }
 
-Modal.info = function (props = {}) {
-    props.icon = 'info';
-    props.showCancel = false;
-    return confirm(props);
-};
-
-Modal.success = function (props = {}) {
-    props.icon = 'success';
-    props.showCancel = false;
-    return confirm(props);
-};
-
-Modal.warning = function (props = {}) {
-    props.icon = 'warning';
-    props.showCancel = false;
-    return confirm(props);
-};
-
-Modal.error = function (props = {}) {
-    props.icon = 'error';
-    props.showCancel = false;
-    return confirm(props);
-};
-
-Modal.confirm = function (props = {}) {
-    props.icon = 'confirm';
-    props.showCancel = true;
-    return confirm(props);
-};
-
-Modal.remove = function () {
-    if (!modalInstance) {   // at loading status, remove after Cancel
-        return false;
+  const progress = (opts) => {
+    let options = opts || {}
+    if (options.hasOwnProperty('progress')) {
+      return modal.progress(options.title || 'loading', options.progress || 0, options.color || global.ENKEL.colorTheme)
+    } else {
+      return modal.progress(options.title || 'loading', options.color || global.ENKEL.colorTheme)
     }
+  }
 
-    const instance = getModalInstance();
-
-    instance.remove();
-};
-
-export default Modal;
+  return {
+    show: show,
+    alert: alert,
+    confirm: confirm,
+    prompt: prompt,
+    preloader: preloader,
+    progress: progress
+  }
+}
