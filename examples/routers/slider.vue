@@ -1,103 +1,221 @@
 <template>
-    <Form :model="formItem" :label-width="80">
-        <FormItem label="Input">
-            <Input v-model="formItem.input" placeholder="Enter something..."></Input>
-        </FormItem>
-        <FormItem label="Select">
-            <Select v-model="formItem.select">
-                <Option value="beijing">New York</Option>
-                <Option value="shanghai">London</Option>
-                <Option value="shenzhen">Sydney</Option>
-            </Select>
-        </FormItem>
-        <FormItem label="DatePicker">
-            <Row>
-                <Col span="11">
-                <DatePicker type="date" placeholder="Select date" v-model="formItem.date"></DatePicker>
-                </Col>
-                <Col span="2" style="text-align: center">-</Col>
-                <Col span="11">
-                <TimePicker type="time" placeholder="Select time" v-model="formItem.time"></TimePicker>
-                </Col>
-            </Row>
-        </FormItem>
-        <FormItem label="Radio">
-            <RadioGroup v-model="formItem.radio">
-                <Radio label="male">Male</Radio>
-                <Radio label="female">Female</Radio>
-            </RadioGroup>
-        </FormItem>
-        <FormItem label="Checkbox">
-            <CheckboxGroup v-model="formItem.checkbox">
-                <Checkbox label="Eat"></Checkbox>
-                <Checkbox label="Sleep"></Checkbox>
-                <Checkbox label="Run"></Checkbox>
-                <Checkbox label="Movie"></Checkbox>
-            </CheckboxGroup>
-        </FormItem>
-        <FormItem label="Switch">
-            <i-switch v-model="formItem.switch" size="large">
-                <span slot="open">On</span>
-                <span slot="close">Off</span>
-            </i-switch>
-        </FormItem>
-        <FormItem label="Slider">
-            <Slider v-model="formItem.slider" range></Slider>
-        </FormItem>
-        <FormItem label="Text">
-            <Input v-model="formItem.textarea" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..."></Input>
-        </FormItem>
-        <FormItem>
-            <Button type="primary">Submit</Button>
-            <Button type="ghost" style="margin-left: 8px">Cancel</Button>
-        </FormItem>
-    </Form>
+  <div class="slider_container">
+    <div class="line">
+      <div class="line-label">Normal Slider</div>
+      <Row :gutter="15">
+        <Col :span="10">
+        <Icon type="volume_mute_fill"></Icon>
+        </Col>
+        <Col :span="80">
+        <Slider v-model="volumn"></Slider>
+        </Col>
+        <Col :span="10">
+        <Icon type="volume_fill"
+              size="24"></Icon>
+        </Col>
+      </Row>
+      <div>{{volumn}}</div>
+    </div>
+    <div class="line">
+      <div class="line-label">Color Slider</div>
+      <Row :gutter="15">
+        <Col :span="10">
+        <Icon type="circle"
+              size="24"></Icon>
+        </Col>
+        <Col :span="80">
+        <Slider v-model="volumn2"
+                color="88"></Slider>
+        </Col>
+        <Col :span="10">
+        <Icon type="circle_half"
+              size="24"></Icon>
+        </Col>
+      </Row>
+      <div>{{volumn2}}</div>
+    </div>
+    <div class="line">
+      <div class="line-label">Color Slider</div>
+      <Row :gutter="15">
+        <Col :span="10">
+        <Icon type="money_yen_round"
+              size="24"></Icon>
+        </Col>
+        <Col :span="80">
+        <Slider v-model="price"
+                :range="true"
+                :min="0"
+                :max="1000"
+                color="yellow"></Slider>
+        </Col>
+        <Col :span="10">
+        <Icon type="money_yen_round_fill"
+              size="24"></Icon>
+        </Col>
+      </Row>
+      <div>{{'¥' + price.join('- ¥')}}</div>
+    </div>
+    <div class="line">
+      <div class="line-label">Scale Slider</div>
+      <Row>
+        <Col>
+        <Slider v-model="withScale"
+                :min="0"
+                :max="100"
+                :step="5"
+                :scale="true"
+                :scale-steps="10"
+                :scale-sub-steps="2"
+                color="orange"></Slider>
+        </Col>
+      </Row>
+      <div>{{withScale}}</div>
+    </div>
+    <div class="line">
+      <div class="line-label">Vertical Slider</div>
+      <Row :gutter="15"
+           justify="center">
+        <Col :span="20"
+             :offset="10">
+        <Slider value="25"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                color="red"
+                style="height: 160px;"></Slider>
+        </Col>
+        <Col :span="20">
+        <Slider value="50"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                color="red"
+                style="height: 160px;"></Slider>
+        </Col>
+        <Col :span="20">
+        <Slider value="75"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                color="red"
+                style="height: 160px;"></Slider>
+        </Col>
+        <Col :span="20">
+        <Slider :value="[25, 75]"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                :range="true"
+                color="red"
+                style="height: 160px;"></Slider>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Vertical Reversed Slider</div>
+      <Row :gutter="15"
+           justify="center">
+        <Col :span="20"
+             :offset="10">
+        <Slider value="25"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                :vertical-reversed="true"
+                color="purple"
+                style="height: 160px;"></Slider>
+        </Col>
+        <Col :span="20">
+        <Slider value="50"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                :vertical-reversed="true"
+                color="purple"
+                style="height: 160px;"></Slider>
+        </Col>
+        <Col :span="20">
+        <Slider value="75"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                :vertical-reversed="true"
+                color="purple"
+                style="height: 160px;"></Slider>
+        </Col>
+        <Col :span="20">
+        <Slider :value="[25, 75]"
+                :min="0"
+                :max="100"
+                :vertical="true"
+                :range="true"
+                :vertical-reversed="true"
+                color="purple"
+                style="height: 160px;"></Slider>
+        </Col>
+      </Row>
+    </div>
+  </div>
 </template>
+<style scoped>
+.slider_container {
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.line {
+  position: relative;
+  margin-top: 10px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.line-label {
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+  color: #6d6d72;
+  font-size: 14px;
+  font-weight: 400;
+}
+.line_item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.line_item_before,
+.line_item_after {
+  width: 30px;
+}
+.line_item_center {
+  width: calc(100% - 60px);
+}
+div[class*="col"] {
+  margin-bottom: 15px;
+}
+</style>
+
 <script>
-    export default {
-        data () {
-            return {
-                formItem: {
-                    input: '',
-                    select: '',
-                    radio: 'male',
-                    checkbox: [],
-                    switch: true,
-                    date: '',
-                    time: '',
-                    slider: [20, 50],
-                    textarea: ''
-                }
-            }
-        }
+export default {
+  data () {
+    return {
+      volumn: 10,
+      volumn2: 0,
+      price: [100, 200],
+      withScale: 25,
+      formItem: {
+        input: '',
+        select: '',
+        radio: 'male',
+        checkbox: [],
+        switch: true,
+        date: '',
+        time: '',
+        slider: [20, 50],
+        textarea: ''
+      }
     }
+  }
+}
 </script>
-
-
-
-<!--<template>-->
-    <!--<div>-->
-        <!--<Button type="primary" @click="modal1 = true">Display dialog box</Button>-->
-        <!--<Modal v-model="modal1">-->
-            <!--<Slider v-model="value2" range show-tip="always"></Slider>-->
-        <!--</Modal>-->
-    <!--</div>-->
-<!--</template>-->
-<!--<script>-->
-    <!--export default {-->
-        <!--data () {-->
-            <!--return {-->
-                <!--modal1: false,-->
-                <!--value2: [20, 50],-->
-            <!--}-->
-        <!--},-->
-        <!--methods: {-->
-            <!--ok () {-->
-                <!--this.$Message.info('Clicked ok');-->
-            <!--},-->
-            <!--cancel () {-->
-                <!--this.$Message.info('Clicked cancel');-->
-            <!--}-->
-        <!--}-->
-    <!--}-->
-<!--</script>-->

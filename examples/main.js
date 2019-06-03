@@ -49,6 +49,10 @@ const router = new VueRouter({
       component: (resolve) => require(['./routers/grid.vue'], resolve)
     },
     {
+      path: '/slider',
+      component: (resolve) => require(['./routers/slider.vue'], resolve)
+    },
+    {
       path: '/input',
       component: (resolve) => require(['./routers/input.vue'], resolve)
     },
@@ -143,10 +147,6 @@ const router = new VueRouter({
     {
       path: '/poptip',
       component: (resolve) => require(['./routers/poptip.vue'], resolve)
-    },
-    {
-      path: '/slider',
-      component: (resolve) => require(['./routers/slider.vue'], resolve)
     },
     {
       path: '/dropdown',

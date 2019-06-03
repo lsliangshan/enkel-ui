@@ -1,12 +1,15 @@
+// import Framework7 from 'framework7';
 import Framework7 from './static/f7/core/framework7.esm.bundle.js';
 
 // import F7Toast from './static/f7/core/components/toast/toast.js';
 // import F7Dialog from './static/f7/core/components/dialog/dialog.js';
 // import F7ProgressBar from './static/f7/core/components/progressbar/progressbar.js';
+// import F7RangeSlider from './static/f7/core/components/range/range.js';
 
 import F7Toast from 'framework7/components/toast/toast.js';
 import F7Dialog from 'framework7/components/dialog/dialog.js';
 import F7ProgressBar from 'framework7/components/progressbar/progressbar.js';
+import F7RangeSlider from 'framework7/components/range/range';
 
 import Toast from './components/toast';
 import Modal from './components/modal';
@@ -17,6 +20,7 @@ import Popup from './components/popup';
 import Icon from './components/icon';
 import Loading from './components/loading';
 import Checkbox from './components/checkbox';
+import Slider from './components/slider';
 
 import { Row, Col } from './components/grid';
 
@@ -58,7 +62,6 @@ import { Row, Col } from './components/grid';
 // import Radio from './components/radio';
 // import Rate from './components/rate';
 // import Sider from './components/sider';
-// import Slider from './components/slider';
 // import Spin from './components/spin';
 // import Steps from './components/steps';
 // import Switch from './components/switch';
@@ -90,6 +93,7 @@ const components = {
   Loading,
   Checkbox,
   CheckboxGroup: Checkbox.Group,
+  Slider,
   Row,
   Col,
   // Affix,
@@ -143,7 +147,6 @@ const components = {
   // RadioGroup: Radio.Group,
   // Rate,
   // Select,
-  // Slider,
   // // Spin,
   // Step: Steps.Step,
   // Steps,
@@ -184,7 +187,7 @@ const install = function (Vue, opts = {}) {
   if (install.installed) return;
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
-  Framework7.use([F7Toast, F7Dialog, F7ProgressBar])
+  Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider])
   let app
 
   // setTimeout(() => {
