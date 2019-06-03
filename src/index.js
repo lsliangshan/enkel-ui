@@ -1,4 +1,8 @@
-import Framework7 from 'framework7';
+import Framework7 from './static/f7/core/framework7.esm.bundle.js';
+
+// import F7Toast from './static/f7/core/components/toast/toast.js';
+// import F7Dialog from './static/f7/core/components/dialog/dialog.js';
+// import F7ProgressBar from './static/f7/core/components/progressbar/progressbar.js';
 
 import F7Toast from 'framework7/components/toast/toast.js';
 import F7Dialog from 'framework7/components/dialog/dialog.js';
@@ -71,7 +75,8 @@ import { Row, Col } from './components/grid';
 // import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale/index';
 
-import framework7css from 'framework7/css/framework7.bundle.min.css'
+import framework7css from './static/f7/core/css/framework7.bundle.min.css'
+// import framework7css from 'framework7/css/framework7.bundle.min.css'
 import framework7icons from 'framework7-icons'
 import loaders from 'loaders.css'
 // import framework7materialicons from 'material-design-icons'

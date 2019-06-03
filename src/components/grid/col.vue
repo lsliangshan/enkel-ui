@@ -89,7 +89,7 @@
           if (_sum <= 100) {
             style.width = `calc((100% - ${this.gutter}px * (${brotherLen} - 1))/ var(--f7-cols-per-row))!important`
           } else {
-            // style.width = `calc((100% - ${this.gutter}px * (${brotherLen} - 1))/ var(--f7-cols-per-row))!important`
+            // style.width = `calc((100% - ${this.gutter}px * (var(--f7-cols-per-row) - 1))/ var(--f7-cols-per-row))!important`
           }
         }
 
