@@ -14,6 +14,8 @@ import Icon from './components/icon';
 import Loading from './components/loading';
 import Checkbox from './components/checkbox';
 
+import { Row, Col } from './components/grid';
+
 // import Affix from './components/affix';
 // import Alert from './components/alert';
 // import Anchor from './components/anchor';
@@ -66,7 +68,6 @@ import Checkbox from './components/checkbox';
 // import Transfer from './components/transfer';
 // import Tree from './components/tree';
 // import Upload from './components/upload';
-// import { Row, Col } from './components/grid';
 // import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale/index';
 
@@ -84,6 +85,8 @@ const components = {
   Loading,
   Checkbox,
   CheckboxGroup: Checkbox.Group,
+  Row,
+  Col,
   // Affix,
   // Alert,
   // Anchor,
@@ -100,7 +103,6 @@ const components = {
   // Cascader,
   // Cell,
   // CellGroup: Cell.Group,
-  // Col,
   // Collapse,
   // ColorPicker,
   // Content: Content,
@@ -135,7 +137,6 @@ const components = {
   // Radio,
   // RadioGroup: Radio.Group,
   // Rate,
-  // Row,
   // Select,
   // Slider,
   // // Spin,

@@ -1,166 +1,183 @@
-<style>
-    .view {
-        height: 100px;
-        width: 100px;
-        background: yellow;
-    }
+<style scoped>
+  .view {
+    height: 100px;
+    width: 100px;
+    background: yellow;
+  }
+  div[class*="col"] {
+    background: #fff;
+    text-align: center;
+    color: #000;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    word-break: break-all;
+  }
+  .grid_container {
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .line-title {
+    width: 100%;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    color: #6d6d72;
+    font-size: 14px;
+    font-weight: 400;
+  }
 </style>
 <template>
-    <div>
-        <Row type='flex' justify='center'>
-            <i-col span='21' class="offset-header">
-                <Row type='flex' :gutter='16' justify='space-between'>
-                    <i-col :order='25'>
-                        <div class="view">
-                            <label>245</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='1'>
-                        <div class="view" >
-                            <label>1</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='2'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='3'>
-                        <div class="view"   >
-                            <label>3</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='4'>
-                        <div class="view"   >
-                            <label>4</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='5'>
-                        <div class="view"   >
-                            <label>5</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='6'>
-                        <div class="view"   >
-                            <label>6</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='7'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='8'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='9'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='10'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='11'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='12'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='13'>
-                        <div class="view"   >
-                            <label>12</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='14'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='15'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='16'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='17'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='18'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='19'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='20'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='21'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='22'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='23'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='24'>
-                        <div class="view"   >
-                            <label>2</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='25'>
-                        <div class="view"   >
-                            <label>25-------</label>
-                        </div>
-                    </i-col>
-                    <i-col :xs='12' :sm='12' :md='8' :lg='8' :order='26'>
-                        <div class="view"   >
-                            <label>26------</label>
-                        </div>
-                    </i-col>
-                </Row>
-            </i-col>
-        </Row>
-    </div>
+  <div class="grid_container">
+    <div class="line-title">间距(gutter):{{gutter}}px</div>
+    <Row :gutter="gutter">
+      <Col>50%</Col>
+      <Col>50%</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col>25%</Col>
+      <Col>25%</Col>
+      <Col>25%</Col>
+      <Col>25%</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col>33%</Col>
+      <Col>33%</Col>
+      <Col>33%</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col>20%</Col>
+      <Col>20%</Col>
+      <Col>20%</Col>
+      <Col>20%</Col>
+      <Col>20%</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col :span="33">33% (span=33)</Col>
+      <Col :span="66">66% (span=66)</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col :span="25">25% (span=25)</Col>
+      <Col :span="25">25% (span=25)</Col>
+      <Col :span="50">50% (span=50)</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col :span="75">75% (span=75)</Col>
+      <Col :span="25">25% (span=25)</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col :span="80">80% (span=80)</Col>
+      <Col :span="20">20% (span=20)</Col>
+    </Row>
+
+    <div class="line-title">间距(gutter):0</div>
+    <Row>
+      <Col>50%</Col>
+      <Col>50%</Col>
+    </Row>
+    <Row>
+      <Col>25%</Col>
+      <Col>25%</Col>
+      <Col>25%</Col>
+      <Col>25%</Col>
+    </Row>
+    <Row>
+      <Col>33%</Col>
+      <Col>33%</Col>
+      <Col>33%</Col>
+    </Row>
+    <Row>
+      <Col>20%</Col>
+      <Col>20%</Col>
+      <Col>20%</Col>
+      <Col>20%</Col>
+      <Col>20%</Col>
+    </Row>
+    <Row>
+      <Col :span="33">33% (span=33)</Col>
+      <Col :span="66">66% (span=66)</Col>
+    </Row>
+    <Row>
+      <Col :span="25">25% (span=25)</Col>
+      <Col :span="25">25% (span=25)</Col>
+      <Col :span="50">50% (span=50)</Col>
+    </Row>
+    <Row>
+      <Col :span="75">75% (span=75)</Col>
+      <Col :span="25">25% (span=25)</Col>
+    </Row>
+    <Row>
+      <Col :span="80">80% (span=80)</Col>
+      <Col :span="20">20% (span=20)</Col>
+    </Row>
+
+    <div class="line-title">嵌套</div>
+    <Row :gutter="gutter">
+      <Col :span="50">
+      50% (span=50)
+      <Row :gutter="10">
+        <Col :span="50">50% (span=50)</Col>
+        <Col :span="50">50% (span=50)</Col>
+      </Row>
+      </Col>
+      <Col :span="50">
+      50% (span=50)
+      <Row :gutter="10">
+        <Col :span="33">33% (span=33)</Col>
+        <Col :span="66">66% (span=66)</Col>
+      </Row>
+      </Col>
+    </Row>
+
+    <div class="line-title">响应式网格</div>
+    <Row :gutter="gutter">
+      <Col :span="100"
+           :md="50"
+           :lg="33">100% (md=50, lg=33)</Col>
+      <Col :span="100"
+           :md="50"
+           :lg="33">100% (md=50, lg=33)</Col>
+      <Col :span="100"
+           :md="50"
+           :lg="33">100% (md=50, lg=33)</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col :span="50"
+           :md="25"
+           :lg="20">50% (md=25, lg=20)</Col>
+      <Col :span="50"
+           :md="25"
+           :lg="20">50% (md=25, lg=20)</Col>
+      <Col :span="50"
+           :md="25"
+           :lg="20">50% (md=25, lg=20)</Col>
+      <Col :span="50"
+           :md="25"
+           :lg="20">50% (md=25, lg=20)</Col>
+      <Col :span="50"
+           :md="25"
+           :lg="20">50% (md=25, lg=20)</Col>
+    </Row>
+    <Row :gutter="gutter">
+      <Col :span="100"
+           :md="40">100% (md=40)</Col>
+      <Col :span="50"
+           :md="60">50% (md=60)</Col>
+      <Col :span="50"
+           :md="66">50% (md=66)</Col>
+      <Col :span="100"
+           :md="33">100% (md=33)</Col>
+    </Row>
+  </div>
 </template>
 <script>
-    export default {
-        data () {
-            return {
-                n: 2
-            }
-        },
-        methods: {
-            add () {
-                this.n++;
-            }
-        }
+  export default {
+    data () {
+      return {
+        gutter: 100
+      }
     }
+  }
 </script>

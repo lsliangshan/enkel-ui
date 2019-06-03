@@ -1,45 +1,47 @@
 <style lang="less">
-@import "../src/styles/index.less";
-nav {
-  margin-bottom: 40px;
+  @import "../src/styles/index.less";
+  nav {
+    margin-bottom: 40px;
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+      display: inline-block;
+    }
+    li + li {
+      border-left: solid 1px #bbb;
+      padding-left: 10px;
+      margin-left: 10px;
+    }
   }
-  li {
-    display: inline-block;
+  html,
+  body {
+    height: 100%;
+    overflow: auto;
   }
-  li + li {
-    border-left: solid 1px #bbb;
-    padding-left: 10px;
-    margin-left: 10px;
+  #app {
+    width: 100%;
+    height: 100%;
   }
-}
-html,
-body {
-  height: 100%;
-  overflow: auto;
-}
-#app {
-  width: 100%;
-  height: 100%;
-}
-.container {
-  width: 100%;
-  height: 100%;
-  background-color: #f4f4f4;
-}
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+  }
 
-.v-link-active {
-  color: #bbb;
-}
-.main {
-  height: calc(~"100% - 58px");
-}
-.mt0 {
-  margin-top: 0 !important;
-}
+  .v-link-active {
+    color: #bbb;
+  }
+  .main {
+    margin-top: 58px;
+    height: calc(~"100% - 58px");
+  }
+  .mt0 {
+    margin-top: 0 !important;
+  }
 </style>
 <template>
   <div id="app">
@@ -51,17 +53,17 @@ body {
   </div>
 </template>
 <script>
-export default {
-  data: function () {
-    return {}
-  },
-  beforeDestroy: function () {
+  export default {
+    data: function () {
+      return {}
+    },
+    beforeDestroy: function () {
 
-  },
-  methods: {},
-  components: {
-    AllSvg: (resolve) => require(['./svgs.vue'], resolve),
-    Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
+    },
+    methods: {},
+    components: {
+      AllSvg: (resolve) => require(['./svgs.vue'], resolve),
+      Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
+    }
   }
-}
 </script>

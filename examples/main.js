@@ -45,6 +45,10 @@ const router = new VueRouter({
       component: (resolve) => require(['./routers/checkbox.vue'], resolve)
     },
     {
+      path: '/grid',
+      component: (resolve) => require(['./routers/grid.vue'], resolve)
+    },
+    {
       path: '/input',
       component: (resolve) => require(['./routers/input.vue'], resolve)
     },
@@ -63,10 +67,6 @@ const router = new VueRouter({
     {
       path: '/anchor',
       component: (resolve) => require(['./routers/anchor.vue'], resolve)
-    },
-    {
-      path: '/grid',
-      component: (resolve) => require(['./routers/grid.vue'], resolve)
     },
     {
       path: '/radio',
@@ -254,7 +254,7 @@ const app = new Vue({
         mainView: '.main-container',
         name: 'enkel-ui',
         id: 'com.enkel-ui',
-        theme: 'md',
+        theme: 'ios',
         colorTheme: 'deeppurple'
       }
     })
