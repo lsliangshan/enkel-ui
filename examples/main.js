@@ -254,7 +254,7 @@ const app = new Vue({
         mainView: '.main-container',
         name: 'enkel-ui',
         id: 'com.enkel-ui',
-        theme: 'ios',
+        theme: 'md',
         colorTheme: 'primary'
       }
     })

@@ -1,33 +1,33 @@
 <style scoped>
-  .view {
-    height: 100px;
-    width: 100px;
-    background: yellow;
-  }
-  div[class*="col"] {
-    background: #fff;
-    text-align: center;
-    color: #000;
-    border: 1px solid #ddd;
-    padding: 5px;
-    margin-bottom: 15px;
-    font-size: 12px;
-    word-break: break-all;
-  }
-  .grid_container {
-    padding: 10px;
-    box-sizing: border-box;
-    overflow-y: auto;
-  }
-  .line-title {
-    width: 100%;
-    margin-top: 35px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    color: #6d6d72;
-    font-size: 14px;
-    font-weight: 400;
-  }
+.view {
+  height: 100px;
+  width: 100px;
+  background: yellow;
+}
+div[class*="col"] {
+  background: #fff;
+  text-align: center;
+  color: #000;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  word-break: break-all;
+}
+.grid_container {
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.line-title {
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  color: #6d6d72;
+  font-size: 14px;
+  font-weight: 400;
+}
 </style>
 <template>
   <div class="grid_container">
@@ -173,11 +173,11 @@
   </div>
 </template>
 <script>
-  export default {
-    data () {
-      return {
-        gutter: 100
-      }
+export default {
+  data () {
+    return {
+      gutter: 10
     }
   }
+}
 </script>

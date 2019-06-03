@@ -74,10 +74,11 @@ export default {
     classes () {
       return [
         'icon',
+        'f7-icons',
         `${prefixCls}`,
         {
-          ['f7-icons']: (this.$enkel.theme !== 'md'),
-          ['f7-icons']: (this.$enkel.theme === 'md'),
+          // ['cion-icons']: (this.$enkel.theme !== 'md'),
+          // ['f7-icons']: (this.$enkel.theme === 'md'),
           [`color-${this.cColor}`]: (this.cColor !== 'default' && (this.buildinColors.indexOf(this.color) > -1)),
           ['spin']: this.spin
         }
