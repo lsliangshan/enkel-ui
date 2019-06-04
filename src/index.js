@@ -23,6 +23,7 @@ import Icon from './components/icon';
 import Loading from './components/loading';
 import Checkbox from './components/checkbox';
 import Slider from './components/slider';
+import Page from './components/page';
 
 import { Row, Col } from './components/grid';
 
@@ -58,7 +59,6 @@ import { Row, Col } from './components/grid';
 // import Menu from './components/menu';
 // import Message from './components/message';
 // import Notice from './components/notice';
-// import Page from './components/page';
 // import Poptip from './components/poptip';
 // import Progress from './components/progress';
 // import Radio from './components/radio';
@@ -98,6 +98,7 @@ const components = {
   Slider,
   Row,
   Col,
+  Page,
   // Affix,
   // Alert,
   // Anchor,
@@ -141,7 +142,6 @@ const components = {
   // Notice,
   // Option: Option,
   // OptionGroup,
-  // Page,
   // Panel: Collapse.Panel,
   // Poptip,
   // Progress,
