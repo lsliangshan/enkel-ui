@@ -10,9 +10,11 @@ import F7Toast from 'framework7/components/toast/toast.js';
 import F7Dialog from 'framework7/components/dialog/dialog.js';
 import F7ProgressBar from 'framework7/components/progressbar/progressbar.js';
 import F7RangeSlider from 'framework7/components/range/range';
+import F7Notification from 'framework7/components/notification/notification';
 
 import Toast from './components/toast';
 import Modal from './components/modal';
+import Notification from './components/notification';
 
 import Button from './components/button';
 import Preloader from './components/preloader';
@@ -187,7 +189,7 @@ const install = function (Vue, opts = {}) {
   if (install.installed) return;
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
-  Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider])
+  Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider, F7Notification])
   let app
 
   // setTimeout(() => {
@@ -220,6 +222,7 @@ const install = function (Vue, opts = {}) {
   // Vue.prototype.$Spin = Spin;
   Vue.prototype.$toast = new Toast();
   Vue.prototype.$modal = new Modal();
+  Vue.prototype.$notification = new Notification();
   // }, 1);
 
   Object.keys(enkel).forEach(key => {
