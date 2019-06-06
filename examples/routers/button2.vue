@@ -1,12 +1,12 @@
 <template>
-  <Page name="button">
+  <div name="button">
     <a href="#"
        class="back">测试asfasdf</a>
-  </Page>
+  </div>
 </template>
 <script>
   export default {
-    beforeCreate () { }
+    name: 'button2'
   }
 </script>
 

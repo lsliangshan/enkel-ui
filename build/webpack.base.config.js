@@ -17,7 +17,7 @@ module.exports = {
             {
                 // https://vue-loader.vuejs.org/en/configurations/extract-css.html
                 test: /\.vue$/,
-                loader: 'vue-loader',
+                loader: 'framework7-component-loader',
                 options: {
                     loaders: {
                         css: [

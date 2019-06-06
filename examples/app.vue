@@ -66,8 +66,6 @@
     },
     mounted () {
       this.$enkel.app.views.create('.view-main');
-      // console.log('#####INIT######', this.$enkel.app)
-      // this.$enkel.app.views.create('.view-main');
     },
     methods: {
       clickHandler (e) {

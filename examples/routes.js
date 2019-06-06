@@ -1,18 +1,10 @@
-// import PageButton from './routers/button2.vue'
+import PageButton from './routers/button2.vue'
 
 export default [
   {
     name: 'button',
     path: '/button',
-    async (routeTo, routeFrom, resolve, reject) {
-      // dynamic import component; returns promise
-      const vueComponent = () => import('./routers/button2.vue');
-      // resolve promise
-      vueComponent().then((vc) => {
-        // resolve with component
-        resolve({ component: vc.default })
-      });
-    }
+    component: PageButton
   },
   {
     path: '/popup',
@@ -30,16 +22,16 @@ export default [
     path: '/loading',
     component: (resolve) => require(['./routers/loading.vue'], resolve)
   },
-  {
-    path: '/checkbox',
-    component: (resolve) => require(['./routers/checkbox.vue'], resolve)
-  },
+  // {
+  //   path: '/checkbox',
+  //   component: (resolve) => require(['./routers/checkbox.vue'], resolve)
+  // },
   {
     path: '/grid',
     component: (resolve) => require(['./routers/grid.vue'], resolve)
   },
-  {
-    path: '/slider',
-    component: (resolve) => require(['./routers/slider.vue'], resolve)
-  }
+  // {
+  //   path: '/slider',
+  //   component: (resolve) => require(['./routers/slider.vue'], resolve)
+  // }
 ]
