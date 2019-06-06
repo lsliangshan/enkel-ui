@@ -27,25 +27,25 @@ class Framework7Component {
     Object.defineProperty(self, '$root', {
       enumerable: true,
       configurable: true,
-      get() {
+      get () {
         let root = Utils.merge({}, app.data, app.methods);
         if (window && window.Proxy) {
           root = new window.Proxy(root, {
-            set(target, name, val) {
+            set (target, name, val) {
               app.data[name] = val;
             },
-            deleteProperty(target, name) {
+            deleteProperty (target, name) {
               delete app.data[name];
               delete app.methods[name];
             },
-            has(target, name) {
+            has (target, name) {
               return (name in app.data || name in app.methods);
             },
           });
         }
         return root;
       },
-      set() {},
+      set () { },
     });
 
     // Apply context
@@ -114,7 +114,7 @@ class Framework7Component {
     return self;
   }
 
-  $attachEvents() {
+  $attachEvents () {
     const self = this;
     const { $options, $el } = self;
     if ($options.on) {
@@ -129,7 +129,7 @@ class Framework7Component {
     }
   }
 
-  $detachEvents() {
+  $detachEvents () {
     const self = this;
     const { $options, $el } = self;
     if ($options.on) {
@@ -144,7 +144,7 @@ class Framework7Component {
     }
   }
 
-  $render() {
+  $render () {
     const self = this;
     const { $options } = self;
     let html = '';
@@ -165,7 +165,7 @@ class Framework7Component {
     return html;
   }
 
-  $forceUpdate() {
+  $forceUpdate () {
     const self = this;
     let html = self.$render();
 
@@ -177,13 +177,13 @@ class Framework7Component {
     }
   }
 
-  $setState(mergeState) {
+  $setState (mergeState) {
     const self = this;
     Utils.merge(self, mergeState);
     self.$forceUpdate();
   }
 
-  $mount(mountMethod) {
+  $mount (mountMethod) {
     const self = this;
     if (self.$options.beforeMount) self.$options.beforeMount();
     if (self.$styleEl) $('head').append(self.$styleEl);
@@ -191,7 +191,7 @@ class Framework7Component {
     if (self.$options.mounted) self.$options.mounted();
   }
 
-  $destroy() {
+  $destroy () {
     const self = this;
     if (self.$options.beforeDestroy) self.$options.beforeDestroy();
     if (self.$styleEl) $(self.$styleEl).remove();

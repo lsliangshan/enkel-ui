@@ -45,10 +45,17 @@
 </style>
 <template>
   <div id="app">
-    <div class="main-container view">
-      <headers></headers>
+    <div class="view view-main"
+         data-url="/">
+      <Page>
+        <!-- <div class="main-container"> -->
+        <!-- <Button @click="clickHandler">点击</Button> -->
+        <a href="/button">button</a>
+        <!-- <headers></headers>
       <router-view class="main"></router-view>
-      <all-svg></all-svg>
+      <all-svg></all-svg> -->
+        <!-- </div> -->
+      </Page>
     </div>
   </div>
 </template>
@@ -57,10 +64,16 @@
     data: function () {
       return {}
     },
-    beforeDestroy: function () {
-
+    mounted () {
+      this.$enkel.app.views.create('.view-main');
+      // console.log('#####INIT######', this.$enkel.app)
+      // this.$enkel.app.views.create('.view-main');
     },
-    methods: {},
+    methods: {
+      clickHandler (e) {
+        this.$enkel.app.views.main.router.navigate('/button')
+      }
+    },
     components: {
       AllSvg: (resolve) => require(['./svgs.vue'], resolve),
       Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)

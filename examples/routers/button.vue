@@ -1,167 +1,167 @@
 <template>
-  <Page>
-    <div class="container">
-      <div class="line">
-        <div class="line-label">Normal Buttons</div>
-        <Row :gutter="10">
-          <Col>
-          <Button loading
-                  @click="notify">button</Button>
-          </Col>
-          <Col>
-          <Button>button</Button>
-          </Col>
-          <Col>
-          <Button round>round</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Fill Buttons</div>
-        <Row :gutter="10">
-          <Col>
-          <Button fill
-                  loading>button</Button>
-          </Col>
-          <Col>
-          <Button fill>button</Button>
-          </Col>
-          <Col>
-          <Button fill
-                  round>round</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Outline Buttons</div>
-        <Row :gutter="10">
-          <Col>
-          <Button outline>button</Button>
-          </Col>
-          <Col>
-          <Button outline>button</Button>
-          </Col>
-          <Col>
-          <Button round
-                  outline>round</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Raised Buttons</div>
-        <Row :gutter="10">
-          <Col>
-          <Button raised>button</Button>
-          </Col>
-          <Col>
-          <Button raised
-                  fill>fill</Button>
-          </Col>
-          <Col>
-          <Button raised
-                  outline>outline</Button>
-          </Col>
-        </Row>
-        <Row :gutter="10">
-          <Col>
-          <Button raised
-                  round>round</Button>
-          </Col>
-          <Col>
-          <Button raised
-                  fill
-                  round>fill</Button>
-          </Col>
-          <Col>
-          <Button raised
-                  outline
-                  round>outline</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Large Buttons</div>
-        <Row :gutter="10">
-          <Col>
-          <Button size="large">button</Button>
-          </Col>
-          <Col>
-          <Button size="large"
-                  fill>fill</Button>
-          </Col>
-        </Row>
-        <Row :gutter="10">
-          <Col>
-          <Button size="large"
-                  raised>raised</Button>
-          </Col>
-          <Col>
-          <Button size="large"
-                  raised
-                  fill>raised fill</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Small Buttons</div>
-        <Row :gutter="10">
-          <Col>
-          <Button size="small">button</Button>
-          </Col>
-          <Col>
-          <Button size="small"
-                  outline>outline</Button>
-          </Col>
-          <Col>
-          <Button size="small"
-                  fill>fill</Button>
-          </Col>
-        </Row>
-        <Row :gutter="10">
-          <Col>
-          <Button size="small"
-                  round>round</Button>
-          </Col>
-          <Col>
-          <Button size="small"
-                  outline
-                  round>outline</Button>
-          </Col>
-          <Col>
-          <Button size="small"
-                  fill
-                  round>fill</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Color Buttons</div>
-        <Row :gutter="10">
-          <Col v-for="(item, index) in colors"
-               :key="index"
-               :span="33">
-          <Button :type="item">{{item}}</Button>
-          </Col>
-        </Row>
-      </div>
-      <div class="line">
-        <div class="line-label">Color Fill Buttons</div>
-        <Row :gutter="10">
-          <Col v-for="(item, index) in colors"
-               :key="index"
-               :span="33">
-          <Button :type="item"
-                  fill>
-            <Icon type="reload"
-                  spin
-                  size="18"></Icon>
-            {{item}}
-          </Button>
-          </Col>
-        </Row>
-      </div>
+  <!-- <Page> -->
+  <div class="container">
+    <div class="line">
+      <div class="line-label">Normal Buttons</div>
+      <Row :gutter="10">
+        <Col>
+        <Button loading
+                @click="notify">button</Button>
+        </Col>
+        <Col>
+        <Button>button</Button>
+        </Col>
+        <Col>
+        <Button round>round</Button>
+        </Col>
+      </Row>
     </div>
-  </Page>
+    <div class="line">
+      <div class="line-label">Fill Buttons</div>
+      <Row :gutter="10">
+        <Col>
+        <Button fill
+                loading>button</Button>
+        </Col>
+        <Col>
+        <Button fill>button</Button>
+        </Col>
+        <Col>
+        <Button fill
+                round>round</Button>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Outline Buttons</div>
+      <Row :gutter="10">
+        <Col>
+        <Button outline>button</Button>
+        </Col>
+        <Col>
+        <Button outline>button</Button>
+        </Col>
+        <Col>
+        <Button round
+                outline>round</Button>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Raised Buttons</div>
+      <Row :gutter="10">
+        <Col>
+        <Button raised>button</Button>
+        </Col>
+        <Col>
+        <Button raised
+                fill>fill</Button>
+        </Col>
+        <Col>
+        <Button raised
+                outline>outline</Button>
+        </Col>
+      </Row>
+      <Row :gutter="10">
+        <Col>
+        <Button raised
+                round>round</Button>
+        </Col>
+        <Col>
+        <Button raised
+                fill
+                round>fill</Button>
+        </Col>
+        <Col>
+        <Button raised
+                outline
+                round>outline</Button>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Large Buttons</div>
+      <Row :gutter="10">
+        <Col>
+        <Button size="large">button</Button>
+        </Col>
+        <Col>
+        <Button size="large"
+                fill>fill</Button>
+        </Col>
+      </Row>
+      <Row :gutter="10">
+        <Col>
+        <Button size="large"
+                raised>raised</Button>
+        </Col>
+        <Col>
+        <Button size="large"
+                raised
+                fill>raised fill</Button>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Small Buttons</div>
+      <Row :gutter="10">
+        <Col>
+        <Button size="small">button</Button>
+        </Col>
+        <Col>
+        <Button size="small"
+                outline>outline</Button>
+        </Col>
+        <Col>
+        <Button size="small"
+                fill>fill</Button>
+        </Col>
+      </Row>
+      <Row :gutter="10">
+        <Col>
+        <Button size="small"
+                round>round</Button>
+        </Col>
+        <Col>
+        <Button size="small"
+                outline
+                round>outline</Button>
+        </Col>
+        <Col>
+        <Button size="small"
+                fill
+                round>fill</Button>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Color Buttons</div>
+      <Row :gutter="10">
+        <Col v-for="(item, index) in colors"
+             :key="index"
+             :span="33">
+        <Button :type="item">{{item}}</Button>
+        </Col>
+      </Row>
+    </div>
+    <div class="line">
+      <div class="line-label">Color Fill Buttons</div>
+      <Row :gutter="10">
+        <Col v-for="(item, index) in colors"
+             :key="index"
+             :span="33">
+        <Button :type="item"
+                fill>
+          <Icon type="reload"
+                spin
+                size="18"></Icon>
+          {{item}}
+        </Button>
+        </Col>
+      </Row>
+    </div>
+  </div>
+  <!-- </Page> -->
 </template>
 <script>
   export default {

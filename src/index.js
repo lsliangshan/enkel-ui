@@ -204,7 +204,7 @@ const install = function (Vue, opts = {}) {
       buttonCancel: '取消'
     }
   }, opts.f7params))
-  var mainView = app.views.create(opts.f7params.mainView || '.container');
+  // var mainView = app.views.create(opts.f7params.mainView || '.container');
 
   let enkelData = {
     app: app,
