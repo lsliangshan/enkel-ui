@@ -1,5 +1,6 @@
-// import Framework7 from 'framework7';
-import Framework7 from './static/f7/core/framework7.esm.bundle.js';
+// import Framework7 from 'framework7/framework7.esm.bundle';
+import Framework7 from 'framework7';
+// import Framework7 from './static/f7/core/framework7.esm.bundle.js';
 
 // import F7Toast from './static/f7/core/components/toast/toast.js';
 // import F7Dialog from './static/f7/core/components/dialog/dialog.js';
@@ -9,8 +10,12 @@ import Framework7 from './static/f7/core/framework7.esm.bundle.js';
 import F7Toast from 'framework7/components/toast/toast.js';
 import F7Dialog from 'framework7/components/dialog/dialog.js';
 import F7ProgressBar from 'framework7/components/progressbar/progressbar.js';
-import F7RangeSlider from 'framework7/components/range/range';
-import F7Notification from 'framework7/components/notification/notification';
+import F7RangeSlider from 'framework7/components/range/range.js';
+import F7Notification from 'framework7/components/notification/notification.js';
+// import F7NavBar from 'framework7/components/navbar/navbar.js';
+
+import App from './components/app';
+import Header from './components/header';
 
 import Toast from './components/toast';
 import Modal from './components/modal';
@@ -26,6 +31,8 @@ import Slider from './components/slider';
 import Page from './components/page';
 
 import { Row, Col } from './components/grid';
+
+
 
 // import Affix from './components/affix';
 // import Alert from './components/alert';
@@ -49,7 +56,6 @@ import { Row, Col } from './components/grid';
 // import Dropdown from './components/dropdown';
 // import Footer from './components/footer';
 // import Form from './components/form';
-// import Header from './components/header';
 // import Input from './components/input';
 // import InputNumber from './components/input-number';
 // import Scroll from './components/scroll';
@@ -87,6 +93,7 @@ import loaders from 'loaders.css'
 // import framework7materialicons from 'material-design-icons'
 
 const components = {
+  App,
   Button,
   ButtonGroup: Button.Group,
   Preloader,
@@ -99,6 +106,7 @@ const components = {
   Row,
   Col,
   Page,
+  Header,
   // Affix,
   // Alert,
   // Anchor,
@@ -126,7 +134,6 @@ const components = {
   // Footer: Footer,
   // Form,
   // FormItem: Form.Item,
-  // Header: Header,
   // Input,
   // InputNumber,
   // Scroll,
@@ -202,9 +209,16 @@ const install = function (Vue, opts = {}) {
     dialog: {
       buttonOk: '确定',
       buttonCancel: '取消'
-    }
+    },
+    // navbar: {
+    //   // hideOnPageScroll: true,
+    //   // iosCenterTitle: false,
+    // },
+    // toolbar: {
+    //   hideOnPageScroll: true,
+    // }
   }, opts.f7params))
-  var mainView = app.views.create(opts.f7params.mainView || '.container');
+  // var mainView = app.views.create(opts.f7params.mainView || '.container');
 
   let enkelData = {
     app: app,

@@ -252,7 +252,7 @@ const app = new Vue({
       locale,
       f7params: {
         root: '#app',
-        mainView: '.main-container',
+        mainView: '.view-main',
         name: 'enkel-ui',
         id: 'com.enkel-ui',
         theme: 'md',

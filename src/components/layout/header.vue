@@ -1,14 +1,48 @@
 <template>
-    <div :class="wrapClasses"><slot></slot></div>
+  <div :class="classes">
+    <div :class="innerClasses">
+      <div class="left">
+      </div>
+      <div class="title">{{title || largeTitle}}</div>
+      <div class="right">
+      </div>
+      <div class="title-large"
+           v-if="largeTitle">
+        <div class="title-large-text">{{largeTitle}}</div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-    const prefixCls = 'ivu-layout';
-    export default {
-        name: 'Header',
-        computed: {
-            wrapClasses () {
-                return `${prefixCls}-header`;
-            }
+const prefixCls = 'enkel-header';
+export default {
+  name: 'Header',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    largeTitle: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classes () {
+      return [
+        prefixCls,
+        'navbar'
+      ]
+    },
+    innerClasses () {
+      return [
+        'navbar-inner',
+        'sliding',
+        {
+          ['navbar-inner-large']: this.largeTitle
         }
-    };
+      ]
+    }
+  }
+};
 </script>
