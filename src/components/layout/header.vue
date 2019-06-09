@@ -25,6 +25,10 @@ export default {
     largeTitle: {
       type: String,
       default: ''
+    },
+    hideOnScroll: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -42,6 +46,14 @@ export default {
           ['navbar-inner-large']: this.largeTitle
         }
       ]
+    }
+  },
+  watch: {
+    hideOnScroll: {
+      immediate: true,
+      handler (val) {
+        this.$parent.hideOnScroll(val)
+      }
     }
   }
 };

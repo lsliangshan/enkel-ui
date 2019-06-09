@@ -21,6 +21,11 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
+      name: 'home',
+      path: '/',
+      component: (resolve) => require(['./routers/home.vue'], resolve)
+    },
+    {
       name: 'button',
       path: '/button',
       component: (resolve) => require(['./routers/button.vue'], resolve)

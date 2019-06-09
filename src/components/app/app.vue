@@ -6,11 +6,12 @@
     <!-- Your main view, should have "view-main" class -->
     <div class="view view-main">
       <!-- Initial Page, "data-name" contains page name -->
-      <div class="page">
+      <div class="page"
+           data-name="app">
 
         <!-- Top Navbar -->
         <Header title="title"
-                large-title="Large Title2"></Header>
+                :hide-on-scroll="true"></Header>
         <!-- <div class="navbar">
           <div class="navbar-inner sliding">
             <div class="left"><a class="link back"><i class="icon icon-back"></i><span class="if-not-md">Back</span></a></div>
@@ -75,7 +76,8 @@
         </div> -->
 
         <!-- Scrollable page content -->
-        <div class="page-content">
+        <div class="page-content"
+             ref="pageContent">
           <div class="block m0 p0">
             <slot></slot>
           </div>
@@ -120,6 +122,24 @@ export default {
   methods: {
     pageInit (e) {
       console.log('page init: ', e)
+    },
+    hideOnScroll (val) {
+      this.$nextTick(() => {
+        // console.log('hide on scroll: ', val)
+        let classList = this.$refs.pageContent.classList
+        if (val) {
+          if (!classList.contains('hide-navbar-on-scroll')) {
+            classList.add('hide-navbar-on-scroll')
+          }
+        } else {
+          if (classList.contains('hide-navbar-on-scroll')) {
+            classList.remove('hide-navbar-on-scroll')
+          }
+        }
+        console.log('...', this.$enkel.app.views.main.router)
+        this.$enkel.app.views.main.router.refreshPage()
+      })
+
     }
   }
 }
