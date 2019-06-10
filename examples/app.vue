@@ -54,9 +54,9 @@
   <App :hide-navbar-on-scroll="true">
     <Header slot="header"
             title="title">
-      <a href="#"
+      <a href="javascript:void(0)"
          slot="left"
-         class="link">
+         class="link panel-toggle">
         <Icon type="chevron_left"></Icon>
         <!-- <span>Back</span> -->
       </a>
@@ -66,9 +66,9 @@
       </a>
     </Header>
     <router-view class="main"></router-view>
-    <all-svg></all-svg>
-  </App>
 
+  </App>
+  <!-- <all-svg></all-svg> -->
 </template>
 <script>
   export default {
@@ -78,10 +78,11 @@
     beforeDestroy: function () {
 
     },
-    methods: {},
+    methods: {
+    },
     components: {
       AllSvg: (resolve) => require(['./svgs.vue'], resolve),
-      Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
+      // Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
     }
   }
 </script>

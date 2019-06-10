@@ -3,8 +3,10 @@
     <!-- Statusbar overlay -->
     <div class="statusbar"></div>
 
+    <Panel></Panel>
+
     <!-- Your main view, should have "view-main" class -->
-    <div class="view view-main">
+    <div class="view view-main view-init">
       <!-- Initial Page, "data-name" contains page name -->
       <div class="page"
            style="background-color: #efeff4;"
@@ -133,9 +135,10 @@
     },
     mounted () {
       // setTimeout(() => {
-      if (!this.$enkel.app.views.main) {
-        this.$enkel.app.views.create('.view-main');
-      }
+      // console.log('>>>>>>>>', this.$enkel.app.params.routers)
+      // if (!this.$enkel.app.views.main) {
+      this.$enkel.app.views.create('.view-main');
+      // }
       // }, 3000)
     },
     methods: {

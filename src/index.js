@@ -13,6 +13,7 @@ import F7ProgressBar from 'framework7/components/progressbar/progressbar.js';
 import F7RangeSlider from 'framework7/components/range/range.js';
 import F7Notification from 'framework7/components/notification/notification.js';
 // import F7NavBar from 'framework7/components/navbar/navbar.js';
+import F7Panel from 'framework7/components/panel/panel.js';
 
 import App from './components/app';
 import Header from './components/header';
@@ -29,6 +30,7 @@ import Loading from './components/loading';
 import Checkbox from './components/checkbox';
 import Slider from './components/slider';
 import Page from './components/page';
+import Panel from './components/panel';
 
 import { Row, Col } from './components/grid';
 
@@ -107,6 +109,7 @@ const components = {
   Col,
   Page,
   Header,
+  Panel,
   // Affix,
   // Alert,
   // Anchor,
@@ -196,7 +199,7 @@ const install = function (Vue, opts = {}) {
   if (install.installed) return;
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
-  Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider, F7Notification])
+  Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider, F7Notification, F7Panel])
   let app
 
   // setTimeout(() => {
@@ -218,7 +221,10 @@ const install = function (Vue, opts = {}) {
     //   hideOnPageScroll: true,
     // }
   }, opts.f7params))
-  // var mainView = app.views.create(opts.f7params.mainView || '.container');
+
+  // var mainView = app.views.create(opts.f7params.mainView || '.container', {
+  //   routes: opts.f7params.routes
+  // });
 
   let enkelData = {
     app: app,
