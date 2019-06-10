@@ -7,11 +7,14 @@
     <div class="view view-main">
       <!-- Initial Page, "data-name" contains page name -->
       <div class="page"
+           style="background-color: #efeff4;"
            data-name="app">
 
         <!-- Top Navbar -->
-        <Header title="title"
-                :hide-on-scroll="true"></Header>
+        <slot name="header">
+          <Header title="title">
+          </Header>
+        </slot>
         <!-- <div class="navbar">
           <div class="navbar-inner sliding">
             <div class="left"><a class="link back"><i class="icon icon-back"></i><span class="if-not-md">Back</span></a></div>
@@ -77,6 +80,7 @@
 
         <!-- Scrollable page content -->
         <div class="page-content"
+             :class="pageContentClasses"
              ref="pageContent">
           <div class="block m0 p0">
             <slot></slot>
@@ -87,60 +91,76 @@
   </div>
 </template>
 <style scoped>
-.m0 {
-  margin: 0 !important;
-}
-.p0 {
-  padding: 0 !important;
-}
+  .m0 {
+    margin: 0 !important;
+  }
+  .p0 {
+    padding: 0 !important;
+  }
 </style>
 
 <script>
-const prefixCls = 'enkel-app';
-export default {
-  name: 'App',
-  props: {
-    id: {
-      type: String,
-      default: 'app'
-    }
-  },
-  computed: {
-    classes () {
-      return [
-        prefixCls
-      ]
-    }
-  },
-  mounted () {
-    // setTimeout(() => {
-    if (!this.$enkel.app.views.main) {
-      this.$enkel.app.views.create('.view-main');
-    }
-    // }, 3000)
-  },
-  methods: {
-    pageInit (e) {
-      console.log('page init: ', e)
+  const prefixCls = 'enkel-app';
+  export default {
+    name: 'App',
+    props: {
+      id: {
+        type: String,
+        default: 'app'
+      },
+      hideNavbarOnScroll: {
+        type: Boolean,
+        default: false
+      }
     },
-    hideOnScroll (val) {
-      this.$nextTick(() => {
-        // console.log('hide on scroll: ', val)
-        let classList = this.$refs.pageContent.classList
-        if (val) {
-          if (!classList.contains('hide-navbar-on-scroll')) {
-            classList.add('hide-navbar-on-scroll')
+    data () {
+      return {
+      }
+    },
+    computed: {
+      classes () {
+        return [
+          prefixCls
+        ]
+      },
+      pageContentClasses () {
+        return [
+          {
+            ['hide-navbar-on-scroll']: this.hideNavbarOnScroll
           }
-        } else {
-          if (classList.contains('hide-navbar-on-scroll')) {
-            classList.remove('hide-navbar-on-scroll')
-          }
-        }
-        console.log('...', this.$enkel.app.views.main.router)
-        this.$enkel.app.views.main.router.refreshPage()
-      })
+        ]
+      }
+    },
+    mounted () {
+      // setTimeout(() => {
+      if (!this.$enkel.app.views.main) {
+        this.$enkel.app.views.create('.view-main');
+      }
+      // }, 3000)
+    },
+    methods: {
+      pageInit (e) {
+        console.log('page init: ', e)
+      },
+      hideOnScroll (val) {
+        this.$nextTick(() => {
+          // console.log('hide on scroll: ', val)
+          // this.hideNavbarOnScroll = val
+          // let classList = this.$refs.pageContent.classList
+          // if (val) {
+          //   if (!classList.contains('hide-navbar-on-scroll')) {
+          //     classList.add('hide-navbar-on-scroll')
+          //   }
+          // } else {
+          //   if (classList.contains('hide-navbar-on-scroll')) {
+          //     classList.remove('hide-navbar-on-scroll')
+          //   }
+          // }
+          // console.log('...', this.$enkel.app.views.main.router)
+          // this.$enkel.app.views.main.router.refreshPage()
+        })
 
+      }
     }
   }
-}
 </script>
