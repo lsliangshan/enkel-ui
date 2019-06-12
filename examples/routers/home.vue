@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
+  <Page name="page">
     <a href="javascript:void(0)"
        data-path="/button"
        @click="goto">Button</a>
-  </div>
+  </Page>
 </template>
 <script>
   export default {
-    name: 'button',
+    name: 'home',
     methods: {
       goto (e) {
         this.$router.push(e.target.dataset.path)

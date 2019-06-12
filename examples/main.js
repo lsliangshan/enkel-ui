@@ -36,7 +36,7 @@ Vue.use(enkel, {
   }
 })
 const app = new Vue({
-  router,
+  // router,
   render: h => h(App),
   mounted () {
 

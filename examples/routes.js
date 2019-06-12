@@ -3,9 +3,29 @@ import PageButton from './routers/button.vue'
 
 export default [
   {
+    path: '/test',
+    content: `
+      <div class="page">
+        <div class="page-content">
+          <div class="block">
+            <p>This page created dynamically</p>
+          </div>
+        </div>
+      </div>
+    `,
+  },
+  {
     name: 'home',
-    path: '/',
-    component: PageHome
+    path: '/home',
+    content: `
+      <div class="page">
+        <div class="page-content">
+          <div class="block">
+            <p>This page created dynamically</p>
+          </div>
+        </div>
+      </div>
+    `,
   },
   {
     name: 'button',

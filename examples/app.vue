@@ -65,7 +65,8 @@
         <Icon type="more_vertical_fill"></Icon>
       </a>
     </Header>
-    <router-view class="main"></router-view>
+    <a href="/test">go to page test</a>
+    <!-- <router-view class="main"></router-view> -->
 
   </App>
   <!-- <all-svg></all-svg> -->
