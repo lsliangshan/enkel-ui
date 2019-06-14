@@ -9,6 +9,7 @@ export default [
         <div class="page-content">
           <div class="block">
             <p>This page created dynamically</p>
+            <a href="#" class="back">返回</a>
           </div>
         </div>
       </div>
@@ -22,6 +23,7 @@ export default [
         <div class="page-content">
           <div class="block">
             <p>This page created dynamically</p>
+            <Button>测试</Button>
           </div>
         </div>
       </div>
@@ -30,7 +32,15 @@ export default [
   {
     name: 'button',
     path: '/button',
-    component: PageButton
+    async (routeTo, routeFrom, resolve, reject) {
+      // dynamic import component; returns promise
+      const vueComponent = () => import('./routers/button.vue');
+      // resolve promise
+      vueComponent().then((vc) => {
+        // resolve with component
+        resolve({ component: vc.default })
+      });
+    }
   },
   // {
   //   path: '/popup',
