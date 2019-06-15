@@ -32,15 +32,7 @@ export default [
   {
     name: 'button',
     path: '/button',
-    async (routeTo, routeFrom, resolve, reject) {
-      // dynamic import component; returns promise
-      const vueComponent = () => import('./routers/button.vue');
-      // resolve promise
-      vueComponent().then((vc) => {
-        // resolve with component
-        resolve({ component: vc.default })
-      });
-    }
+    component: () => import('./routers/button.vue')
   },
   // {
   //   path: '/popup',

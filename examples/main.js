@@ -31,6 +31,7 @@ Vue.use(enkel, {
     id: 'com.enkel-ui',
     theme: 'ios',
     colorTheme: 'primary',
+    routes: routes,
     routers: routes
     // routes: routes
   }
