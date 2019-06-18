@@ -45,6 +45,7 @@
         "deepmerge": "^2.1.0",
         "element-resize-detector": "^1.1.14",
         "framework7-icons": "^2.3.1",
+        "framework7-vue": "^4.4.3",
         "js-calendar": "^1.2.3",
         "loaders.css": "^0.1.2",
         "lodash.throttle": "^4.1.1",

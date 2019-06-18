@@ -1,19 +1,18 @@
 // import Framework7 from 'framework7/framework7.esm.bundle';
-// import Framework7 from 'framework7';
-import Framework7 from './static/f7/core/framework7.esm.bundle.js';
-
+import Framework7 from 'framework7';
+// import Framework7 from './static/f7/core/framework7.esm.bundle.js';
+import Framework7Vue from 'framework7-vue';
 // import F7Toast from './static/f7/core/components/toast/toast.js';
 // import F7Dialog from './static/f7/core/components/dialog/dialog.js';
 // import F7ProgressBar from './static/f7/core/components/progressbar/progressbar.js';
 // import F7RangeSlider from './static/f7/core/components/range/range.js';
 
-import F7Toast from 'framework7/components/toast/toast.js';
-import F7Dialog from 'framework7/components/dialog/dialog.js';
-import F7ProgressBar from 'framework7/components/progressbar/progressbar.js';
-import F7RangeSlider from 'framework7/components/range/range.js';
-import F7Notification from 'framework7/components/notification/notification.js';
-// import F7NavBar from 'framework7/components/navbar/navbar.js';
-import F7Panel from 'framework7/components/panel/panel.js';
+// import F7Toast from 'framework7/components/toast/toast.js';
+// import F7Dialog from 'framework7/components/dialog/dialog.js';
+// import F7ProgressBar from 'framework7/components/progressbar/progressbar.js';
+// import F7RangeSlider from 'framework7/components/range/range.js';
+// import F7Notification from 'framework7/components/notification/notification.js';
+// import F7Panel from 'framework7/components/panel/panel.js';
 
 import App from './components/app';
 import Header from './components/header';
@@ -199,7 +198,8 @@ const install = function (Vue, opts = {}) {
   if (install.installed) return;
   locale.use(opts.locale);
   locale.i18n(opts.i18n);
-  Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider, F7Notification, F7Panel])
+  Framework7.use(Framework7Vue)
+  // Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider, F7Notification, F7Panel])
   let app = new Framework7(Object.assign({
     toast: {
       closeTimeout: 3000,

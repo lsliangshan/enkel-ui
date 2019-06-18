@@ -1,5 +1,24 @@
 <template>
-  <button class="button"
+  <f7-button class="enkel-button"
+             :raised="raised"
+             :fill="fill"
+             :outline="outline"
+             :color="cType"
+             :text-color="cTextColor"
+             :border-color="borderColor"
+             :disabled="disabled">
+    <div class="button_inner">
+      <div class="button_loading"
+           v-if="loading">
+        <slot name="loading">
+          <Preloader size="14"
+                     color="white"></Preloader>
+        </slot>
+      </div>
+      <slot></slot>
+    </div>
+  </f7-button>
+  <!-- <button class="button"
           :class="classes"
           :style="styles"
           @click="clickHandler">
@@ -13,7 +32,7 @@
       </div>
       <slot></slot>
     </div>
-  </button>
+  </button> -->
 </template>
 <style scoped>
   .enkel-button .button_inner {
@@ -24,7 +43,7 @@
     overflow: hidden;
   }
   .enkel-button .button_inner .button_loading {
-    margin-right: 4px;
+    margin-right: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,11 +55,15 @@
 </style>
 <script>
   import { oneOf } from '../../utils/assist';
+  import { f7Button } from 'framework7-vue';
 
   const prefixCls = 'enkel-button';
 
   export default {
     name: 'Button',
+    components: {
+      f7Button
+    },
     props: {
       type: {
         validator (value) {
@@ -73,14 +96,12 @@
       textColor: {
         validator (value) {
           return oneOf(value, ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
+        }
       },
       borderColor: {
         validator (value) {
           return oneOf(value || 'primary', ['primary', 'error', 'info', 'warning', 'red', 'green', 'blue', 'pink', 'yellow', 'orange', 'purple', 'deeppurple', 'lightblue', 'teal', 'lime', 'deeporange', 'gray', 'white', 'black']);
-        },
-        default: 'primary'
+        }
       },
 
       loading: Boolean,
@@ -106,6 +127,26 @@
     computed: {
       cType () {
         let type = this.type
+        switch (type) {
+          case 'primary':
+            type = 'blue'
+            break
+          case 'error':
+            type = 'red'
+            break
+          case 'info':
+            type = 'lightblue'
+            break
+          case 'warning':
+            type = 'orange'
+            break
+          default:
+            break
+        }
+        return type
+      },
+      cTextColor () {
+        let type = this.textColor
         switch (type) {
           case 'primary':
             type = 'blue'
@@ -155,7 +196,8 @@
         this.$emit('click', e)
       }
     },
-    mounted () {
+    created () {
+      console.log('>>>>', this)
     }
   };
 </script>
