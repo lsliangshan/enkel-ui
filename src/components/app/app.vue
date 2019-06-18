@@ -71,11 +71,8 @@
     },
     mounted () {
       // setTimeout(() => {
-      console.log('>>>>>>>>', this.$enkel.app.params.routers)
       // if (!this.$enkel.app.views.main) {
-      this.$enkel.app.views.create('.view-main', {
-        routes: this.$enkel.app.params.routers
-      });
+      this.$enkel.app.views.create('.view-main');
       // }
       // }, 3000)
     },

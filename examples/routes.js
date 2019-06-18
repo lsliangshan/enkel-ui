@@ -3,65 +3,38 @@ import PageButton from './routers/button.vue'
 
 export default [
   {
-    path: '/test',
-    content: `
-      <div class="page">
-        <div class="page-content">
-          <div class="block">
-            <p>This page created dynamically</p>
-            <a href="#" class="back">返回</a>
-          </div>
-        </div>
-      </div>
-    `,
-  },
-  {
-    name: 'home',
-    path: '/home',
-    content: `
-      <div class="page">
-        <div class="page-content">
-          <div class="block">
-            <p>This page created dynamically</p>
-            <Button>测试</Button>
-          </div>
-        </div>
-      </div>
-    `,
-  },
-  {
     name: 'button',
     path: '/button',
     component: () => import('./routers/button.vue')
   },
-  // {
-  //   path: '/popup',
-  //   component: (resolve) => require(['./routers/popup.vue'], resolve)
-  // },
-  // {
-  //   path: '/preloader',
-  //   component: (resolve) => require(['./routers/preloader.vue'], resolve)
-  // },
-  // {
-  //   path: '/icon',
-  //   component: (resolve) => require(['./routers/icon.vue'], resolve)
-  // },
-  // {
-  //   path: '/loading',
-  //   component: (resolve) => require(['./routers/loading.vue'], resolve)
-  // },
-  // {
-  //   path: '/checkbox',
-  //   component: (resolve) => require(['./routers/checkbox.vue'], resolve)
-  // },
-  // {
-  //   path: '/grid',
-  //   component: (resolve) => require(['./routers/grid.vue'], resolve)
-  // },
-  // {
-  //   path: '/slider',
-  //   component: (resolve) => require(['./routers/slider.vue'], resolve)
-  // },
+  {
+    path: '/popup',
+    component: (resolve) => require(['./routers/popup.vue'], resolve)
+  },
+  {
+    path: '/preloader',
+    component: (resolve) => require(['./routers/preloader.vue'], resolve)
+  },
+  {
+    path: '/icon',
+    component: (resolve) => require(['./routers/icon.vue'], resolve)
+  },
+  {
+    path: '/loading',
+    component: (resolve) => require(['./routers/loading.vue'], resolve)
+  },
+  {
+    path: '/checkbox',
+    component: (resolve) => require(['./routers/checkbox.vue'], resolve)
+  },
+  {
+    path: '/grid',
+    component: (resolve) => require(['./routers/grid.vue'], resolve)
+  },
+  {
+    path: '/slider',
+    component: (resolve) => require(['./routers/slider.vue'], resolve)
+  },
   // {
   //   path: '/input',
   //   component: (resolve) => require(['./routers/input.vue'], resolve)

@@ -30,14 +30,12 @@ Vue.use(enkel, {
     name: 'enkel-ui',
     id: 'com.enkel-ui',
     theme: 'ios',
-    colorTheme: 'primary',
-    routes: routes,
-    routers: routes
+    colorTheme: 'primary'
     // routes: routes
   }
 })
 const app = new Vue({
-  // router,
+  router,
   render: h => h(App),
   mounted () {
 
