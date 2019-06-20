@@ -51,31 +51,38 @@
     </div>
     <all-svg></all-svg>
   </div> -->
-  <App :hide-navbar-on-scroll="true">
-    <Header slot="header"
-            title="title">
+  <App :routes="routes">
+    <!-- <e-button fill
+              type="info">e-button</e-button> -->
+    <e-header>
+      <div slot="title">Enkel Ui</div>
+      <div slot="title-large">Enkel Ui</div>
       <a href="javascript:void(0)"
          slot="left"
          class="link panel-toggle">
         <Icon type="chevron_left"></Icon>
-        <!-- <span>Back</span> -->
       </a>
       <a href="#"
          slot="right">
         <Icon type="more_vertical_fill"></Icon>
       </a>
-    </Header>
-    <router-view class="main"></router-view>
-    <all-svg></all-svg>
+    </e-header>
+    <Page>
+      <div style="width: 100%; height: 2000px; background-color: lightblue;"></div>
+    </Page>
+    <!-- <all-svg></all-svg> -->
     <!-- <router-view class="main"></router-view> -->
 
   </App>
   <!-- <all-svg></all-svg> -->
 </template>
 <script>
+  import routes from './routes'
   export default {
     data: function () {
-      return {}
+      return {
+        routes: routes
+      }
     },
     beforeDestroy: function () {
 

@@ -3,6 +3,11 @@ import PageButton from './routers/button.vue'
 
 export default [
   {
+    name: 'home',
+    path: '/',
+    component: PageHome
+  },
+  {
     name: 'button',
     path: '/button',
     component: () => import('./routers/button.vue')

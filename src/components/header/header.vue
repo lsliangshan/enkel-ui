@@ -1,16 +1,17 @@
 <template>
-  <f7-navbar :class="classes">
+  <f7-navbar :class="classes"
+             ref="header">
     <f7-nav-left>
       <slot name="left"></slot>
     </f7-nav-left>
-    <f7-nav-right>
-      <slot name="right"></slot>
-    </f7-nav-right>
     <f7-nav-title>
       <slot></slot>
     </f7-nav-title>
-    <f7-nav-title-large v-if="largeTitle">
-      <slot name="large-title"></slot>
+    <f7-nav-right>
+      <slot name="right"></slot>
+    </f7-nav-right>
+    <f7-nav-title-large>
+      <slot name="title-large"></slot>
     </f7-nav-title-large>
   </f7-navbar>
   <!-- <div :class="classes"
@@ -39,9 +40,13 @@
   import { f7Navbar, f7NavLeft, f7NavRight, f7NavTitle, f7NavTitleLarge } from 'framework7-vue';
   const prefixCls = 'enkel-header';
   export default {
-    name: 'Header',
+    name: 'e-header',
     components: {
-      f7Navbar, f7NavLeft, f7NavRight, f7NavTitle, f7NavTitleLarge
+      f7Navbar,
+      f7NavLeft,
+      f7NavRight,
+      f7NavTitle,
+      f7NavTitleLarge
     },
     props: {
       name: {
@@ -69,7 +74,7 @@
       }
     },
     mounted () {
-      console.log('>>>>>> header')
+      console.log('>>>>>>', this.$refs.header)
     }
   };
 </script>

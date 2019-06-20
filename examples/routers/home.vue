@@ -1,8 +1,11 @@
 <template>
-  <Page name="page">
+  <!-- <Page name="page">
     <a href="javascript:void(0)"
        data-path="/button"
        @click="goto">Button</a>
+  </Page> -->
+  <Page>
+    <div class="">Home</div>
   </Page>
 </template>
 <script>

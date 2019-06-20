@@ -1,3 +1,3 @@
-import Header from '../layout/header.vue';
+import Header from './header.vue';
 
-export default Header; 
+export default Header;

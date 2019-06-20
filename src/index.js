@@ -15,13 +15,13 @@ import Framework7Vue from 'framework7-vue';
 // import F7Panel from 'framework7/components/panel/panel.js';
 
 import App from './components/app';
-import Header from './components/header';
+import EHeader from './components/header';
 
 import Toast from './components/toast';
 import Modal from './components/modal';
 import Notification from './components/notification';
 
-import Button from './components/button';
+import EButton from './components/button';
 import Preloader from './components/preloader';
 import Popup from './components/popup';
 import Icon from './components/icon';
@@ -92,11 +92,12 @@ import framework7css from './static/f7/core/css/framework7.bundle.min.css'
 import framework7icons from 'framework7-icons'
 import loaders from 'loaders.css'
 // import framework7materialicons from 'material-design-icons'
-
+console.log('........', EHeader)
 const components = {
   App,
-  Button,
-  ButtonGroup: Button.Group,
+  EButton,
+  EHeader,
+  // ButtonGroup: Button.Group,
   Preloader,
   Popup,
   Icon,
@@ -107,7 +108,7 @@ const components = {
   Row,
   Col,
   Page,
-  Header,
+
   Panel,
   // Affix,
   // Alert,
@@ -177,7 +178,7 @@ const components = {
 
 const enkel = {
   ...components,
-  iButton: Button,
+  // iButton: Button,
   // iCircle: Circle,
   // iCol: Col,
   // iContent: Content,
@@ -200,46 +201,40 @@ const install = function (Vue, opts = {}) {
   locale.i18n(opts.i18n);
   Framework7.use(Framework7Vue)
   // Framework7.use([F7Toast, F7Dialog, F7ProgressBar, F7RangeSlider, F7Notification, F7Panel])
-  let app = new Framework7(Object.assign({
-    toast: {
-      closeTimeout: 3000,
-      closeButton: false,
-      position: 'bottom'
-    },
-    dialog: {
-      buttonOk: '确定',
-      buttonCancel: '取消'
-    },
-    // navbar: {
-    //   // hideOnPageScroll: true,
-    //   // iosCenterTitle: false,
-    // },
-    // toolbar: {
-    //   hideOnPageScroll: true,
-    // }
-  }, opts.f7params))
+  // let app = new Framework7(Object.assign({
+  //   toast: {
+  //     closeTimeout: 3000,
+  //     closeButton: false,
+  //     position: 'bottom'
+  //   },
+  //   dialog: {
+  //     buttonOk: '确定',
+  //     buttonCancel: '取消'
+  //   }
+  // }, opts.f7params))
 
   // var mainView = app.views.create(opts.f7params.mainView || '.container', {
   //   routes: opts.f7params.routes
   // });
 
-  let enkelData = {
-    app: app,
-    size: opts.size || '',
-    transfer: 'transfer' in opts ? opts.transfer : '',
-    theme: opts.f7params.theme || 'ios',
-    colorTheme: opts.f7params.colorTheme || 'orange'
-  }
-  Vue.prototype.$enkel = enkelData;
-  if (!global.ENKEL) global.ENKEL = enkelData;
+  // let enkelData = {
+  //   app: app,
+  //   size: opts.size || '',
+  //   transfer: 'transfer' in opts ? opts.transfer : '',
+  //   theme: opts.f7params.theme || 'ios',
+  //   colorTheme: opts.f7params.colorTheme || 'orange'
+  // }
+  // Vue.prototype.$enkel = enkelData;
+  // if (!global.ENKEL) global.ENKEL = enkelData;
   // Vue.prototype.$Loading = LoadingBar;
   // Vue.prototype.$Message = Message;
   // Vue.prototype.$Modal = Modal;
   // Vue.prototype.$Notice = Notice;
   // Vue.prototype.$Spin = Spin;
-  Vue.prototype.$toast = new Toast();
-  Vue.prototype.$modal = new Modal();
-  Vue.prototype.$notification = new Notification();
+
+  // Vue.prototype.$toast = new Toast();
+  // Vue.prototype.$modal = new Modal();
+  // Vue.prototype.$notification = new Notification();
 
   Object.keys(enkel).forEach(key => {
     Vue.component(key, enkel[key]);

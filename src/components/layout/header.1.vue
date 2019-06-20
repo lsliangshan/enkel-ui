@@ -1,19 +1,5 @@
 <template>
-  <f7-navbar :class="classes">
-    <f7-nav-left>
-      <slot name="left"></slot>
-    </f7-nav-left>
-    <f7-nav-right>
-      <slot name="right"></slot>
-    </f7-nav-right>
-    <f7-nav-title>
-      <slot></slot>
-    </f7-nav-title>
-    <f7-nav-title-large v-if="largeTitle">
-      <slot name="large-title"></slot>
-    </f7-nav-title-large>
-  </f7-navbar>
-  <!-- <div :class="classes"
+  <div :class="classes"
        :data-name="name">
     <div :class="innerClasses">
       <div class="left">
@@ -33,16 +19,12 @@
         <div class="title-large-text">{{largeTitle}}</div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 <script>
-  import { f7Navbar, f7NavLeft, f7NavRight, f7NavTitle, f7NavTitleLarge } from 'framework7-vue';
   const prefixCls = 'enkel-header';
   export default {
     name: 'Header',
-    components: {
-      f7Navbar, f7NavLeft, f7NavRight, f7NavTitle, f7NavTitleLarge
-    },
     props: {
       name: {
         type: String,
@@ -64,12 +46,27 @@
     computed: {
       classes () {
         return [
-          prefixCls
+          prefixCls,
+          'navbar'
+        ]
+      },
+      innerClasses () {
+        return [
+          'navbar-inner',
+          'sliding',
+          {
+            ['navbar-inner-large']: this.largeTitle
+          }
         ]
       }
     },
-    mounted () {
-      console.log('>>>>>> header')
+    watch: {
+      hideOnScroll: {
+        immediate: true,
+        handler (val) {
+          this.$parent.hideOnScroll(val)
+        }
+      }
     }
   };
 </script>
