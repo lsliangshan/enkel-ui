@@ -15,6 +15,9 @@ import Framework7Vue from 'framework7-vue';
 // import F7Panel from 'framework7/components/panel/panel.js';
 
 import App from './components/app';
+import EViews from './components/views';
+import EView from './components/view';
+import EPage from './components/page';
 import EHeader from './components/header';
 
 import Toast from './components/toast';
@@ -28,7 +31,6 @@ import Icon from './components/icon';
 import Loading from './components/loading';
 import Checkbox from './components/checkbox';
 import Slider from './components/slider';
-import Page from './components/page';
 import Panel from './components/panel';
 
 import { Row, Col } from './components/grid';
@@ -92,9 +94,11 @@ import framework7css from './static/f7/core/css/framework7.bundle.min.css'
 import framework7icons from 'framework7-icons'
 import loaders from 'loaders.css'
 // import framework7materialicons from 'material-design-icons'
-console.log('........', EHeader)
 const components = {
   App,
+  EViews,
+  EView,
+  EPage,
   EButton,
   EHeader,
   // ButtonGroup: Button.Group,
@@ -107,8 +111,6 @@ const components = {
   Slider,
   Row,
   Col,
-  Page,
-
   Panel,
   // Affix,
   // Alert,

@@ -1,6 +1,7 @@
 <template>
   <f7-navbar :class="classes"
-             ref="header">
+             ref="header"
+             :large="large">
     <f7-nav-left>
       <slot name="left"></slot>
     </f7-nav-left>
@@ -57,9 +58,17 @@
         type: String,
         default: ''
       },
-      largeTitle: {
+      subtitle: {
         type: String,
         default: ''
+      },
+      titleLarge: {
+        type: String,
+        default: ''
+      },
+      large: {
+        type: Boolean,
+        default: false
       },
       hideOnScroll: {
         type: Boolean,

@@ -54,7 +54,8 @@
   <App :routes="routes">
     <!-- <e-button fill
               type="info">e-button</e-button> -->
-    <e-header>
+    <e-header :large="true"
+              title-large="Enkel Ui">
       <div slot="title">Enkel Ui</div>
       <div slot="title-large">Enkel Ui</div>
       <a href="javascript:void(0)"
@@ -67,9 +68,7 @@
         <Icon type="more_vertical_fill"></Icon>
       </a>
     </e-header>
-    <Page>
-      <div style="width: 100%; height: 2000px; background-color: lightblue;"></div>
-    </Page>
+    <e-view></e-view>
     <!-- <all-svg></all-svg> -->
     <!-- <router-view class="main"></router-view> -->
 
