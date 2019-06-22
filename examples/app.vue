@@ -1,46 +1,46 @@
 <style lang="less">
-  @import "../src/styles/index.less";
-  nav {
-    margin-bottom: 40px;
+@import "../src/styles/index.less";
+nav {
+  margin-bottom: 40px;
 
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    li {
-      display: inline-block;
-    }
-    li + li {
-      border-left: solid 1px #bbb;
-      padding-left: 10px;
-      margin-left: 10px;
-    }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
   }
-  html,
-  body {
-    height: 100%;
-    overflow: auto;
+  li {
+    display: inline-block;
   }
-  #app {
-    width: 100%;
-    height: 100%;
+  li + li {
+    border-left: solid 1px #bbb;
+    padding-left: 10px;
+    margin-left: 10px;
   }
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: #f4f4f4;
-  }
+}
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f4f4;
+}
 
-  .v-link-active {
-    color: #bbb;
-  }
-  .main {
-    height: 100%;
-  }
-  .mt0 {
-    margin-top: 0 !important;
-  }
+.v-link-active {
+  color: #bbb;
+}
+.main {
+  height: 100%;
+}
+.mt0 {
+  margin-top: 0 !important;
+}
 </style>
 <template>
   <!-- <div id="app">
@@ -54,7 +54,8 @@
   <App :routes="routes">
     <!-- <e-button fill
               type="info">e-button</e-button> -->
-    <e-header :large="true"
+    <e-header slot="header"
+              :large="true"
               title-large="Enkel Ui">
       <div slot="title">Enkel Ui</div>
       <div slot="title-large">Enkel Ui</div>
@@ -68,7 +69,8 @@
         <Icon type="more_vertical_fill"></Icon>
       </a>
     </e-header>
-    <e-view></e-view>
+    <e-view :main="true"
+            url="/"></e-view>
     <!-- <all-svg></all-svg> -->
     <!-- <router-view class="main"></router-view> -->
 
@@ -76,21 +78,21 @@
   <!-- <all-svg></all-svg> -->
 </template>
 <script>
-  import routes from './routes'
-  export default {
-    data: function () {
-      return {
-        routes: routes
-      }
-    },
-    beforeDestroy: function () {
-
-    },
-    methods: {
-    },
-    components: {
-      AllSvg: (resolve) => require(['./svgs.vue'], resolve),
-      // Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
+import routes from './routes'
+export default {
+  data: function () {
+    return {
+      routes: routes
     }
+  },
+  beforeDestroy: function () {
+
+  },
+  methods: {
+  },
+  components: {
+    AllSvg: (resolve) => require(['./svgs.vue'], resolve),
+    // Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
   }
+}
 </script>

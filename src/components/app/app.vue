@@ -2,62 +2,67 @@
   <f7-app :class="classes"
           :params="params"
           :routes="routes">
-    <slot></slot>
+    <e-view>
+      <e-page>
+        <slot name="header"></slot>
+        <slot></slot>
+      </e-page>
+    </e-view>
   </f7-app>
 </template>
 <style scoped>
-  .m0 {
-    margin: 0 !important;
-  }
-  .p0 {
-    padding: 0 !important;
-  }
+.m0 {
+  margin: 0 !important;
+}
+.p0 {
+  padding: 0 !important;
+}
 </style>
 
 <script>
-  import { f7App } from 'framework7-vue'
-  const prefixCls = 'enkel-app';
-  export default {
-    name: 'App',
-    components: {
-      f7App
+import { f7App } from 'framework7-vue'
+const prefixCls = 'enkel-app';
+export default {
+  name: 'App',
+  components: {
+    f7App
+  },
+  props: {
+    id: {
+      type: String,
+      default: 'app'
     },
-    props: {
-      id: {
-        type: String,
-        default: 'app'
-      },
-      params: {
-        type: Object,
-        default () {
-          return {
-            name: 'Enkel Ui',
-            id: 'com.enkelui.example'
-          }
-        }
-      },
-      routes: {
-        type: Array,
-        default () {
-          return []
+    params: {
+      type: Object,
+      default () {
+        return {
+          name: 'Enkel Ui',
+          id: 'com.enkelui.example'
         }
       }
     },
-    data () {
-      return {
+    routes: {
+      type: Array,
+      default () {
+        return []
       }
-    },
-    computed: {
-      classes () {
-        return [
-          prefixCls
-        ]
-      }
-    },
-    mounted () {
-      this.$nextTick(() => {
-        console.log(this.$f7)
-      })
     }
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    classes () {
+      return [
+        prefixCls
+      ]
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      console.log(this.$f7)
+    })
   }
+}
 </script>

@@ -7,29 +7,29 @@
   </f7-view>
 </template>
 <script>
-  import { f7View } from 'framework7-vue'
-  export default {
-    name: 'View',
-    components: {
-      f7View
+import { f7View } from 'framework7-vue'
+export default {
+  name: 'View',
+  components: {
+    f7View
+  },
+  props: {
+    main: {
+      type: Boolean,
+      default: false
     },
-    props: {
-      main: {
-        type: Boolean,
-        default: true
-      },
-      animate: {
-        type: Boolean,
-        default: true
-      },
-      pushState: {
-        type: Boolean,
-        default: true
-      },
-      url: {
-        type: String,
-        default: '/'
-      }
+    animate: {
+      type: Boolean,
+      default: true
+    },
+    pushState: {
+      type: Boolean,
+      default: true
+    },
+    url: {
+      type: String,
+      default: '/'
     }
   }
+}
 </script>
