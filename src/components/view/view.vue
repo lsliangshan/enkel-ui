@@ -1,14 +1,12 @@
 <template>
-  <f7-view :class="classes"
+  <f7-view class="safe-areas"
            :main="main"
-           :url="url"
-           :animate="animate"
-           :push-state="pushState">
+           :url="url">
     <!-- <slot name="header"></slot> -->
     <!-- <e-page class="page-with-navbar-large">
       <slot></slot>
     </e-page> -->
-
+    <!-- <slot></slot> -->
   </f7-view>
 </template>
 <script>
@@ -34,13 +32,6 @@ export default {
     url: {
       type: String,
       default: '/'
-    }
-  },
-  computed: {
-    classes () {
-      return [
-        'safe-areas'
-      ]
     }
   }
 }

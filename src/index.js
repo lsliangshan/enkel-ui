@@ -19,6 +19,7 @@ import EViews from './components/views';
 import EView from './components/view';
 import EPage from './components/page';
 import EHeader from './components/header';
+import EPanel from './components/panel';
 
 import Toast from './components/toast';
 import Modal from './components/modal';
@@ -31,7 +32,6 @@ import Icon from './components/icon';
 import Loading from './components/loading';
 import Checkbox from './components/checkbox';
 import Slider from './components/slider';
-import Panel from './components/panel';
 
 import { Row, Col } from './components/grid';
 
@@ -101,6 +101,7 @@ const components = {
   EPage,
   EButton,
   EHeader,
+  EPanel,
   // ButtonGroup: Button.Group,
   Preloader,
   Popup,
@@ -111,7 +112,6 @@ const components = {
   Slider,
   Row,
   Col,
-  Panel,
   // Affix,
   // Alert,
   // Anchor,

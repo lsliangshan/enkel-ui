@@ -3,13 +3,14 @@
     <div style="color: red;">{{title}}</div>
     <div slot="title-large"
          v-if="large">{{titleLarge}}</div>
-    <a href="javascript:void(0)"
+    <!-- <a href="javascript:void(0)"
        slot="left"
-       class="link"
-       v-if="left">
+       class="link">
       <Icon type="chevron_left"></Icon>
       <p v-if="leftText">{{leftText}}</p>
-    </a>
+    </a> -->
+    <slot name="left"
+          slot="left"></slot>
     <a href="#"
        slot="right">
       <!-- <Icon type="more_vertical_fill"></Icon> -->

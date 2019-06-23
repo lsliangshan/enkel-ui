@@ -8,7 +8,20 @@
   <!-- <f7-block> -->
   <e-page>
     <headers slot="header"
-             large></headers>
+             large>
+      <!-- <a href="/panel-left"
+         slot="left"
+         class="link">
+        <Icon type="chevron_left"></Icon>
+      </a> -->
+      <a href="#"
+         slot="left"
+         class="link icon-only panel-open"
+         data-panel="left">
+        <i class="icon f7-icons if-not-md">menu</i>
+        <i class="icon material-icons md-only">menu</i>
+      </a>
+    </headers>
     <div class="home_container"
          data-path="/button"
          @click="goto">Home</div>

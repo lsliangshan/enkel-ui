@@ -52,6 +52,20 @@ body {
     <all-svg></all-svg>
   </div> -->
   <App>
+    <!-- <e-panel position="left">
+      <e-view url="/panel-left">
+        <e-page>
+          <div class="block">sssss</div>
+        </e-page>
+      </e-view>
+    </e-panel> -->
+    <e-panel>
+      <e-view url="/panel-left"
+              links-view=".view-main"></e-view>
+    </e-panel>
+    <e-view :main="true"
+            url="/">
+    </e-view>
     <!-- <e-button fill
               type="info">e-button</e-button> -->
 
@@ -60,12 +74,12 @@ body {
     </e-view> -->
     <!-- <all-svg></all-svg> -->
     <!-- <router-view class="main"></router-view> -->
-
   </App>
   <!-- <all-svg></all-svg> -->
 </template>
 <script>
 // import routes from './routes'
+import { f7View, f7Panel } from 'framework7-vue'
 export default {
   data: function () {
     return {
@@ -78,6 +92,8 @@ export default {
   methods: {
   },
   components: {
+    f7View,
+    f7Panel,
     AllSvg: (resolve) => require(['./svgs.vue'], resolve),
     // Headers: (resolve) => require(['./components/parts/headers.vue'], resolve)
   }

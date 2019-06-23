@@ -1,6 +1,8 @@
 import PageHome from './routers/home.vue'
 import PageButton from './routers/button.vue'
 
+import PanelAllComponents from './routers/panels/AllComponents.vue'
+
 export default [
   {
     name: 'home',
@@ -11,6 +13,11 @@ export default [
     name: 'button',
     path: '/button',
     component: PageButton
+  },
+  {
+    name: '/panelLeft',
+    path: '/panel-left',
+    component: PanelAllComponents
   },
   {
     path: '/popup',

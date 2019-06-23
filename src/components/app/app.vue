@@ -3,9 +3,10 @@
           :params="params"
           :routes="routes"
           :id="id">
-    <e-view :main="true"
-            url="/">
-    </e-view>
+    <slot></slot>
+    <!-- <e-view :main="true"
+            url="/button">
+    </e-view> -->
   </f7-app>
 </template>
 <style scoped>
