@@ -1,7 +1,6 @@
 <template>
-  <f7-navbar :class="classes"
-             ref="header"
-             :large="large">
+  <f7-navbar :sliding="false"
+             :innerClass="large ? 'navbar-inner-large' : ''">
     <f7-nav-left>
       <slot name="left"></slot>
     </f7-nav-left>
@@ -11,79 +10,55 @@
     <f7-nav-right>
       <slot name="right"></slot>
     </f7-nav-right>
-    <f7-nav-title-large>
+    <f7-nav-title-large v-if="large">
       <slot name="title-large"></slot>
     </f7-nav-title-large>
   </f7-navbar>
-  <!-- <div :class="classes"
-       :data-name="name">
-    <div :class="innerClasses">
-      <div class="left">
-        <slot name="left">
-        </slot>
-      </div>
-      <div class="title">
-        <slot>
-          {{title || largeTitle}}
-        </slot>
-      </div>
-      <div class="right">
-        <slot name="right"></slot>
-      </div>
-      <div class="title-large"
-           v-if="largeTitle">
-        <div class="title-large-text">{{largeTitle}}</div>
-      </div>
-    </div>
-  </div> -->
 </template>
 <script>
-  import { f7Navbar, f7NavLeft, f7NavRight, f7NavTitle, f7NavTitleLarge } from 'framework7-vue';
-  const prefixCls = 'enkel-header';
-  export default {
-    name: 'e-header',
-    components: {
-      f7Navbar,
-      f7NavLeft,
-      f7NavRight,
-      f7NavTitle,
-      f7NavTitleLarge
+import { f7Navbar, f7NavLeft, f7NavRight, f7NavTitle, f7NavTitleLarge } from 'framework7-vue';
+const prefixCls = 'enkel-header';
+export default {
+  name: 'e-header',
+  components: {
+    f7Navbar,
+    f7NavLeft,
+    f7NavRight,
+    f7NavTitle,
+    f7NavTitleLarge
+  },
+  props: {
+    name: {
+      type: String,
+      default: ''
     },
-    props: {
-      name: {
-        type: String,
-        default: ''
-      },
-      title: {
-        type: String,
-        default: ''
-      },
-      subtitle: {
-        type: String,
-        default: ''
-      },
-      titleLarge: {
-        type: String,
-        default: ''
-      },
-      large: {
-        type: Boolean,
-        default: false
-      },
-      hideOnScroll: {
-        type: Boolean,
-        default: false
-      }
+    title: {
+      type: String,
+      default: ''
     },
-    computed: {
-      classes () {
-        return [
-          prefixCls
-        ]
-      }
+    subtitle: {
+      type: String,
+      default: ''
     },
-    mounted () {
-      console.log('>>>>>>', this.$refs.header)
+    titleLarge: {
+      type: String,
+      default: ''
+    },
+    large: {
+      type: Boolean,
+      default: false
+    },
+    hideOnScroll: {
+      type: Boolean,
+      default: false
     }
-  };
+  },
+  computed: {
+    classes () {
+      return [
+        prefixCls
+      ]
+    }
+  }
+};
 </script>

@@ -10,7 +10,7 @@ export default [
   {
     name: 'button',
     path: '/button',
-    component: () => import('./routers/button.vue')
+    component: PageButton
   },
   {
     path: '/popup',

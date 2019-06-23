@@ -51,26 +51,13 @@ body {
     </div>
     <all-svg></all-svg>
   </div> -->
-  <App :routes="routes">
+  <App>
     <!-- <e-button fill
               type="info">e-button</e-button> -->
-    <e-header slot="header"
-              :large="true"
-              title-large="Enkel Ui">
-      <div slot="title">Enkel Ui</div>
-      <div slot="title-large">Enkel Ui</div>
-      <a href="javascript:void(0)"
-         slot="left"
-         class="link panel-toggle">
-        <Icon type="chevron_left"></Icon>
-      </a>
-      <a href="#"
-         slot="right">
-        <Icon type="more_vertical_fill"></Icon>
-      </a>
-    </e-header>
-    <e-view :main="true"
-            url="/"></e-view>
+
+    <!-- <e-view>
+
+    </e-view> -->
     <!-- <all-svg></all-svg> -->
     <!-- <router-view class="main"></router-view> -->
 
@@ -78,11 +65,11 @@ body {
   <!-- <all-svg></all-svg> -->
 </template>
 <script>
-import routes from './routes'
+// import routes from './routes'
 export default {
   data: function () {
     return {
-      routes: routes
+      // routes: routes
     }
   },
   beforeDestroy: function () {

@@ -227,6 +227,17 @@ const install = function (Vue, opts = {}) {
   //   colorTheme: opts.f7params.colorTheme || 'orange'
   // }
   // Vue.prototype.$enkel = enkelData;
+  Vue.prototype.$enkelOpts = Object.assign({
+    toast: {
+      closeTimeout: 3000,
+      closeButton: false,
+      position: 'bottom'
+    },
+    dialog: {
+      buttonOk: '确定',
+      buttonCancel: '取消'
+    }
+  }, opts.options)
   // if (!global.ENKEL) global.ENKEL = enkelData;
   // Vue.prototype.$Loading = LoadingBar;
   // Vue.prototype.$Message = Message;

@@ -24,18 +24,18 @@ const router = new VueRouter({
 })
 Vue.use(enkel, {
   locale,
-  f7params: {
+  options: {
     root: '#app',
     mainView: '.view-main',
     name: 'enkel-ui',
     id: 'com.enkel-ui',
     theme: 'ios',
-    colorTheme: 'primary'
-    // routes: routes
+    colorTheme: 'primary',
+    routes: routes
   }
 })
 const app = new Vue({
-  router,
+  // router,
   render: h => h(App),
   mounted () {
 

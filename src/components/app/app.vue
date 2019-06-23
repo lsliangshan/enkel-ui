@@ -1,12 +1,10 @@
 <template>
   <f7-app :class="classes"
           :params="params"
-          :routes="routes">
-    <e-view>
-      <e-page>
-        <slot name="header"></slot>
-        <slot></slot>
-      </e-page>
+          :routes="routes"
+          :id="id">
+    <e-view :main="true"
+            url="/">
     </e-view>
   </f7-app>
 </template>
@@ -20,6 +18,7 @@
 </style>
 
 <script>
+import Vue from 'vue'
 import { f7App } from 'framework7-vue'
 const prefixCls = 'enkel-app';
 export default {
@@ -35,7 +34,7 @@ export default {
     params: {
       type: Object,
       default () {
-        return {
+        return this.$enkelOpts || {
           name: 'Enkel Ui',
           id: 'com.enkelui.example'
         }
@@ -44,7 +43,7 @@ export default {
     routes: {
       type: Array,
       default () {
-        return []
+        return this.$enkelOpts.routes || []
       }
     }
   },
@@ -60,9 +59,10 @@ export default {
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      console.log(this.$f7)
-    })
+    this.$f7ready((f7) => {
+      Vue.prototype.$enkel = f7
+      global.ENKEL = f7
+    });
   }
 }
 </script>
